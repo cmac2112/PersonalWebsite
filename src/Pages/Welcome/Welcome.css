@@ -1,12 +1,98 @@
-.hello-title{
-    animation:  fade-up-and-in 1s ease;
-    position: absolute
+
+.click-hint{
+    font-size: smaller;
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    white-space: nowrap;
+
 }
-.title-animation-container{
-    position: relative
+.click-hint.initial{
+    opacity: 0.7;
+    transform: translate(-50%, -50%) translateY(0); /* Center + final position */
 }
 
-@keyframes fade-up-and-in{
-    0% {opacity: 0; bottom: 1rem;}
-    100% {opacity: 1; top: 1rem}
+.hello-title{
+    font-size: 3rem;
+    margin: 0;
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    white-space: nowrap;
 }
+.hello-title.initial {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0); /* Center + final position */
+}
+.hello-title.step-2{ /* animation moves with this applied beacuse of the animation step */
+    color: rgb(0, 0, 0);
+    opacity: 0;
+}
+.my-name{
+    font-size: 3rem;
+    margin: 0;
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    white-space: nowrap;
+}
+/* longer text will need to be slimmed down for phone */
+.software{
+    font-size: 2rem;
+    transform: translate(-50%, -50%) translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 80%;
+    left: 35%;
+    opacity: 0;
+}
+.software.step-3{
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0); /* Center + final position */
+}
+
+.my-name.step-2{
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0); /* Center + final position */
+}
+
+.football-image{
+    border-radius: 1rem;
+    height: 10rem;
+    width: 40vh;
+    object-fit: cover;
+    position: absolute;
+    top: 15%;
+    left: 29%;
+    transition-delay: 0.2s 
+}
+
+/* this will also need to be adjusted for phone */
+.football-image.step-3{
+    width: 50vw;
+}
+.title-animation-container{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background: linear-gradient(135deg, #46000D, #1a0003, #440c10);
+}
+
+
+
+
