@@ -5,8 +5,11 @@ import "./Welcome.css"
 
 const Welcome = () => {
 
-    const [animationPlaying, setAnimationPlaying] = useState<boolean>(false);
+  const [animationStep, setAnimationStep] = useState<number>(0);
 
+
+
+    
 
   return (
     <div className="title-animation-container">
