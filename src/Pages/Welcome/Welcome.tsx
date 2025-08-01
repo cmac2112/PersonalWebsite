@@ -12,15 +12,15 @@ const Welcome = () => {
   const [animationStep, setAnimationStep] = useState<number>(0);
   const [visitCount, setVisitCount] = useState<number>(0);
 
-  const [pfp, setPfp] = useState<string>('');
-  const [nasa1, setNasa1] = useState<string>('');
-  const [nasa2, setNasa2] = useState<string>('');
-  const [nebula, setNebula] = useState<string>('');
-  const [award, setAward] = useState<string>('');
-  const [aurora, setAurora] = useState<string>('')
   //quick example from copilot
   // looks like we use the animation step to access this array to append to element classnames below
 
+  const revisitAnimationSteps: Array<string> = [
+    '',
+  ]
+
+  // first check if user has been here before through local storage, if so use a different array first, if they want to see animation again then 
+  // start using the one below
 
   const initialAnimationSteps: Array<string> = [
     '',        // 0: useeffect will skip, allows for "hello" fade in
@@ -72,8 +72,11 @@ const Welcome = () => {
     };
     //re add ev listenter on each click
   }, [animationStep])
+
+
   return (
     <div className="title-animation-container">
+      <button className="skip-animation" onClick={() => setAnimationStep(initialAnimationSteps.length - 1)}>Skip</button>
      <p className={`click-hint ${initialAnimationSteps[animationStep]}`}>(click to continue)</p> 
     <h2 className={`hello-title ${initialAnimationSteps[animationStep]} `}>
         Hello
@@ -87,7 +90,7 @@ const Welcome = () => {
       I'm a Software Engineer and a 2025 graduate from Bethel College
     </h2>
     <img src={football} className={`software football-image ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''}`}/>
-
+    <img src={grad} className={`software grad-image ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''}`} />
     </div>
   )
 }

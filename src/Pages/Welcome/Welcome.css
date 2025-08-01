@@ -1,77 +1,79 @@
 
 .click-hint{
+    grid-area: hint;
+    justify-self: center;
+    align-self: center;
     font-size: smaller;
     opacity: 0;
-    transform: translate(-50%, -50%) translateY(-50px);
+    transform: translateY(-50px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    position: absolute;
-    top: 15%;
-    left: 50%;
     white-space: nowrap;
 
 }
 .click-hint.initial{
     opacity: 0.7;
-    transform: translate(-50%, -50%) translateY(0); /* Center + final position */
+    transform: translateY(0); /* Center + final position */
 }
 
 .hello-title{
+    grid-area: center;
+    justify-self: center;
+    align-self: center;
     font-size: 3rem;
     margin: 0;
     opacity: 0;
-    transform: translate(-50%, -50%) translateY(50px);
+    transform: translateY(50px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    white-space: nowrap;
 }
 .hello-title.initial {
     opacity: 1;
-    transform: translate(-50%, -50%) translateY(0); /* Center + final position */
+    transform: translateY(0); /* Center + final position */
 }
 .hello-title.step-2{ /* animation moves with this applied beacuse of the animation step */
     color: rgb(0, 0, 0);
     opacity: 0;
 }
 .my-name{
+    grid-area: center;
+    justify-self: center;
+    align-self: center;
     font-size: 3rem;
     margin: 0;
     opacity: 0;
-    transform: translate(-50%, -50%) translateY(50px);
+    transform: translateY(50px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    position: absolute;
-    top: 50%;
-    left: 50%;
+
     white-space: nowrap;
+}
+.my-name.step-2{
+    opacity: 1;
+    transform: translateY(0); /* Center + final position */
 }
 /* longer text will need to be slimmed down for phone */
 .software{
+    grid-area: software;
     font-size: 2rem;
     transform: translate(-50%, -50%) translateY(50px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    position: absolute;
-    top: 80%;
-    left: 35%;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+   
     opacity: 0;
 }
 .software.step-3{
     opacity: 1;
-    transform: translate(-50%, -50%) translateY(0); /* Center + final position */
+    transform: translateY(0); /* Center + final position */
 }
 
-.my-name.step-2{
-    opacity: 1;
-    transform: translate(-50%, -50%) translateY(0); /* Center + final position */
-}
 
 .football-image{
     border-radius: 1rem;
-    height: 10rem;
+    height: 12rem;
     width: 40vh;
     object-fit: cover;
     position: absolute;
-    top: 15%;
+    top: 18%;
     left: 29%;
     transition-delay: 0.2s 
 }
@@ -80,19 +82,53 @@
 .football-image.step-3{
     width: 50vw;
 }
-.title-animation-container{
-    position: relative;
+
+
+.skip-animation{
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    border: none;
+    font-size: x-large;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.skip-animation:hover{
+    cursor: pointer;
+    background: rgba(255, 255, 255, 1);
+    color: #46000D;
+}
+
+.grad-image{
+    border-radius: 1rem;
+    height: 17rem;
+    width: 40vh;
+    object-fit: cover;
+    position: absolute;
+    top: 22%;
+    left:85%;
+    transition-delay: 0.2s 
+}
+
+
+.title-animation-container {
+    display: grid;
+    grid-template-areas: 
+        "left-hint hint right-hint"
+        "left-img center right-img"
+        "left-img software right-img";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 2rem;
     width: 100vw;
     height: 100vh;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow: hidden;
+      font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(135deg, #46000D, #1a0003, #440c10);
+    background: linear-gradient(135deg, #46000D, #1a0003, #440c10);
 }
-
-
-
-
