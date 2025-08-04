@@ -73,7 +73,15 @@ const Welcome = () => {
     //re add ev listenter on each click
   }, [animationStep])
 
+  /*
+  grid-template-areas: 
+        "left-hint hint right-hint"
+        "left-img center right-img"
+        "left-img software right-img";
 
+        lets take a mobile first approach for this
+        more people will be on this with their phone rather than desktop unfortunately
+  */
   return (
     <div className="title-animation-container">
       <button className="skip-animation" onClick={() => setAnimationStep(initialAnimationSteps.length - 1)}>Skip</button>
@@ -89,8 +97,9 @@ const Welcome = () => {
     <h2 className={`software ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''} `}>
       I'm a Software Engineer and a 2025 graduate from Bethel College
     </h2>
-    <img src={football} className={`software football-image ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''}`}/>
+    { /*<img src={football} className={`software football-image ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''}`}/>
     <img src={grad} className={`software grad-image ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''}`} />
+    */}
     </div>
   )
 }

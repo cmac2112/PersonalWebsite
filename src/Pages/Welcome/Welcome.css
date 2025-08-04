@@ -51,16 +51,16 @@
 }
 /* longer text will need to be slimmed down for phone */
 .software{
-    grid-area: software;
+    grid-area: left-bottom;
     font-size: 2rem;
     transform: translate(-50%, -50%) translateY(50px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     align-self: center;
     justify-self: center;
     text-align: center;
-   
     opacity: 0;
 }
+@media()
 .software.step-3{
     opacity: 1;
     transform: translateY(0); /* Center + final position */
@@ -115,7 +115,7 @@
     grid-template-areas: 
         "left-hint hint right-hint"
         "left-img center right-img"
-        "left-img software right-img";
+        "left-bottom software right-bottom";
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: auto 1fr auto;
     gap: 2rem;
