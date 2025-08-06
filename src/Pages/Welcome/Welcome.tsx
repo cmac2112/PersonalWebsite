@@ -11,13 +11,9 @@ const Welcome = () => {
 
   const [animationStep, setAnimationStep] = useState<number>(0);
   const [visitCount, setVisitCount] = useState<number>(0);
+  const [rememberChoiceModal, setRememberChoiceModal] = useState<boolean>(false);
 
-  //quick example from copilot
-  // looks like we use the animation step to access this array to append to element classnames below
 
-  const revisitAnimationSteps: Array<string> = [
-    '',
-  ]
 
   // first check if user has been here before through local storage, if so use a different array first, if they want to see animation again then 
   // start using the one below
@@ -27,7 +23,9 @@ const Welcome = () => {
     'initial', // 1: should fade in hello on page load
     'step-2', // 2: should fade out hello, and fade in my name after a slight delay
     'step-3',
+    'step-4'
   ]
+
 
 
   const handleScreenClick = () => {
@@ -40,7 +38,7 @@ const Welcome = () => {
   };
     
   useEffect(() => {
-    /*
+    
     const storedVisitCount = localStorage.getItem('welcomeVisitCount');
     const currentCount = storedVisitCount ? parseInt(storedVisitCount) : 0;
 
@@ -54,8 +52,10 @@ const Welcome = () => {
     if (newCount > 1) {
       setAnimationStep(2); // Skip to return visitor
     }
-      */
+      
   }, [])
+
+
   useEffect(() =>{
   
     setAnimationStep(1);
@@ -73,33 +73,46 @@ const Welcome = () => {
     //re add ev listenter on each click
   }, [animationStep])
 
-  /*
-  grid-template-areas: 
-        "left-hint hint right-hint"
-        "left-img center right-img"
-        "left-img software right-img";
-
-        lets take a mobile first approach for this
-        more people will be on this with their phone rather than desktop unfortunately
-  */
   return (
     <div className="title-animation-container">
       <button className="skip-animation" onClick={() => setAnimationStep(initialAnimationSteps.length - 1)}>Skip</button>
+      
      <p className={`click-hint ${initialAnimationSteps[animationStep]}`}>(click to continue)</p> 
+    {visitCount == 1 ?
     <h2 className={`hello-title ${initialAnimationSteps[animationStep]} `}>
-        Hello
+        Welcome, It looks like you are new here!
     </h2>
+    :
+    <h2 className={`hello-title ${initialAnimationSteps[animationStep]} `}>
+        Welcome Back! You have been here {visitCount} times!
+    </h2>
+}
+   
     {/* handle conditional visit text rendering here later */}
     
     <h2 className={`my-name ${animationStep > 1 ? initialAnimationSteps[animationStep] : ''}`}>
         My Name is Caden McArthur
       </h2>
+      <img src={pfp} className={`my-name pfp-image ${animationStep > 1 ? initialAnimationSteps[animationStep] : ''} `} />
     <h2 className={`software ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''} `}>
       I'm a Software Engineer and a 2025 graduate from Bethel College
     </h2>
-    { /*<img src={football} className={`software football-image ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''}`}/>
+    <img src={football} className={`software football-image ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''}`}/>
     <img src={grad} className={`software grad-image ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''}`} />
-    */}
+    <h2 className={`tenure ${animationStep > 3 ? initialAnimationSteps[animationStep] : ''}`}>
+      During my tenure at Bethel College I created the College's first ever software club. We built amazing apps, participated in 
+      prestigious hackathons across the country, and were voted 'Best Up and Coming Club' by the school.
+    </h2>
+    <div className="skip-modal">
+      <div className="modal-dialog">
+      <p>Would you like to remember your choice to skip to the main site from now on?</p>
+      <p>this is reversable at any time so dont sweat it!</p>
+      </div>
+      <div className="modal-buttons-container">
+        <button>Skip This Time</button>
+        <button>Skip Every Time</button>
+      </div>
+    </div>
     </div>
   )
 }

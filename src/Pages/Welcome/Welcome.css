@@ -1,129 +1,18 @@
 
-.click-hint{
-    grid-area: hint;
-    justify-self: center;
-    align-self: center;
-    font-size: smaller;
-    opacity: 0;
-    transform: translateY(-50px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    white-space: nowrap;
-
-}
-.click-hint.initial{
-    opacity: 0.7;
-    transform: translateY(0); /* Center + final position */
-}
-
-.hello-title{
-    grid-area: center;
-    justify-self: center;
-    align-self: center;
-    font-size: 3rem;
-    margin: 0;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.hello-title.initial {
-    opacity: 1;
-    transform: translateY(0); /* Center + final position */
-}
-.hello-title.step-2{ /* animation moves with this applied beacuse of the animation step */
-    color: rgb(0, 0, 0);
-    opacity: 0;
-}
-.my-name{
-    grid-area: center;
-    justify-self: center;
-    align-self: center;
-    font-size: 3rem;
-    margin: 0;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-
-    white-space: nowrap;
-}
-.my-name.step-2{
-    opacity: 1;
-    transform: translateY(0); /* Center + final position */
-}
-/* longer text will need to be slimmed down for phone */
-.software{
-    grid-area: left-bottom;
-    font-size: 2rem;
-    transform: translate(-50%, -50%) translateY(50px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    align-self: center;
-    justify-self: center;
-    text-align: center;
-    opacity: 0;
-}
-@media()
-.software.step-3{
-    opacity: 1;
-    transform: translateY(0); /* Center + final position */
-}
-
-
-.football-image{
-    border-radius: 1rem;
-    height: 12rem;
-    width: 40vh;
-    object-fit: cover;
-    position: absolute;
-    top: 18%;
-    left: 29%;
-    transition-delay: 0.2s 
-}
-
-/* this will also need to be adjusted for phone */
-.football-image.step-3{
-    width: 50vw;
-}
-
-
-.skip-animation{
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 1rem;
-    padding: 0.5rem;
-    border: none;
-    font-size: x-large;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.skip-animation:hover{
-    cursor: pointer;
-    background: rgba(255, 255, 255, 1);
-    color: #46000D;
-}
-
-.grad-image{
-    border-radius: 1rem;
-    height: 17rem;
-    width: 40vh;
-    object-fit: cover;
-    position: absolute;
-    top: 22%;
-    left:85%;
-    transition-delay: 0.2s 
-}
-
-
-.title-animation-container {
+/* mobile first base which means all base styles are built for mobile */
+.title-animation-container{
     display: grid;
     grid-template-areas: 
-        "left-hint hint right-hint"
-        "left-img center right-img"
-        "left-bottom software right-bottom";
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: auto 1fr auto;
-    gap: 2rem;
+        "top"
+        "center"
+        "bottom";
+    grid-template-columns: 1fr;
+    grid-template-rows: 20vh 60vh 20vh;
+    gap: 1rem;
     width: 100vw;
     height: 100vh;
-    padding: 2rem;
+    padding: 1rem;
     box-sizing: border-box;
-    overflow: hidden;
       font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -131,4 +20,136 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
     background: linear-gradient(135deg, #46000D, #1a0003, #440c10);
+    overflow: hidden;
+}
+.skip-animation{
+    grid-area: top;
+    height: 2rem;
+    width: 3rem;
+    border-radius: 1rem;
+    opacity: 0.4;
+}
+
+.skip-animation:hover{
+    cursor: pointer;
+    background: rgba(255, 255, 255, 1);
+    color: #46000D;
+}
+.click-hint{
+    grid-area: top;
+    justify-self: center;
+    align-self: center;
+    font-size: 0.8rem;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+.hello-title{
+    grid-area: center;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 15rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.my-name{
+    grid-area: center;
+    justify-self: center;
+    align-self: center;
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+.pfp-image{
+    grid-area: top;
+    border-radius: 100%;
+    width: 0rem;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1)
+}
+.software{
+    grid-area: bottom;
+    font-size: 1.5rem;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    opacity: 0;
+}
+.tenure{
+    grid-area: center;
+    font-size: 1.5rem;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    opacity: 0;
+}
+.football-image{
+    grid-area: top;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    object-fit: cover;
+    width: 0%;
+    height: 0rem;
+}
+.football-image.step-3{
+    opacity: 1;
+    width: 100%;
+    height: 5rem;
+    transform: translateY(-50px);
+    
+}
+.tenure.step-4{
+    opacity: 1;
+}
+.grad-image{
+    opacity: 0;
+    width: 100%;
+    grid-area: center;
+    object-fit: cover;
+    height: 20rem;
+    margin-bottom: 15rem;
+}
+/* Animation states remain the same */
+.click-hint.initial {
+    opacity: 0.7;
+    transform: translateY(0);
+}
+
+.hello-title.initial, .my-name.step-2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hello-title.step-2 {
+    opacity: 0;
+    transform: translateY(-30px);
+}
+.pfp-image.step-2{
+    opacity: 1;
+    width: 15rem;
+    transform: translateY(30px);
+    transition-delay: 0.3s;
+}
+.software.step-3 {
+    opacity: 1;
+    transform: translateY(-250px);
+}
+
+.football-image.step-3, .grad-image.step-3 {
+    opacity: 1;
+    transform: scale(1);
 }
