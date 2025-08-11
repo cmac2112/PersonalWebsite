@@ -1,13 +1,6 @@
 
 /* mobile first base which means all base styles are built for mobile */
-.title-animation-container{
-    display: grid;
-    grid-template-areas: 
-        "top"
-        "center"
-        "bottom";
-    grid-template-columns: 1fr;
-    grid-template-rows: 20vh 60vh 20vh;
+.page-container{
     gap: 1rem;
     width: 100vw;
     height: 100vh;
@@ -16,12 +9,71 @@
       font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
+    color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
     background: linear-gradient(135deg, #46000D, #1a0003, #440c10);
+}
+.title-animation-container{
+    display: grid;
+    grid-template-areas: 
+        "top"
+        "center"
+        "bottom";
+    grid-template-columns: 1fr;
+    grid-template-rows: 20vh 60vh 20vh;
+
     overflow: hidden;
 }
+.hidden-display{
+    display: none;
+}
+.blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(0.5rem);
+  z-index: 50;
+}
+.skip-modal{
+    grid-area: center;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.87);
+    border-radius: 1rem;
+    height: 30vh;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none; /* Prevent clicks when hidden */
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Show modal when active */
+.skip-modal.active {
+    visibility: visible;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    pointer-events: auto; /* Re-enable clicks when visible */
+}
+
+.modal-dialog{
+    color: maroon;
+    padding: 1rem;
+    text-align: center;
+    font-weight:500;
+}
+.modal-buttons-container{
+    display: flex;
+    justify-content: center;
+}
+.modal-button{
+    margin: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+
+}
+
 .skip-animation{
     grid-area: top;
     height: 2rem;
@@ -51,13 +103,17 @@
     justify-self: center;
     align-self: center;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1rem;
     margin-bottom: 15rem;
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.skip-hint{
+    opacity: 0.3;
+
+}
 .my-name{
     grid-area: center;
     justify-self: center;
@@ -88,7 +144,7 @@
 }
 .tenure{
     grid-area: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     align-self: center;

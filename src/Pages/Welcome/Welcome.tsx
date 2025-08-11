@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useState, useEffect } from 'react'
+import AboutMe from '../../Components/AboutMe';
 import "./Welcome.css"
 
 import football from '../../assets/football.png';
@@ -36,9 +37,22 @@ const Welcome = () => {
       setAnimationStep(0);
     }
   };
+
+  const HandleModal = () => {
+    setRememberChoiceModal(true);
+  }
+  const HandleRememberToSkip = () => {
+    localStorage.setItem('skipIntro', '1');
+    setAnimationStep(initialAnimationSteps.length);
+    setRememberChoiceModal(false);
+  }
     
   useEffect(() => {
-    
+    const skipAnimationChoice = localStorage.getItem('skipIntro');
+    if(skipAnimationChoice === '1'){
+      console.log('skip set')
+      setAnimationStep(initialAnimationSteps.length)
+    }
     const storedVisitCount = localStorage.getItem('welcomeVisitCount');
     const currentCount = storedVisitCount ? parseInt(storedVisitCount) : 0;
 
@@ -57,7 +71,7 @@ const Welcome = () => {
 
 
   useEffect(() =>{
-  
+
     setAnimationStep(1);
   }, [])
 
@@ -74,8 +88,10 @@ const Welcome = () => {
   }, [animationStep])
 
   return (
-    <div className="title-animation-container">
-      <button className="skip-animation" onClick={() => setAnimationStep(initialAnimationSteps.length - 1)}>Skip</button>
+    <div className={`page-container ${animationStep >= initialAnimationSteps.length - 1 ? "" : "no-scroll"} `}>
+    <div className={`title-animation-container ${animationStep >= initialAnimationSteps.length - 1 ? "hidden-display" : "" }`}>
+      
+      <button className="skip-animation" onClick={() => HandleModal()}>Skip</button>
       
      <p className={`click-hint ${initialAnimationSteps[animationStep]}`}>(click to continue)</p> 
     {visitCount == 1 ?
@@ -83,9 +99,12 @@ const Welcome = () => {
         Welcome, It looks like you are new here!
     </h2>
     :
-    <h2 className={`hello-title ${initialAnimationSteps[animationStep]} `}>
+    <div className={`hello-title ${initialAnimationSteps[animationStep]} `}>
+    <h2>
         Welcome Back! You have been here {visitCount} times!
     </h2>
+    <p className="skip-hint">Skip by pressing the button in the top left corner</p>
+    </div>
 }
    
     {/* handle conditional visit text rendering here later */}
@@ -103,16 +122,19 @@ const Welcome = () => {
       During my tenure at Bethel College I created the College's first ever software club. We built amazing apps, participated in 
       prestigious hackathons across the country, and were voted 'Best Up and Coming Club' by the school.
     </h2>
-    <div className="skip-modal">
+    {rememberChoiceModal && <div className="blur-overlay"></div>}
+    <div className={`skip-modal ${rememberChoiceModal ? "active" :""}`}>
       <div className="modal-dialog">
       <p>Would you like to remember your choice to skip to the main site from now on?</p>
-      <p>this is reversable at any time so dont sweat it!</p>
+      <p>This is reversable at any time so dont sweat it!</p>
       </div>
-      <div className="modal-buttons-container">
-        <button>Skip This Time</button>
-        <button>Skip Every Time</button>
+      <div className="modal-buttons-container ">
+        <button className="modal-button" onClick={() => { setAnimationStep(initialAnimationSteps.length); setRememberChoiceModal(false); }}>Skip This Time</button>
+        <button className="modal-button" onClick={() => HandleRememberToSkip()}>Skip Every Time</button>
       </div>
     </div>
+    </div>
+    <AboutMe />
     </div>
   )
 }
