@@ -43,15 +43,17 @@ const Welcome = () => {
   }
   const HandleRememberToSkip = () => {
     localStorage.setItem('skipIntro', '1');
-    setAnimationStep(initialAnimationSteps.length);
+    setAnimationStep(4);
     setRememberChoiceModal(false);
   }
     
   useEffect(() => {
     const skipAnimationChoice = localStorage.getItem('skipIntro');
     if(skipAnimationChoice === '1'){
-      console.log('skip set')
+      console.log(skipAnimationChoice)
+      console.log(typeof(skipAnimationChoice))
       setAnimationStep(initialAnimationSteps.length)
+      return
     }
     const storedVisitCount = localStorage.getItem('welcomeVisitCount');
     const currentCount = storedVisitCount ? parseInt(storedVisitCount) : 0;
@@ -63,17 +65,10 @@ const Welcome = () => {
     // Store last visit timestamp
     localStorage.setItem('lastWelcomeVisit', Date.now().toString());
     
-    if (newCount > 1) {
-      setAnimationStep(2); // Skip to return visitor
-    }
+    setAnimationStep(1);
       
   }, [])
 
-
-  useEffect(() =>{
-
-    setAnimationStep(1);
-  }, [])
 
   //use effect is going to add the event listener for each animation step for clicking
   useEffect(() => {
@@ -129,12 +124,29 @@ const Welcome = () => {
       <p>This is reversable at any time so dont sweat it!</p>
       </div>
       <div className="modal-buttons-container ">
-        <button className="modal-button" onClick={() => { setAnimationStep(initialAnimationSteps.length); setRememberChoiceModal(false); }}>Skip This Time</button>
+        <button className="modal-button" onClick={() => { setAnimationStep(initialAnimationSteps.length - 2); setRememberChoiceModal(false); }}>Skip This Time</button>
         <button className="modal-button" onClick={() => HandleRememberToSkip()}>Skip Every Time</button>
       </div>
     </div>
     </div>
-    <AboutMe />
+    <div className={`main-page ${animationStep == 4 ? "slide" : ""}`}>
+<p>test</p>
+<p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+
+    </div>
     </div>
   )
 }

@@ -1,9 +1,10 @@
 
 /* mobile first base which means all base styles are built for mobile */
+
 .page-container{
     gap: 1rem;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     padding: 1rem;
     box-sizing: border-box;
       font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -11,7 +12,13 @@
   font-weight: 400;
     color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-    background: linear-gradient(135deg, #46000D, #1a0003, #440c10);
+    background-color: #46000D;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.no-scroll{
+    overflow-y: hidden;
+    height: 100vh;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .title-animation-container{
     display: grid;
@@ -208,4 +215,14 @@
 .football-image.step-3, .grad-image.step-3 {
     opacity: 1;
     transform: scale(1);
+}
+
+.main-page{
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(50px)
+}
+.slide{
+    opacity: 1;
+    
 }
