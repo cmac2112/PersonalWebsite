@@ -1,6 +1,23 @@
-.about-me{
-    display: flex;
+.home{
+    margin-bottom: 4rem;    
     justify-content: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     
+}
+
+.more-about-me{
+    margin-top: 5rem;
+    margin-bottom: 5rem; /* Add bottom margin */
+}
+
+.button{
+    margin: 0.5rem;
+    width: 50%;
+    border-radius: 1rem;
+    background: rgba(73, 57, 57, 0.4);
+}
+.button:hover{
+    background: rgba(73, 57, 57, 1);;
 }

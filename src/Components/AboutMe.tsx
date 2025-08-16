@@ -1,5 +1,6 @@
 import React from 'react'
 import "./AboutMe.css"
+import { Navigate } from 'react-router-dom'
 
 
 /*
@@ -8,8 +9,14 @@ this part of the site should slide up from the bottom seamlessly and look nice a
  */
 const AboutMe = () => {
   return (
-    <div className='about-me'>
-      <p>this is my about me text that should slide up and appear after the animation</p>
+    <div className='home'>
+      <h1>Home</h1>
+      <button className="button">My Resume</button>
+      <button className="button">Play My Chess Bots</button>
+      <button className="button" >Replay Animation</button>
+      <div className='more-about-me'>
+        <h2>More About Me!</h2>
+      </div>
     </div>
   )
 }
