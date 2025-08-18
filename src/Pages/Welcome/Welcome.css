@@ -211,6 +211,55 @@
 .experience-text.step-5{
     opacity: 1;
 }
+.experience{
+grid-area: center;
+opacity: 0;
+align-self: center;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+}
+.experience.step-5{
+    opacity: 1;
+}
+.react-img{
+    transform: translateY(30px);
+    width: 5rem;
+    
+}
+.react-img.step-5{
+    opacity: 1;
+    transform: translateY(0);
+}
+.cs-img{
+    width: 75px;
+    opacity: 0;
+}
+.cs-img.step-5{
+    opacity: 1;
+}
+.python-img{
+    width: 75px;
+    opacity: 0;
+}
+.python-img.step-5{
+    opacity: 1;
+}
+.blazor-img{
+        width: 75px;
+    opacity: 0;
+}
+.blazor-img.step-5{
+    opacity: 1;
+}
+.sql-img{
+        width: 75px;
+    opacity: 0;
+}
+.sql-img.step-5{
+    opacity: 1;
+}
+
 .football-image{
     grid-area: top;
     opacity: 0;

@@ -144,11 +144,13 @@ const Welcome = () => {
       I have expereince building full stack applications with many different tools and frameworks for several different companies.
       So have fun exploring my site! If you are looking for a challenge. Play one of my homemade chess Bots!
     </h2>
-    <img src={react} className={`experience react-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
-    <img src={csLogo} className={`experience cs-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
-    <img src={python} className={`experience python-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
-    <img src={Blazor} className={`experience blazor-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
-    <img src={sql} className={`experience sql-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
+    <div className={`experience ${animationStep > 4 ? initialAnimationSteps[animationStep] : '' }`}>
+    <img src={react} className={`react-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
+    <img src={csLogo} className={`cs-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
+    <img src={python} className={`python-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
+    <img src={Blazor} className={`blazor-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
+    <img src={sql} className={`sql-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
+    </div>
     {rememberChoiceModal && <div className="blur-overlay"></div>}
     <div className={`skip-modal ${rememberChoiceModal ? "active" :""}`}>
       <div className="modal-dialog">
@@ -166,9 +168,7 @@ const Welcome = () => {
 
 
     <AboutMe />
-    <AboutMe />
-    <AboutMe />
-    
+
   
     
 </div>
