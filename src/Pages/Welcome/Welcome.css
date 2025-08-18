@@ -1,9 +1,10 @@
 
 /* mobile first base which means all base styles are built for mobile */
+
 .page-container{
     gap: 1rem;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     padding: 1rem;
     box-sizing: border-box;
       font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -11,7 +12,18 @@
   font-weight: 400;
     color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-    background: linear-gradient(135deg, #46000D, #1a0003, #440c10);
+    background-color: #46000D;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.no-scroll{
+    overflow-y: hidden;
+    height: 100vh;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+}
+.page-container:not(.no-scroll) {
+    height: auto; /* Allow natural height growth */
+    overflow-y: auto; /* Re-enable scrolling */
 }
 .title-animation-container{
     display: grid;
@@ -21,7 +33,7 @@
         "bottom";
     grid-template-columns: 1fr;
     grid-template-rows: 20vh 60vh 20vh;
-
+    padding: 1rem;
     overflow: hidden;
 }
 .hidden-display{
@@ -80,6 +92,7 @@
     width: 3rem;
     border-radius: 1rem;
     opacity: 0.4;
+    z-index: 999;
 }
 
 .skip-animation:hover{
@@ -103,10 +116,10 @@
     justify-self: center;
     align-self: center;
     text-align: center;
-    font-size: 1rem;
     margin-bottom: 15rem;
     opacity: 0;
     transform: translateY(30px);
+    transition-delay: 0.2s;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -126,11 +139,10 @@
 }
 .pfp-image{
     grid-area: top;
+    margin-top: 2rem;
     border-radius: 100%;
     width: 0rem;
-    opacity: 0;
     transform: translateY(-30px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1)
 }
 .software{
     grid-area: bottom;
@@ -142,16 +154,112 @@
     text-align: center;
     opacity: 0;
 }
-.tenure{
-    grid-area: center;
+.tenure-text{
+    grid-area: top;
     font-size: 1rem;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    align-self: center;
-    justify-self: center;
-    text-align: center;
+    align-self: right;
+    justify-self: right;
+    text-align: right;
+    max-width: 50%;
     opacity: 0;
 }
+.tenure-text.step-4{
+    opacity: 1;
+    transform: trnaslateY(0);
+}
+.award-image{
+    grid-area: top;
+    justify-self: start;
+    margin-top: 2rem;
+    width: 10rem;
+    border-radius: 1rem;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.award-image.step-4{
+    opacity: 1;
+    transform: translateY(0)
+}
+.nasa-image{
+    width: 22rem;
+    border-radius: 1rem;
+    opacity: 0;
+    grid-area: center;
+    justify-self: center;
+    margin-top: 10rem;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nasa-image.step-4{
+    opacity: 1;
+    transform: translateY(0)
+}
+
+.experience-text{
+   grid-area: top;
+    font-size: 1rem;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    align-self: right;
+    justify-self: right;
+    text-align: center;
+    opacity: 0; 
+}
+.experience-text.step-5{
+    opacity: 1;
+}
+.experience{
+grid-area: center;
+opacity: 0;
+align-self: center;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+}
+.experience.step-5{
+    opacity: 1;
+}
+.react-img{
+    transform: translateY(30px);
+    width: 5rem;
+    
+}
+.react-img.step-5{
+    opacity: 1;
+    transform: translateY(0);
+}
+.cs-img{
+    width: 75px;
+    opacity: 0;
+}
+.cs-img.step-5{
+    opacity: 1;
+}
+.python-img{
+    width: 75px;
+    opacity: 0;
+}
+.python-img.step-5{
+    opacity: 1;
+}
+.blazor-img{
+        width: 75px;
+    opacity: 0;
+}
+.blazor-img.step-5{
+    opacity: 1;
+}
+.sql-img{
+        width: 75px;
+    opacity: 0;
+}
+.sql-img.step-5{
+    opacity: 1;
+}
+
 .football-image{
     grid-area: top;
     opacity: 0;
@@ -167,9 +275,6 @@
     height: 5rem;
     transform: translateY(-50px);
     
-}
-.tenure.step-4{
-    opacity: 1;
 }
 .grad-image{
     opacity: 0;
@@ -208,4 +313,24 @@
 .football-image.step-3, .grad-image.step-3 {
     opacity: 1;
     transform: scale(1);
+}
+
+.main-page{
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(50px);
+    width: 100%;
+    margin-bottom: 3rem;
+    visibility: hidden;
+    border: 2px solid red; /* See the container boundaries */
+    align-self: center;
+    align-items: center;
+    margin-bottom: 13rem;
+}
+.slide{
+    opacity: 1;
+    transform: translateY(0); /* Add proper transform reset */
+    width: 100%;
+    visibility: visible;
+    pointer-events: auto;
 }
