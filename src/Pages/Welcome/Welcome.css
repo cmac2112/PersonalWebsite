@@ -1,19 +1,67 @@
 
 /* mobile first base which means all base styles are built for mobile */
 
-.page-container{
-    gap: 1rem;
+
+.page-container {
+    position: relative;
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     padding: 1rem;
     box-sizing: border-box;
-      font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    font-family: "Archivo Black", sans-serif;
+
+    text-align: center;
+  
+    line-height: 1.5;
+    font-weight: 400;
     color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-    background-color: #46000D;
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #111111;
+}
+
+.page-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+        ellipse 200px 100px at 50% 40%, 
+        rgb(108, 26, 11), 
+        transparent
+    );
+    opacity: 0;
+    transform: scale(1) translateX(0) translateY(0);
+    transform-origin: center;
+    transition: 
+        opacity 4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+.page-container.model-is-open{
+    pointer-events: none;
+}
+
+.page-container.initial::before {
+    opacity: 1;
+    transform: scale(1) translateX(0) translateY(0);
+}
+
+.page-container.step-2::before {
+    opacity: 1;
+    transform: scale(2) translateX(0) translateY(10vh);
+}
+
+.page-container.step-3::before {
+    opacity: 1;
+    transform: scale(1.5) translateX(0vw) translateY(20vh);
+}
+
+.page-container.step-4::before {
+    opacity: 1;
+    transform: scale(3) translateX(0vw) translateY(-5vh);
+}
+.page-container.step-5::before{
+    opacity: 1;
+    transform: scale(5) translateX(0vw) translateY(20vh);
 }
 .no-scroll{
     overflow-y: hidden;
@@ -34,7 +82,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: 20vh 60vh 20vh;
     padding: 1rem;
-    overflow: hidden;
+    
 }
 .hidden-display{
     display: none;
@@ -116,6 +164,7 @@
     justify-self: center;
     align-self: center;
     text-align: center;
+    
     margin-bottom: 15rem;
     opacity: 0;
     transform: translateY(30px);
@@ -125,17 +174,21 @@
 
 .skip-hint{
     opacity: 0.3;
-
 }
 .my-name{
     grid-area: center;
     justify-self: center;
     align-self: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
+    
+}
+.hello-title.initial, .my-name.step-2 {
+    opacity: 1;
+    transform: translateY(0);
 }
 .pfp-image{
     grid-area: top;
@@ -143,6 +196,7 @@
     border-radius: 100%;
     width: 0rem;
     transform: translateY(-30px);
+    filter:drop-shadow(0px 0px 20px rgb(255, 255, 255))
 }
 .software{
     grid-area: bottom;
@@ -161,7 +215,7 @@
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     align-self: right;
     justify-self: right;
-    text-align: right;
+    text-align: left;
     max-width: 50%;
     opacity: 0;
 }
@@ -290,10 +344,7 @@ align-self: center;
     transform: translateY(0);
 }
 
-.hello-title.initial, .my-name.step-2 {
-    opacity: 1;
-    transform: translateY(0);
-}
+
 
 .hello-title.step-2 {
     opacity: 0;
