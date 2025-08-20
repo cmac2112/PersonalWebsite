@@ -48,7 +48,12 @@ const Welcome = () => {
   };
 
   const HandleModal = () => {
-    setRememberChoiceModal(true);
+    setRememberChoiceModal(prev => !prev);
+    if(!rememberChoiceModal){
+      document.removeEventListener('click', handleScreenClick)
+    }else{
+      document.addEventListener('click', handleScreenClick);
+    }
   }
   const HandleRememberToSkip = () => {
     localStorage.setItem('skipIntro', '1');
@@ -91,7 +96,7 @@ const Welcome = () => {
   }, [animationStep])
 
   return (
-    <div className={`page-container ${animationStep >= initialAnimationSteps.length - 1 ? "" : "no-scroll"} `}>
+    <div className={`page-container ${initialAnimationSteps[animationStep]} ${animationStep >= initialAnimationSteps.length - 1 ? "" : "no-scroll"} `}>
     <div className={`title-animation-container ${animationStep >= initialAnimationSteps.length - 1 ? "hidden-display" : "" }`}>
       
       <button 
@@ -160,6 +165,7 @@ const Welcome = () => {
       <div className="modal-buttons-container ">
         <button className="modal-button" onClick={() => { setAnimationStep(initialAnimationSteps.length - 2); setRememberChoiceModal(false); }}>Skip This Time</button>
         <button className="modal-button" onClick={() => HandleRememberToSkip()}>Skip Every Time</button>
+        <button className="modal-button" onClick={() => HandleModal()}>Close</button>
       </div>
     </div>
     </div>

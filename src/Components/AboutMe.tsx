@@ -44,6 +44,7 @@ const AboutMe = () => {
           with a very loud notification when a storm warning was issued for their location by the National Weather Service. When a warning is issued, the app
           can direct users to known shelter locations through google maps/apple maps to wait out the event.
         </p>
+        <p>put this stuff into panes that when click expand into the full screen</p>
       </div>
     </div>
   )
