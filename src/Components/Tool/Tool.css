@@ -1,0 +1,19 @@
+.tool-container{
+    background-color: #1E90FF;
+    border-radius: 0.5rem;
+    width: 2rem;
+    min-height: 0.5rem;
+    max-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tool-label{
+    text-align: center;
+    
+}
+.bottom-accent{
+    border-bottom: #09233d;
+    border-width: 3rem;
+}

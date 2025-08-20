@@ -373,10 +373,11 @@ align-self: center;
     width: 100%;
     margin-bottom: 3rem;
     visibility: hidden;
-    border: 2px solid red; /* See the container boundaries */
+    display: flex;
+    flex-direction: column;
     align-self: center;
     align-items: center;
-    margin-bottom: 13rem;
+ 
 }
 .slide{
     opacity: 1;
