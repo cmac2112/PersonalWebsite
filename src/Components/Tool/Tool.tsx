@@ -7,12 +7,11 @@ interface ToolProps{
 }
 const Tool:React.FC<ToolProps> = ({text}) => {
   return (
-    <>
-    <div className="tool-container">
-        
-            <p className='tool-label'>{text}</p>
+    
+    <div className="tool-container">  
+      <p className='tool-label'>{text}</p>
     </div>
-    </>
+  
   )
 }
 export default Tool

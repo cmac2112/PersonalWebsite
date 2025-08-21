@@ -14,6 +14,7 @@ import Blazor from '../../assets/blazor.png';
 import python from '../../assets/python.png';
 import react from '../../assets/react-logo.png';
 import sql from '../../assets/sql.png';
+import Tool from '../../Components/Tool/Tool';
 const Welcome = () => {
 
   const [animationStep, setAnimationStep] = useState<number>(0);
@@ -116,7 +117,7 @@ const Welcome = () => {
         Welcome!
     </h2>
     <h2>
-      It looks like its your first time here!
+      It looks like it's your first time here!
     </h2>
     </div>
     :
@@ -149,12 +150,28 @@ const Welcome = () => {
       I have expereince building full stack applications with many different tools and frameworks for several different companies.
       So have fun exploring my site! If you are looking for a challenge. Play one of my homemade chess Bots!
     </h2>
-    <div className={`experience ${animationStep > 4 ? initialAnimationSteps[animationStep] : '' }`}>
-    <img src={react} className={`react-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
-    <img src={csLogo} className={`cs-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
-    <img src={python} className={`python-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
-    <img src={Blazor} className={`blazor-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
-    <img src={sql} className={`sql-img ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`} />
+
+      
+    <div className={`toolbox ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`}>
+      <div className='toolbox-container'>
+      <Tool text="C#" />
+      <Tool text="Python" />
+      <Tool text="Typescript" />
+      <Tool text="Javascript" />
+      <Tool text="Sql" />
+      <Tool text="EFCore" />
+      <Tool text="Docker" />
+      <Tool text="CI/CD" />
+      <Tool text="Git/Github" />
+      <Tool text="HTML/CSS" />
+      <Tool text="React" />
+      <Tool text="Blazor" />
+      <Tool text="Visual Studio" />
+      <Tool text="Visual Studio Code" />
+      <Tool text="Jetbrains Rider" />
+      <Tool text="Jetbrains IntelliJ IDEA" />
+      
+      </div>
     </div>
     {rememberChoiceModal && <div className="blur-overlay"></div>}
     <div className={`skip-modal ${rememberChoiceModal ? "active" :""}`}>

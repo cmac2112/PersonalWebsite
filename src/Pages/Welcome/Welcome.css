@@ -1,6 +1,7 @@
 
 /* mobile first base which means all base styles are built for mobile */
-
+/* will need a small mobile version, medium mobile version, large mobile version */
+/* then desktop should be fairly easy from there */
 
 .page-container {
     position: relative;
@@ -25,7 +26,7 @@
     inset: 0;
     background-image: radial-gradient(
         ellipse 200px 100px at 50% 40%, 
-        rgb(108, 26, 11), 
+        #1E90FF, 
         transparent
     );
     opacity: 0;
@@ -64,7 +65,7 @@
     transform: scale(5) translateX(0vw) translateY(20vh);
 }
 .no-scroll{
-    overflow-y: hidden;
+    overflow: hidden;
     height: 100vh;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0;
@@ -72,6 +73,7 @@
 .page-container:not(.no-scroll) {
     height: auto; /* Allow natural height growth */
     overflow-y: auto; /* Re-enable scrolling */
+    overflow-x: hidden;
 }
 .title-animation-container{
     display: grid;
@@ -111,26 +113,27 @@
 /* Show modal when active */
 .skip-modal.active {
     visibility: visible;
-    align-items: center;
-    justify-content: center;
+    min-height: fit-content;
     opacity: 1;
     pointer-events: auto; /* Re-enable clicks when visible */
 }
 
 .modal-dialog{
-    color: maroon;
+    color: #1E90FF;
     padding: 1rem;
     text-align: center;
     font-weight:500;
 }
 .modal-buttons-container{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 1rem;
 }
 .modal-button{
-    margin: 1rem;
+
     border-radius: 1rem;
-    padding: 1rem;
+    min-width: 6rem;
+    min-height: 2rem;
 
 }
 
@@ -258,61 +261,34 @@
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     align-self: right;
-    justify-self: right;
     text-align: center;
     opacity: 0; 
 }
 .experience-text.step-5{
     opacity: 1;
 }
-.experience{
-grid-area: center;
+.toolbox{
 opacity: 0;
-align-self: center;
-    justify-self: center;
+grid-area:center;
+align-items: center;
+align-content: center;
+z-index: 100;
+transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.toolbox.step-5{
+    opacity: 1;
+    transform: translateY(0)
+}
+.toolbox-container{
+    max-width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
     align-items: center;
-    text-align: center;
 }
-.experience.step-5{
-    opacity: 1;
-}
-.react-img{
-    transform: translateY(30px);
-    width: 5rem;
-    
-}
-.react-img.step-5{
-    opacity: 1;
-    transform: translateY(0);
-}
-.cs-img{
-    width: 75px;
-    opacity: 0;
-}
-.cs-img.step-5{
-    opacity: 1;
-}
-.python-img{
-    width: 75px;
-    opacity: 0;
-}
-.python-img.step-5{
-    opacity: 1;
-}
-.blazor-img{
-        width: 75px;
-    opacity: 0;
-}
-.blazor-img.step-5{
-    opacity: 1;
-}
-.sql-img{
-        width: 75px;
-    opacity: 0;
-}
-.sql-img.step-5{
-    opacity: 1;
-}
+
 
 .football-image{
     grid-area: top;
@@ -326,7 +302,7 @@ align-self: center;
 .football-image.step-3{
     opacity: 1;
     width: 100%;
-    height: 5rem;
+    height: 4rem;
     transform: translateY(-50px);
     
 }
@@ -335,8 +311,9 @@ align-self: center;
     width: 100%;
     grid-area: center;
     object-fit: cover;
-    height: 20rem;
+    height: 15rem;
     margin-bottom: 15rem;
+    object-position: center 30%;
 }
 /* Animation states remain the same */
 .click-hint.initial {

@@ -13,7 +13,6 @@ const AboutMe = () => {
   return (
     <div className='home'>
       <h1>Home</h1>
-      <Tool text="C#" />
       <button className="button">My Resume</button>
       <button className="button">Play My Chess Bots</button>
       <button className="button" >Replay Animation</button>
