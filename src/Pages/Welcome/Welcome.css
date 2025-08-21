@@ -272,6 +272,8 @@ opacity: 0;
 grid-area:center;
 align-items: center;
 align-content: center;
+display: flex;
+justify-content: center;
 z-index: 100;
 transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
