@@ -3,6 +3,7 @@ import "./AboutMe.css"
 import { Navigate } from 'react-router-dom'
 import pfp from "../assets/pfp.jpg";
 import award from "../assets/award.jpg"
+import Tool from './Tool/Tool';
 
 /*
 this component will appear and house all of the about me after the initial animation plays

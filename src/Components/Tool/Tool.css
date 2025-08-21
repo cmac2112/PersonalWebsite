@@ -1,0 +1,51 @@
+.tool-container{
+    background-color: #1E90FF;
+    border-radius: 0.5rem;
+    min-width: 3rem;
+    min-height: 0.5rem;
+    max-height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 5px solid #FF2ECC; 
+}
+
+.tool-label{
+    text-align: center;
+    font-size: 12px;
+    padding: 2px
+}
+/* Small phones (320px - 480px) */
+@media (max-width: 480px) {
+  .tool-container {
+    min-width: 2.5rem;
+    min-height: 0.4rem;
+  }
+  .tool-label {
+    font-size: 10px;
+  }
+}
+
+/* Medium screens/tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .tool-container {
+    min-width: 3.5rem;
+    min-height: 0.6rem;
+  }
+  .tool-label {
+    font-size: 13px;
+  }
+}
+
+/* Large screens/desktop (769px+) */
+@media (min-width: 769px) {
+  .tool-container {
+    min-width: 4rem;
+    min-height: 0.7rem;
+    max-height: 2.5rem;
+  }
+  .tool-label {
+    font-size: 14px;
+    padding: 4px;
+  }
+}
