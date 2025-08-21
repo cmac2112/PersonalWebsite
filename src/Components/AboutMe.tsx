@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom'
 import pfp from "../assets/pfp.jpg";
 import award from "../assets/award.jpg"
 import Tool from './Tool/Tool';
+import ExperienceTile from './ExperienceTile/ExperienceTile';
 
 /*
 this component will appear and house all of the about me after the initial animation plays
@@ -16,6 +17,24 @@ const AboutMe = () => {
       <button className="button">My Resume</button>
       <button className="button">Play My Chess Bots</button>
       <button className="button" >Replay Animation</button>
+      <ExperienceTile
+    title="Full Stack Developer"
+    subtitle="TechCorp • 2022-2024"
+    technologies={['React', 'TypeScript', 'Node.js', 'PostgreSQL']}
+>
+    <h4>Key Responsibilities:</h4>
+    <ul>
+        <li>Built scalable web applications</li>
+        <li>Implemented responsive UI components</li>
+        <li>Designed RESTful APIs</li>
+    </ul>
+    
+    <h4>Achievements:</h4>
+    <ul>
+        <li>Reduced load time by 40%</li>
+        <li>Led TypeScript migration</li>
+    </ul>
+</ExperienceTile>
       <div className='more-about-me'>
         <h2 className="about-me-header">More About Me!</h2>
         <p className='about-me-subtitle'>Hello and welcome to my site!</p>
