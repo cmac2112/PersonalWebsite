@@ -21,6 +21,7 @@ const AboutMe = () => {
     title="Full Stack Developer"
     subtitle="TechCorp • 2022-2024"
     technologies={['React', 'TypeScript', 'Node.js', 'PostgreSQL']}
+    className='experience-title-bounds'
 >
     <h4>Key Responsibilities:</h4>
     <ul>
