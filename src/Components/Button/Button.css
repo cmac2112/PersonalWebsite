@@ -1,0 +1,15 @@
+.button-component{
+    background-color: #FF2ECC;
+    border-bottom: 5px solid #1E90FF;
+    border-radius: 0.5rem;
+    min-width: 3rem;
+    min-height: 0.5rem;
+    max-height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+    padding: 2px;
+    color: white;
+}

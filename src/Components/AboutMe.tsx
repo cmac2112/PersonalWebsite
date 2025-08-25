@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom'
 import pfp from "../assets/pfp.jpg";
 import award from "../assets/award.jpg"
 import Tool from './Tool/Tool';
+import Button from './Button/Button';
 
 /*
 this component will appear and house all of the about me after the initial animation plays
@@ -16,6 +17,8 @@ const AboutMe = () => {
       <button className="button">My Resume</button>
       <button className="button">Play My Chess Bots</button>
       <button className="button" >Replay Animation</button>
+      <Button Label="Resume" OnClickCallback={() => console.log("test")} />
+        <Tool text='test' />
       <div className='more-about-me'>
         <h2 className="about-me-header">More About Me!</h2>
         <p className='about-me-subtitle'>Hello and welcome to my site!</p>
