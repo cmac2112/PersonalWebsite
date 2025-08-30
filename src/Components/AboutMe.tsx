@@ -4,18 +4,67 @@ import { Navigate } from 'react-router-dom'
 import pfp from "../assets/pfp.jpg";
 import award from "../assets/award.jpg"
 import Tool from './Tool/Tool';
+import Button from './Button/Button';
+import { useState,useCallback } from 'react';
 
 /*
 this component will appear and house all of the about me after the initial animation plays
 this part of the site should slide up from the bottom seamlessly and look nice and neat on all dispalys
  */
-const AboutMe = () => {
+interface AboutMeProps{
+  onRestartAnimation: () => void;
+}
+const AboutMe:React.FC<AboutMeProps> = ({
+  onRestartAnimation
+}) => {
+  const [isRestarting, setIsRestarting] = useState<boolean>(false);
+  const isMobileDevice = (): boolean => {
+    return window.innerWidth <= 768 || 
+           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  };
+
+  // ========================================
+  // EVENT HANDLERS
+  // ========================================
+  const handleRestartAnimation = useCallback(() => {
+    if (isRestarting) return; // Prevent multiple clicks
+    
+    setIsRestarting(true);
+    console.log("Restarting animation with mobile-optimized delay");
+    
+    // Mobile devices get longer delay for button animation completion
+    const delayTime = isMobileDevice() ? 600 : 300;
+    
+    setTimeout(() => {
+      onRestartAnimation();
+      setIsRestarting(false);
+    }, delayTime);
+  }, [onRestartAnimation, isRestarting]);
+
+  const handleResumeNavigation = useCallback(() => {
+    const delayTime = isMobileDevice() ? 800 : 400;
+    
+    setTimeout(() => {
+      Navigate({ to: "/CadenMcArthurResume.pdf" });
+    }, delayTime);
+  }, []);
+
+  const handleChessBotNavigation = useCallback(() => {
+    const delayTime = isMobileDevice() ? 800 : 400;
+    
+    setTimeout(() => {
+      console.log("Navigating to Chess Bot - placeholder");
+      // Navigate({ to: "/chess-bot" });
+    }, delayTime);
+  }, []);
   return (
     <div className='home'>
       <h1>Home</h1>
-      <button className="button">My Resume</button>
-      <button className="button">Play My Chess Bots</button>
-      <button className="button" >Replay Animation</button>
+      <div className='button-container'>
+      <Button label="My Resume" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='Work' />
+      <Button label="Replay Animation" iconPosition='right' OnClickCallback={() => handleRestartAnimation()} materialIcon='Movie' />
+      <Button label="Play My Chess Bot" OnClickCallback={() => handleChessBotNavigation()} materialIcon="chess" iconPosition='right' />
+        </div>
       <div className='more-about-me'>
         <h2 className="about-me-header">More About Me!</h2>
         <p className='about-me-subtitle'>Hello and welcome to my site!</p>

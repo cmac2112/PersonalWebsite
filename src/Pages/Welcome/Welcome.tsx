@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import AboutMe from '../../Components/AboutMe';
 import "./Welcome.css"
 
@@ -9,11 +9,6 @@ import grad from '../../assets/grad.jpg';
 import pfp from '../../assets/pfp.jpg';
 import award from '../../assets/award.jpg';
 import NASA from '../../assets/NASA.jpg';
-import csLogo from '../../assets/cs-logo.png';
-import Blazor from '../../assets/blazor.png';
-import python from '../../assets/python.png';
-import react from '../../assets/react-logo.png';
-import sql from '../../assets/sql.png';
 import Tool from '../../Components/Tool/Tool';
 const Welcome = () => {
 
@@ -34,10 +29,27 @@ const Welcome = () => {
     'step-4',
     'step-5',
     'step-6',
+  ] as const;
 
-  ]
+  const STORAGE_KEYS ={ //holding the string representation of the keys in the local storage,
+    //helps prevent typos
+    SKIP_INTRO: 'skipIntro',
+    VISIT_COUNT: 'welcomeVisitCount',
+    LAST_VISIT: 'lastWelcomeVisit',
+  } as const;
 
-
+const handleRestartAnimation = useCallback(() => {
+    // Clear skip preference temporarily
+    const skipPreference = localStorage.getItem(STORAGE_KEYS.SKIP_INTRO);
+    if (skipPreference) {
+      localStorage.setItem(STORAGE_KEYS.SKIP_INTRO, '0');
+    }
+    
+    // Reset to initial state
+    setAnimationStep(0);
+     setTimeout(() => {setAnimationStep(1)}, 800)
+    setRememberChoiceModal(false);
+  }, [STORAGE_KEYS.SKIP_INTRO]);
 
   const handleScreenClick = () => {
     if(animationStep < initialAnimationSteps.length - 1){
@@ -58,7 +70,7 @@ const Welcome = () => {
   }
   const HandleRememberToSkip = () => {
     localStorage.setItem('skipIntro', '1');
-    setAnimationStep(4);
+    setAnimationStep(5);
     setRememberChoiceModal(false);
   }
     
@@ -72,7 +84,7 @@ const Welcome = () => {
     const currentCount = storedVisitCount ? parseInt(storedVisitCount) : 0;
 
     const newCount = currentCount + 1;
-    setVisitCount(1)
+    setVisitCount(newCount)
     localStorage.setItem('welcomeVisitCount', newCount.toString());
     
     // Store last visit timestamp
@@ -80,7 +92,7 @@ const Welcome = () => {
     
     setAnimationStep(1);
       
-  }, [])
+  }, [initialAnimationSteps.length])
 
 
   //use effect is going to add the event listener for each animation step for clicking
@@ -190,7 +202,7 @@ const Welcome = () => {
       
 
 
-    <AboutMe />
+    <AboutMe onRestartAnimation={handleRestartAnimation} />
 
   
     
