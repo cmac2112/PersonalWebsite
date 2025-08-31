@@ -63,7 +63,7 @@ const AboutMe:React.FC<AboutMeProps> = ({
       <div className='button-container'>
       <Button label="My Resume" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='Work' />
       <Button label="Replay Animation" iconPosition='right' OnClickCallback={() => handleRestartAnimation()} materialIcon='Movie' />
-      <Button label="Play My Chess Bot" OnClickCallback={() => handleChessBotNavigation()} materialIcon="chess" iconPosition='right' />
+      <Button label="Play My Chess Bot" OnClickCallback={() => handleChessBotNavigation()  } materialIcon="chess" iconPosition='right' />
         </div>
       <div className='more-about-me'>
         <h2 className="about-me-header">More About Me!</h2>
