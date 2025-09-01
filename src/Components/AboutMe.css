@@ -1,7 +1,11 @@
 .experience-title-bounds{
     height: 10px;
 }
-
+.my-experience-list{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 .home{
     margin-bottom: 4rem;    
     justify-content: center;

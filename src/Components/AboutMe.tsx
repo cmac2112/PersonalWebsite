@@ -2,10 +2,9 @@ import React from 'react'
 import "./AboutMe.css"
 import { Navigate } from 'react-router-dom'
 import pfp from "../assets/pfp.jpg";
-import award from "../assets/award.jpg"
-import Tool from './Tool/Tool';
 import Button from './Button/Button';
 import { useState,useCallback } from 'react';
+import MyExperienceTile from './MyExperienceTile/MyExperienceTile';
 
 /*
 this component will appear and house all of the about me after the initial animation plays
@@ -59,16 +58,60 @@ const AboutMe:React.FC<AboutMeProps> = ({
   }, []);
   return (
     <div className='home'>
-      <h1>Home</h1>
+      <h1>Welcome</h1>
       <div className='button-container'>
       <Button label="My Resume" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='Work' />
+        <Button label="My Experience" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='Work' />
+          <Button label="My Projects" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='Work' />
       <Button label="Replay Animation" iconPosition='right' OnClickCallback={() => handleRestartAnimation()} materialIcon='Movie' />
       <Button label="Play My Chess Bot" OnClickCallback={() => handleChessBotNavigation()} materialIcon="chess" iconPosition='right' />
         </div>
       <div className='more-about-me'>
         <h2 className="about-me-header">More About Me!</h2>
-        <p className='about-me-subtitle'>Hello and welcome to my site!</p>
         <img src={pfp} className="pfp-img" />
+        <p className='about-me-subtitle'>Click on my tiles below to learn about my experience!</p>
+        <div className='my-experience-list'>
+        <MyExperienceTile title='Software Developer'
+         subtitle='INTRUST Bank'
+         technologies={["C#", "SQL", ".NET", "Blazor", "EFCore", "Javascript", "CI/CD"]}>
+          <h2 className='experience-tile-child-header'>Developed and Maintained 30+ internal banking solutions for INTRUST</h2>
+          <ul className="experience-list">
+  <li>Developed an app that created, documented, and prepared investment wealth accounts for trading</li>
+  <li>Developed incident tracking software for multiple units, including Physical Security</li>
+  <li>Built statistical dashboards for developers to monitor errors and active users in real time</li>
+  <li>Implemented unit tests and integrated CI/CD pipelines to streamline test server deployments</li>
+  <li>Collaborated with business units by attending meetings and gathering requirements</li>
+  <li>Leading migration of developer operations to Azure Dev Ops</li>
+  <li>Continuously developed reusable components and enhancements on an internal Nuget library that is used across all INTRUST apps</li>
+</ul>
+        </MyExperienceTile>
+        <MyExperienceTile
+         title='Front-End Software Engineer Intern'
+         subtitle='Legget & Platt'
+         technologies={["Typescript", "Javascript", "React", "Tailwind CSS"]}>
+          <h2 className='experience-tile-child-header'>
+            Developed React components for internal applications.
+          </h2>
+          <ul className='experience-list'>
+            <li>Developed in app communication features and integrated multi-language support for branches across the world</li>
+            <li>Participated in SCRUM meetings, contributed to sprint planning, daily standups and sprint retrospectives</li>
+          </ul>
+        </MyExperienceTile>
+        <MyExperienceTile title='Software Developer / IMS Technician'
+         subtitle='Bethel College'
+         technologies={["Python", "MySQL", "React","Tailwinds CSS", "Docker", "CI/CD"]}>
+          <h2 className='experience-tile-child-header'>
+            Developed and worked for Bethel College through the Employment Experience program
+          </h2>
+          <ul className='experience-list'>
+            <li>Developed Python scripts to automatically gather SAT/ACT and ACCUPLACER test scores for Admissions</li>
+            <li>Re-created Bethel's job application process through react to begin the transition away from the legacy site</li>
+            <li>Responded to trouble tickets and installed hardware as a Student Technician for the IMS department</li>
+          </ul>
+        </MyExperienceTile>
+      </div>
+        {/*
+        
         <p>My name is Caden McArthur, I'm a Software Developer currently at INTRUST BANK.</p>
         <p>I graduated from Bethel College in Newton, Ks in December of 2024 with a Bachelors in Computer Science and a Minor in Mathematics.</p>
         <p>I participated in several different activities including playing linebacker for Bethel,
@@ -95,6 +138,8 @@ const AboutMe:React.FC<AboutMeProps> = ({
           can direct users to known shelter locations through google maps/apple maps to wait out the event.
         </p>
         <p>put this stuff into panes that when click expand into the full screen</p>
+        */}
+        
       </div>
     </div>
   )

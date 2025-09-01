@@ -1,0 +1,223 @@
+.experience-tile {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    max-width: 400px;
+    min-height: 200px;
+}
+
+/* Hover Effects */
+.experience-tile:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.title-subtitle-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.my-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+}
+.my-subtitle {
+    font-size: 1rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+}
+
+.dropdown-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tech-container{
+    max-width:fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    text-shadow: none;
+    margin: 1rem;
+    
+}
+.experience-list{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: small;
+}
+.experience-tile-child-header{
+    margin: 1rem;
+    font-size: large;
+}
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .experience-tile {
+        max-width: 100%;
+        margin: 0 0.5rem;
+        padding: 1rem;
+        min-height: 10px;
+        min-width: 70vw;
+    }
+    
+    .tile-title {
+        font-size: 1.2rem;
+    }
+    
+    .tile-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .experience-tile:hover {
+        transform: scale(1.02) translateY(-3px);
+    }
+    
+    .modal-header {
+        padding: 1.5rem 1rem 1rem 1rem;
+        text-align: center;
+    }
+    
+    .modal-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .modal-subtitle {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+    
+    .modal-content {
+        padding: 1rem;
+        height: calc(100vh - 120px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    /* Hide detailed content on mobile, show only technologies */
+    .modal-body {
+        display: none;
+    }
+    
+    .modal-technologies {
+        border-top: none;
+        padding-top: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .modal-technologies h4 {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.95);
+    }
+    
+    .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .tech-badge {
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        border-radius: 1rem;
+        background: linear-gradient(135deg, rgba(108, 26, 11, 0.9), rgba(108, 26, 11, 0.7));
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .tech-badge:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 20px rgba(108, 26, 11, 0.5);
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+}
+/* Extra Small Mobile (phones in portrait) */
+@media (max-width: 480px) {
+    .experience-tile {
+        margin: 0 0.25rem;
+        padding: 0.75rem;
+    }
+    
+    .tile-title {
+        font-size: 1.1rem;
+    }
+    
+    .tile-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .modal-title {
+        font-size: 1.5rem;
+    }
+    
+    .modal-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .modal-technologies h4 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .tech-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .tech-badge {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet Responsive */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .experience-tile {
+        max-width: 350px;
+    }
+    
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+    .experience-tile {
+        max-width: 450px;
+        min-height: 100px;
+    }
+    
+    .tile-title {
+        font-size: 1.75rem;
+    }
+    
+    .modal-title {
+        font-size: 2.5rem;
+    }
+}
