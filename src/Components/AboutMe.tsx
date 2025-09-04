@@ -56,21 +56,52 @@ const AboutMe:React.FC<AboutMeProps> = ({
       // Navigate({ to: "/chess-bot" });
     }, delayTime);
   }, []);
+
+  const handleExperienceScroll = useCallback(() => {
+    const experienceSection = document.getElementById('experience-section');
+    if (experienceSection) {
+      const headerOffset = isMobileDevice() ? 80 : 100;
+      const elementPosition = experienceSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, []);
+  const handleMyProjectsScroll = useCallback(() => {
+    const myProjectSection = document.getElementById('my-projects');
+    if(myProjectSection){
+      const headerOffset = isMobileDevice() ? 80 : 100;
+
+    const elementPosition = myProjectSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, []);
+
   return (
     <div className='home'>
-      <h1>Welcome</h1>
+      <h1>Home</h1>
       <div className='button-container'>
       <Button label="My Resume" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='Work' />
-        <Button label="My Experience" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='Work' />
-          <Button label="My Projects" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='Work' />
+        <Button label="My Experience" iconPosition='right' OnClickCallback={() => handleExperienceScroll()} materialIcon='Work' />
+          <Button label="My Projects" iconPosition='right' OnClickCallback={() => handleMyProjectsScroll()} materialIcon='Work' />
       <Button label="Replay Animation" iconPosition='right' OnClickCallback={() => handleRestartAnimation()} materialIcon='Movie' />
-      <Button label="Play My Chess Bot" OnClickCallback={() => handleChessBotNavigation()} materialIcon="chess" iconPosition='right' />
+      <Button label="Play My Chess Bots" OnClickCallback={() => handleChessBotNavigation()} materialIcon="chess" iconPosition='right' />
         </div>
       <div className='more-about-me'>
         <h2 className="about-me-header">More About Me!</h2>
         <img src={pfp} className="pfp-img" />
         <p className='about-me-subtitle'>Click on my tiles below to learn about my experience!</p>
+        <section id="experience-section">
         <div className='my-experience-list'>
+          
         <MyExperienceTile title='Software Developer'
          subtitle='INTRUST Bank'
          technologies={["C#", "SQL", ".NET", "Blazor", "EFCore", "Javascript", "CI/CD"]}>
@@ -109,7 +140,52 @@ const AboutMe:React.FC<AboutMeProps> = ({
             <li>Responded to trouble tickets and installed hardware as a Student Technician for the IMS department</li>
           </ul>
         </MyExperienceTile>
+        <MyExperienceTile title='Bethel College Software Club Founder' subtitle={`Bethel's First Software Club`}>
+          <h2 className='experience-tile-child-header'>Established Bethel's first ever Software Club
+            <ul className='experience-list'>
+              <li>Represented Bethel in hackathons around the country</li>
+              <li>Award winning projects at hackathons like NASA's yearly Space-App Challenge</li>
+              <li>Developed projects such as BC-Social, a social media for clubs on campus to better communicate with Students</li>
+              <li>Provided job interview prep for members, worked on projects using SCRUM project management for experience, reviewed pull requests and provided feedback, 
+                worked on commonly asked job interview DSA questions as a team
+              </li>
+              <li>Voted 'Best Up and Coming Club'</li>
+            </ul>
+          </h2>
+        </MyExperienceTile>
       </div>
+      </section>
+      <section id='my-projects'>
+        <h2 className="about-me-header">Personal Projects & Hackathon Winners</h2>
+        <div className='my-experience-list'>
+        <MyExperienceTile title='Chess with AI Opponents' subtitle='Personal Project (In Progress)'
+        technologies={["React"]}>
+          <h2 className='experience-tile-child-header'>Developed chess in react from scratch and adding homemade AI as a self challenge</h2>
+          <ul className='experience-list'>
+            <li>Rules of the challenge were to come up with my own version of chess and a verson 1.0 of a bot without using any google or AI help</li>
+            <li>Game logic was simple enough to implement, but took it a step further to make it more user friendly in many ways</li>
+            <li>Currently only version 1.0 of my bot is playable at the moment (and its sort of impossible to lose against beacuse its not very smart)</li>
+            <li>You can play it <a href="/chess">Here</a></li>
+          </ul>
+        </MyExperienceTile>
+        <MyExperienceTile 
+        title='Solar Eye'
+         subtitle='NASA Space-Apps Award Winner'
+         technologies={["React", "ThreeJs", "3D-Graphics", "Simulation"]}>
+          <h2 className='experience-tile-child-header'>Solar System Simulation built using real NASA data</h2>
+          <ul className='experience-list'>
+            <li>Developed a 3D interactable solar system simulation to display near earth asteroids that have the potential to impact earth in the future</li>
+            <li>Gathered planet body data from NASA and used orbital calculations to calculate the position a body based on the provided Keplarian orbital parameters in real time</li>
+            <li>Won 2 awards out of 6 for our timezone "Peoples Choice" and "Local Impact"</li>
+            <li>Site is live <a href='https://cmac2112.github.io/nasaspaceapps/#/solareyes'>Here</a></li>
+          </ul>
+        </MyExperienceTile>
+        <MyExperienceTile title='BC-Social' subtitle='Club social media project'
+        technologies={["React", "MySQL", "Node"]}>
+          <p>test</p>
+        </MyExperienceTile>
+        </div>
+      </section>
         {/*
         
         <p>My name is Caden McArthur, I'm a Software Developer currently at INTRUST BANK.</p>
