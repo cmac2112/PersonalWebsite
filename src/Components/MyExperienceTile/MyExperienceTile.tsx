@@ -47,8 +47,10 @@ const MyExperienceTile:React.FC<MyExperienceTileProps> = ({
       </> 
       
     : <></>}
+    <div className='full-container-width'>
     <div className='tech-container'>
     {technologies.map(t => <Tool text={t}  /> )}
+    </div>
     </div>
     {!isOpened ? 
       <MaterialIcon name='arrow_drop_down' /> :

@@ -159,7 +159,7 @@ const AboutMe:React.FC<AboutMeProps> = ({
         <h2 className="about-me-header">Personal Projects & Hackathon Winners</h2>
         <div className='my-experience-list'>
         <MyExperienceTile title='Chess with AI Opponents' subtitle='Personal Project (In Progress)'
-        technologies={["React"]}>
+        technologies={["React", "Typescript"]}>
           <h2 className='experience-tile-child-header'>Developed chess in react from scratch and adding homemade AI as a self challenge</h2>
           <ul className='experience-list'>
             <li>Rules of the challenge were to come up with my own version of chess and a verson 1.0 of a bot without using any google or AI help</li>
@@ -180,41 +180,18 @@ const AboutMe:React.FC<AboutMeProps> = ({
             <li>Site is live <a href='https://cmac2112.github.io/nasaspaceapps/#/solareyes'>Here</a></li>
           </ul>
         </MyExperienceTile>
-        <MyExperienceTile title='BC-Social' subtitle='Club social media project'
-        technologies={["React", "MySQL", "Node"]}>
-          <p>test</p>
+        <MyExperienceTile title='BC-Social' subtitle='Club Social Media'
+        technologies={["React", "Typescript", "Javascript", "Tailwinds CSS", "MySQL", "Node", "Docker", "Google Cloud"]}>
+          <h2 className='experience-tile-child-header'>Working Social Media app with likes, comments, following, image and post creation</h2>
+          <ul className='experience-list'>
+            <li>Developed a social media clone to begin transition away school wide club announcements from emails (because no one looks at their emails)</li>
+            <li>Built with React, Node, and MySQL and handled sign up/sign in authentication with Google OAuth which integrated school accounts seamlessly</li>
+            <li>Built customizable bios and profiles for users to access and integrated an infinite scroll home page that would load posts from newest to oldest</li>
+          </ul>
         </MyExperienceTile>
         </div>
       </section>
-        {/*
-        
-        <p>My name is Caden McArthur, I'm a Software Developer currently at INTRUST BANK.</p>
-        <p>I graduated from Bethel College in Newton, Ks in December of 2024 with a Bachelors in Computer Science and a Minor in Mathematics.</p>
-        <p>I participated in several different activities including playing linebacker for Bethel,
-           and establishing the schools first ever Software Club to build projects, spread knowledge, and represent the college at 
-           hackathons across the country.</p>
-        <img src={award} className="award-img" />
-        <h2>Easy Docs Project</h2>
-        <p>I attended Kansas University’s hackathon, 
-          where I built a RAG AI model integrated 
-          with Google OAuth.
-           The app would embed the user's Google Docs directly into
-            a vector database allowing the user to ask questions about their own notes.
-             It also generated practice tests based on the uploaded material,
-              making studying more effective. At the time,
-               this was one of the first apps to combine AI
-                with note-taking platforms like Google Docs,
-                 enabling true interactivity with personal notes.
-        </p>
-        <h2>Sky Watch</h2>
-        <p>At Kansas-State University's Hackathon, we developed a mobile app called Sky Watch.
-          Sky watch was an app built for users travelling in lesser known areas in the event of severe weather.
-          This app allowed users to press a button on the app that would track the user's GPS location and alert the user
-          with a very loud notification when a storm warning was issued for their location by the National Weather Service. When a warning is issued, the app
-          can direct users to known shelter locations through google maps/apple maps to wait out the event.
-        </p>
-        <p>put this stuff into panes that when click expand into the full screen</p>
-        */}
+  
         
       </div>
     </div>
