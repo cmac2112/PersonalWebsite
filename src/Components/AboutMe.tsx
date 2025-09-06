@@ -140,8 +140,9 @@ const AboutMe:React.FC<AboutMeProps> = ({
             <li>Responded to trouble tickets and installed hardware as a Student Technician for the IMS department</li>
           </ul>
         </MyExperienceTile>
-        <MyExperienceTile title='Bethel College Software Club Founder' subtitle={`Bethel's First Software Club`}>
-          <h2 className='experience-tile-child-header'>Established Bethel's first ever Software Club
+        <MyExperienceTile title='Bethel College Software Club Founder' subtitle={`Bethel's First Software Club`}
+        technologies={["Job Prep", "Hackathons", "Group Projects", "Leadership", "Team Building"]}>
+          <h2 className='experience-tile-child-header'>Established Bethel's first ever Software Club</h2>
             <ul className='experience-list'>
               <li>Represented Bethel in hackathons around the country</li>
               <li>Award winning projects at hackathons like NASA's yearly Space-App Challenge</li>
@@ -151,7 +152,7 @@ const AboutMe:React.FC<AboutMeProps> = ({
               </li>
               <li>Voted 'Best Up and Coming Club'</li>
             </ul>
-          </h2>
+          
         </MyExperienceTile>
       </div>
       </section>
@@ -165,7 +166,9 @@ const AboutMe:React.FC<AboutMeProps> = ({
             <li>Rules of the challenge were to come up with my own version of chess and a verson 1.0 of a bot without using any google or AI help</li>
             <li>Game logic was simple enough to implement, but took it a step further to make it more user friendly in many ways</li>
             <li>Currently only version 1.0 of my bot is playable at the moment (and its sort of impossible to lose against beacuse its not very smart)</li>
-            <li>You can play it <a href="/chess">Play chess against my AI bot</a></li>
+            <a href="/chess">Play chess against my AI bot</a>
+            <a href='https://github.com/cmac2112/Chess-With-AI-Opponents'>View the Repository</a>
+            
           </ul>
         </MyExperienceTile>
         <MyExperienceTile 
@@ -177,16 +180,18 @@ const AboutMe:React.FC<AboutMeProps> = ({
             <li>Developed a 3D interactable solar system simulation to display near earth asteroids that have the potential to impact earth in the future</li>
             <li>Gathered planet body data from NASA and used orbital calculations to calculate the position a body based on the provided Keplarian orbital parameters in real time</li>
             <li>Won 2 awards out of 6 for our timezone "Peoples Choice" and "Local Impact"</li>
-            <li>Site is live <a href='https://cmac2112.github.io/nasaspaceapps/#/solareyes'>View the Solar Eye simulation</a></li>
+            <a href='https://cmac2112.github.io/nasaspaceapps/#/solareyes'>View the Solar Eye simulation</a>
+            <a href='https://github.com/cmac2112/nasaspaceapps'>View the Repository</a>
           </ul>
         </MyExperienceTile>
         <MyExperienceTile title='BC-Social' subtitle='Club Social Media'
-        technologies={["React", "Typescript", "Javascript", "Tailwinds CSS", "MySQL", "Node", "Docker", "Google Cloud"]}>
+        technologies={["React", "Typescript", "Javascript", "Tailwinds CSS", "SQL", "MySQL", "Node", "Docker", "Google Cloud"]}>
           <h2 className='experience-tile-child-header'>Working Social Media app with likes, comments, following, image and post creation</h2>
           <ul className='experience-list'>
             <li>Developed a social media clone to begin transition away school wide club announcements from emails (because no one looks at their emails)</li>
             <li>Built with React, Node, and MySQL and handled sign up/sign in authentication with Google OAuth which integrated school accounts seamlessly</li>
             <li>Built customizable bios and profiles for users to access and integrated an infinite scroll home page that would load posts from newest to oldest</li>
+            <a href='https://github.com/cmac2112/BethelSocialMedia'>View the Repository</a>
           </ul>
         </MyExperienceTile>
         </div>
