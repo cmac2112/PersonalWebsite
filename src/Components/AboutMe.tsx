@@ -177,7 +177,7 @@ const AboutMe:React.FC<AboutMeProps> = ({
             <li>Developed a 3D interactable solar system simulation to display near earth asteroids that have the potential to impact earth in the future</li>
             <li>Gathered planet body data from NASA and used orbital calculations to calculate the position a body based on the provided Keplarian orbital parameters in real time</li>
             <li>Won 2 awards out of 6 for our timezone "Peoples Choice" and "Local Impact"</li>
-            <li>Site is live <a href='https://cmac2112.github.io/nasaspaceapps/#/solareyes'>Here</a></li>
+            <li>Site is live <a href='https://cmac2112.github.io/nasaspaceapps/#/solareyes'>View the Solar Eye simulation</a></li>
           </ul>
         </MyExperienceTile>
         <MyExperienceTile title='BC-Social' subtitle='Club Social Media'
