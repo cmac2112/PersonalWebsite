@@ -49,7 +49,7 @@ const MyExperienceTile:React.FC<MyExperienceTileProps> = ({
     : <></>}
     <div className='full-container-width'>
     <div className='tech-container'>
-    {technologies.map(t => <Tool text={t}  /> )}
+    {technologies.map((t, index) => <Tool key={index} text={t}  /> )}
     </div>
     </div>
     {!isOpened ? 
