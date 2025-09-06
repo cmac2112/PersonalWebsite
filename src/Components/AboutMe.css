@@ -1,5 +1,15 @@
+.experience-title-bounds{
+    height: 10px;
+}
+.my-experience-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 .home{
-    margin-bottom: 4rem;    
+    margin-bottom: 8rem;    
     justify-content: center;
     display: flex;
     flex-direction: column;

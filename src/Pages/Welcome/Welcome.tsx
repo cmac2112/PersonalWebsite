@@ -1,9 +1,6 @@
-import React from 'react'
-
 import { useState, useEffect, useCallback } from 'react'
 import AboutMe from '../../Components/AboutMe';
 import "./Welcome.css"
-
 import football from '../../assets/football.png';
 import grad from '../../assets/grad.jpg';
 import pfp from '../../assets/pfp.jpg';
@@ -44,9 +41,13 @@ const handleRestartAnimation = useCallback(() => {
     if (skipPreference) {
       localStorage.setItem(STORAGE_KEYS.SKIP_INTRO, '0');
     }
-    
+    const visitCount = localStorage.getItem(STORAGE_KEYS.VISIT_COUNT);
+    if(visitCount){
+    setVisitCount(parseInt(visitCount));
+    }
     // Reset to initial state
     setAnimationStep(0);
+    
      setTimeout(() => {setAnimationStep(1)}, 800)
     setRememberChoiceModal(false);
   }, [STORAGE_KEYS.SKIP_INTRO]);
