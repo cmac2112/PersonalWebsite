@@ -3,6 +3,7 @@
 /* will need a small mobile version, medium mobile version, large mobile version */
 /* then desktop should be fairly easy from there */
 
+
 .page-container {
     position: relative;
     width: 100vw;
@@ -98,25 +99,8 @@
   backdrop-filter: blur(0.5rem);
   z-index: 50;
 }
-.skip-modal{
-    grid-area: center;
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.87);
-    border-radius: 1rem;
-    height: 30vh;
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none; /* Prevent clicks when hidden */
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-/* Show modal when active */
-.skip-modal.active {
-    visibility: visible;
-    min-height: fit-content;
-    opacity: 1;
-    pointer-events: auto; /* Re-enable clicks when visible */
-}
+
 
 .modal-dialog{
     color: #1E90FF;
@@ -365,14 +349,70 @@ transform: translateY(30px);
     visibility: visible;
     pointer-events: auto;
 }
+/* --- Strict Centering for .skip-modal --- */
+.skip-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    grid-area: center;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.87);
+    border-radius: 1rem;
+    height: 30vh;
+    min-width: 280px;
+    max-width: 90vw;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0; /* Remove margin for strict centering */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Show modal when active */
+.skip-modal.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 
 
 /* Small phones (320px - 480px) */
 @media (max-width: 480px) {
+ .skip-modal {
+        min-width: 90vw;
+        max-width: 98vw;
+        height: auto;
+        padding: 1rem;
+        font-size: 1rem;
+    }
   .toolbox-container {
     gap: 0.3rem;
     padding: 0.5rem;
   }
+  .modal-buttons-container{
+    max-width: 90vw;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: center;
+  }
+  .football-image.step-3{
+    margin-top: 20rem;
+    border-radius: 0.5rem;
+    height: 15rem; 
+  }
+  .software{
+    
+    margin-bottom: 10rem;
+  }
+  
 }
 
 /* Medium screens/tablets (481px - 768px) */
@@ -381,6 +421,19 @@ transform: translateY(30px);
     gap: 0.7rem;
     max-width: 90vw;
   }
+  .modal-buttons-container{
+    max-width: 70vw;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: center;
+  }
+  .skip-modal {
+        min-width: 60vw;
+        max-width: 80vw;
+        height: auto;
+        padding: 2rem;
+        font-size: 1.1rem;
+    }
 }
 
 /* Large screens/desktop (769px+) */
@@ -389,4 +442,82 @@ transform: translateY(30px);
     gap: 1rem;
     max-width: 80vw;
   }
+  .skip-modal{
+    justify-self: center;
+    width: 80vh;
+  }
+  .modal-buttons-container{
+    gap: 0.25rem;
+    justify-content: center;
+  }
+  .my-name{
+    font-size: x-large;
+  }
+  .skip-modal {
+        min-width: 400px;
+        max-width: 600px;
+        height: 30vh;
+        padding: 2.5rem;
+        font-size: 1.15rem;
+    }
+    .title-animation-container {
+    max-width: 700px;
+    width: 98vw;
+    margin: 0 auto;
+    padding: 1rem;
+    grid-template-rows: 15vh 65vh 20vh;
+    box-sizing: border-box;
+  }
+  .pfp-image{
+    margin-top: 3rem;
+  }
+  .football-image.step-3{
+    margin-top: 14rem;
+    height: 15rem;
+    border-radius: 0.5rem;
+  }
+  .software{
+    margin-top: 5rem;
+  }
+  .tenure-text,
+  .experience-text{
+    font-size: x-large;
+  }
+  .award-image.step-4{
+   width: 20rem;
+   height: 32.5rem; 
+  }
+  .nasa-image.step-4{
+    margin-top: 13rem;
+    margin-left: 20rem;
+  }
+  
+  .skip-animation{
+    position: fixed;
+    left: 25%
+  }
+  .page-container.initial::before {
+    opacity: 1;
+    transform: scale(2) translateX(0) translateY(5vh);
 }
+
+.page-container.step-2::before {
+    opacity: 1;
+    transform: scale(3) translateX(0) translateY(10vh);
+}
+
+.page-container.step-3::before {
+    opacity: 1;
+    transform: scale(2.5) translateX(0vw) translateY(20vh);
+}
+
+.page-container.step-4::before {
+    opacity: 1;
+    transform: scale(3) translateX(0vw) translateY(-5vh);
+}
+.page-container.step-5::before{
+    opacity: 1;
+    transform: scale(5) translateX(0vw) translateY(20vh);
+}
+}
+

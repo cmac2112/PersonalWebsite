@@ -7,6 +7,7 @@ import pfp from '../../assets/pfp.jpg';
 import award from '../../assets/award.jpg';
 import NASA from '../../assets/NASA.jpg';
 import Tool from '../../Components/Tool/Tool';
+import Button from '../../Components/Button/Button';
 const Welcome = () => {
 
   const [animationStep, setAnimationStep] = useState<number>(0);
@@ -69,9 +70,12 @@ const handleRestartAnimation = useCallback(() => {
       document.addEventListener('click', handleScreenClick);
     }
   }
+  const closeModal = () => {
+    setRememberChoiceModal(false);
+  }
   const HandleRememberToSkip = () => {
     localStorage.setItem('skipIntro', '1');
-    setAnimationStep(5);
+    setAnimationStep(6);
     setRememberChoiceModal(false);
   }
     
@@ -152,7 +156,6 @@ const handleRestartAnimation = useCallback(() => {
       I'm a Software Engineer and a 2025 graduate from Bethel College
     </h2>
     <img src={football} className={`software football-image ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''}`}/>
-    <img src={grad} className={`software grad-image ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''}`} />
     <h2 className={`tenure-text ${animationStep > 3 ? initialAnimationSteps[animationStep] : ''}`}>
       During my time at Bethel I created the schools first Software club. We built apps, participated in hackathons around the country,
       and won some amazing awards
@@ -193,9 +196,9 @@ const handleRestartAnimation = useCallback(() => {
       <p>This is reversable at any time so dont sweat it!</p>
       </div>
       <div className="modal-buttons-container ">
-        <button className="modal-button" onClick={() => { setAnimationStep(initialAnimationSteps.length - 2); setRememberChoiceModal(false); }}>Skip This Time</button>
-        <button className="modal-button" onClick={() => HandleRememberToSkip()}>Skip Every Time</button>
-        <button className="modal-button" onClick={() => HandleModal()}>Close</button>
+        <Button label='Skip This Time' OnClickCallback={() => {setAnimationStep(initialAnimationSteps.length - 2 ); setRememberChoiceModal(false);}}  />
+        <Button label='Skip Every Time' OnClickCallback={() => HandleRememberToSkip()} />
+        <Button  label='Close' OnClickCallback={() => HandleModal()} />
       </div>
     </div>
     </div>
