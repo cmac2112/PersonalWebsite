@@ -165,7 +165,7 @@ const AboutMe:React.FC<AboutMeProps> = ({
             <li>Rules of the challenge were to come up with my own version of chess and a verson 1.0 of a bot without using any google or AI help</li>
             <li>Game logic was simple enough to implement, but took it a step further to make it more user friendly in many ways</li>
             <li>Currently only version 1.0 of my bot is playable at the moment (and its sort of impossible to lose against beacuse its not very smart)</li>
-            <li>You can play it <a href="/chess">Here</a></li>
+            <li>You can play it <a href="/chess">Play chess against my AI bot</a></li>
           </ul>
         </MyExperienceTile>
         <MyExperienceTile 
