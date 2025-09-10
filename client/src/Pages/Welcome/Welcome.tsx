@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react'
 import AboutMe from '../../Components/AboutMe';
 import "./Welcome.css"
 import football from '../../assets/football.png';
-import grad from '../../assets/grad.jpg';
 import pfp from '../../assets/pfp.jpg';
 import award from '../../assets/award.jpg';
 import NASA from '../../assets/NASA.jpg';
@@ -69,9 +68,6 @@ const handleRestartAnimation = useCallback(() => {
     }else{
       document.addEventListener('click', handleScreenClick);
     }
-  }
-  const closeModal = () => {
-    setRememberChoiceModal(false);
   }
   const HandleRememberToSkip = () => {
     localStorage.setItem('skipIntro', '1');
