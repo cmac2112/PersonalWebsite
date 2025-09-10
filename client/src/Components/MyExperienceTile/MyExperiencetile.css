@@ -182,6 +182,7 @@
     .experience-tile {
         max-width: 450px;
         min-height: 100px;
+        min-width: 500px;
     }
     
     .tile-title {
