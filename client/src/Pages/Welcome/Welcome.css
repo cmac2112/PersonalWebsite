@@ -19,6 +19,7 @@
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: #111111;
+    
 }
 
 .page-container::before {
@@ -73,6 +74,7 @@
 }
 .page-container:not(.no-scroll) {
     height: auto; /* Allow natural height growth */
+    width: auto;
     overflow-y: auto; /* Re-enable scrolling */
     overflow-x: hidden;
 }
