@@ -1,214 +1,508 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import AboutMe from '../../Components/AboutMe';
-import "./Welcome.css"
+import "./Welcome.css";
 import football from '../../assets/football.png';
 import pfp from '../../assets/pfp.jpg';
 import award from '../../assets/award.jpg';
 import NASA from '../../assets/NASA.jpg';
 import Tool from '../../Components/Tool/Tool';
 import Button from '../../Components/Button/Button';
-const Welcome = () => {
 
-  const [animationStep, setAnimationStep] = useState<number>(0);
+// Types for better type safety
+type AnimationStep = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+type AnimationClass = '' | 'initial' | 'step-2' | 'step-3' | 'step-4' | 'step-5' | 'step-6';
+
+interface StorageKeys {
+  readonly SKIP_INTRO: 'skipIntro';
+  readonly VISIT_COUNT: 'welcomeVisitCount';
+  readonly LAST_VISIT: 'lastWelcomeVisit';
+}
+
+// Enhanced typing messages for dynamic effect
+const typingMessages = [
+  "Welcome to my digital universe!",
+  "Prepare for an adventure...",
+  "Let's build something amazing together!",
+  "Ready to explore?"
+];
+
+const Welcome = () => {
+  // Enhanced state management
+  const [animationStep, setAnimationStep] = useState<AnimationStep>(0);
   const [visitCount, setVisitCount] = useState<number>(0);
   const [rememberChoiceModal, setRememberChoiceModal] = useState<boolean>(false);
+  const [isAnimationComplete, setIsAnimationComplete] = useState<boolean>(false);
+  const [currentTypingMessage, setCurrentTypingMessage] = useState<string>('');
+  const [typingIndex, setTypingIndex] = useState<number>(0);
+  const [showClickHint, setShowClickHint] = useState<boolean>(true);
 
-
-
-  // first check if user has been here before through local storage, if so use a different array first, if they want to see animation again then 
-  // start using the one below
-
-  const initialAnimationSteps: Array<string> = [
-    '',        // 0: useeffect will skip, allows for "hello" fade in
-    'initial', // 1: should fade in hello on page load
-    'step-2', // 2: should fade out hello, and fade in my name after a slight delay
-    'step-3',
-    'step-4',
-    'step-5',
-    'step-6',
-  ] as const;
-
-  const STORAGE_KEYS ={ //holding the string representation of the keys in the local storage,
-    //helps prevent typos
+  // Constants
+  const STORAGE_KEYS: StorageKeys = {
     SKIP_INTRO: 'skipIntro',
     VISIT_COUNT: 'welcomeVisitCount',
     LAST_VISIT: 'lastWelcomeVisit',
   } as const;
 
-const handleRestartAnimation = useCallback(() => {
-    // Clear skip preference temporarily
-    const skipPreference = localStorage.getItem(STORAGE_KEYS.SKIP_INTRO);
-    if (skipPreference) {
-      localStorage.setItem(STORAGE_KEYS.SKIP_INTRO, '0');
-    }
-    const visitCount = localStorage.getItem(STORAGE_KEYS.VISIT_COUNT);
-    if(visitCount){
-    setVisitCount(parseInt(visitCount));
-    }
-    // Reset to initial state
-    setAnimationStep(0);
-    
-     setTimeout(() => {setAnimationStep(1)}, 800)
-    setRememberChoiceModal(false);
-  }, [STORAGE_KEYS.SKIP_INTRO]);
+  const ANIMATION_DELAY = 800;
+  const MAX_ANIMATION_STEPS = 6;
+  const TYPING_SPEED = 100;
+  const CLICK_HINT_DURATION = 8000; // 8 seconds
 
-  const handleScreenClick = () => {
-    if(animationStep < initialAnimationSteps.length - 1){
-      setAnimationStep(prev => prev + 1);
-      console.log(animationStep)
-    }else{
-      setAnimationStep(0);
-    }
-  };
+  // Animation step mapping - cleaner than array indexing
+  const animationSteps: Record<AnimationStep, AnimationClass> = {
+    0: '',
+    1: 'initial',
+    2: 'step-2',
+    3: 'step-3',
+    4: 'step-4',
+    5: 'step-5',
+    6: 'step-6',
+  } as const;
 
-  const HandleModal = () => {
-    setRememberChoiceModal(prev => !prev);
-    if(!rememberChoiceModal){
-      document.removeEventListener('click', handleScreenClick)
-    }else{
-      document.addEventListener('click', handleScreenClick);
+  // Enhanced tools data with categories for better UX
+  const tools = useMemo(() => [
+    'C#', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'EF Core',
+    'Docker', 'CI/CD', 'Git/GitHub', 'HTML/CSS', 'React', 'Blazor',
+    'Visual Studio', 'VS Code', 'JetBrains Rider', 'IntelliJ IDEA'
+  ], []);
+
+  // Storage utilities with error handling
+  const getStorageItem = useCallback((key: string): string | null => {
+    try {
+      return localStorage.getItem(key);
+    } catch (error) {
+      console.warn('LocalStorage access failed:', error);
+      return null;
     }
-  }
-  const HandleRememberToSkip = () => {
-    localStorage.setItem('skipIntro', '1');
-    setAnimationStep(6);
-    setRememberChoiceModal(false);
-  }
-    
+  }, []);
+
+  const setStorageItem = useCallback((key: string, value: string): void => {
+    try {
+      localStorage.setItem(key, value);
+    } catch (error) {
+      console.warn('LocalStorage write failed:', error);
+    }
+  }, []);
+
+  // Enhanced typing effect
   useEffect(() => {
-    const skipAnimationChoice = localStorage.getItem('skipIntro');
-    if(skipAnimationChoice === '1'){
-      setAnimationStep(initialAnimationSteps.length)
-      return
+    if (animationStep === 1 && typingIndex < typingMessages.length) {
+      const message = typingMessages[typingIndex];
+      if (currentTypingMessage.length < message.length) {
+        const timer = setTimeout(() => {
+          setCurrentTypingMessage(message.slice(0, currentTypingMessage.length + 1));
+        }, TYPING_SPEED);
+        return () => clearTimeout(timer);
+      } else {
+        // Move to next message after a pause
+        const timer = setTimeout(() => {
+          setCurrentTypingMessage('');
+          setTypingIndex((prev) => (prev + 1) % typingMessages.length);
+        }, 2000);
+        return () => clearTimeout(timer);
+      }
     }
-    const storedVisitCount = localStorage.getItem('welcomeVisitCount');
-    const currentCount = storedVisitCount ? parseInt(storedVisitCount) : 0;
+  }, [animationStep, currentTypingMessage, typingIndex]);
 
-    const newCount = currentCount + 1;
-    setVisitCount(newCount)
-    localStorage.setItem('welcomeVisitCount', newCount.toString());
-    
-    // Store last visit timestamp
-    localStorage.setItem('lastWelcomeVisit', Date.now().toString());
-    
-    setAnimationStep(1);
+  // Click hint auto-hide
+  useEffect(() => {
+    if (animationStep === 1 && showClickHint) {
+      const timer = setTimeout(() => {
+        setShowClickHint(false);
+      }, CLICK_HINT_DURATION);
+      return () => clearTimeout(timer);
+    }
+  }, [animationStep, showClickHint]);
+
+  // Enhanced animation control functions
+  const advanceAnimation = useCallback(() => {
+    setAnimationStep(prev => {
+      const nextStep = Math.min(prev + 1, MAX_ANIMATION_STEPS) as AnimationStep;
       
-  }, [initialAnimationSteps.length])
+      if (nextStep === MAX_ANIMATION_STEPS) {
+        setIsAnimationComplete(true);
+        // Add celebratory effect
+        if ('navigator' in window && 'vibrate' in navigator) {
+          navigator.vibrate([200, 100, 200]);
+        }
+      }
+      
+      return nextStep;
+    });
+  }, []);
 
+  const skipToEnd = useCallback(() => {
+    setAnimationStep(MAX_ANIMATION_STEPS as AnimationStep);
+    setIsAnimationComplete(true);
+  }, []);
 
-  //use effect is going to add the event listener for each animation step for clicking
-  useEffect(() => {
-    if(animationStep < 6){
-    document.addEventListener('click', handleScreenClick);
+  // Enhanced click handling with haptic feedback
+  const handleScreenClick = useCallback((event: Event) => {
+    // Prevent click during modal
+    if (rememberChoiceModal) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
     }
-    //remove the listener after each click to prevent memory leaks? I think that is the point?
-    console.log(animationStep)
-    return () => {
-      document.removeEventListener('click', handleScreenClick)
+
+    // Add haptic feedback on mobile
+    if ('navigator' in window && 'vibrate' in navigator) {
+      navigator.vibrate(50);
+    }
+
+    if (animationStep < MAX_ANIMATION_STEPS) {
+      advanceAnimation();
+      setShowClickHint(true); // Show hint again on interaction
+    }
+  }, [animationStep, rememberChoiceModal, advanceAnimation]);
+
+  // Modal management with enhanced UX
+  const toggleModal = useCallback(() => {
+    setRememberChoiceModal(prev => !prev);
+    if ('navigator' in window && 'vibrate' in navigator) {
+      navigator.vibrate(30);
+    }
+  }, []);
+
+  const handleRememberToSkip = useCallback(() => {
+    setStorageItem(STORAGE_KEYS.SKIP_INTRO, '1');
+    skipToEnd();
+    setRememberChoiceModal(false);
+    
+    // Success feedback
+    if ('navigator' in window && 'vibrate' in navigator) {
+      navigator.vibrate([100, 50, 100]);
+    }
+  }, [setStorageItem, STORAGE_KEYS.SKIP_INTRO, skipToEnd]);
+
+  const handleSkipOnce = useCallback(() => {
+    skipToEnd();
+    setRememberChoiceModal(false);
+  }, [skipToEnd]);
+
+  // Enhanced animation restart functionality
+  const handleRestartAnimation = useCallback(() => {
+    // Reset skip preference temporarily
+    const skipPreference = getStorageItem(STORAGE_KEYS.SKIP_INTRO);
+    if (skipPreference) {
+      setStorageItem(STORAGE_KEYS.SKIP_INTRO, '0');
+    }
+
+    // Reset all state
+    setAnimationStep(0);
+    setIsAnimationComplete(false);
+    setRememberChoiceModal(false);
+    setCurrentTypingMessage('');
+    setTypingIndex(0);
+    setShowClickHint(true);
+
+    // Start animation with dramatic effect
+    setTimeout(() => {
+      setAnimationStep(1);
+      if ('navigator' in window && 'vibrate' in navigator) {
+        navigator.vibrate([200, 100, 200, 100, 200]);
+      }
+    }, ANIMATION_DELAY);
+  }, [getStorageItem, setStorageItem, STORAGE_KEYS.SKIP_INTRO]);
+
+  // Initialize component and handle visit tracking
+  useEffect(() => {
+    const skipAnimationChoice = getStorageItem(STORAGE_KEYS.SKIP_INTRO);
+    
+    // Skip animation if user chose to remember
+    if (skipAnimationChoice === '1') {
+      setAnimationStep(MAX_ANIMATION_STEPS as AnimationStep);
+      setIsAnimationComplete(true);
+      return;
+    }
+
+    // Handle visit counting
+    const storedVisitCount = getStorageItem(STORAGE_KEYS.VISIT_COUNT);
+    const currentCount = storedVisitCount ? parseInt(storedVisitCount, 10) : 0;
+    const newCount = currentCount + 1;
+    
+    setVisitCount(newCount);
+    setStorageItem(STORAGE_KEYS.VISIT_COUNT, newCount.toString());
+    setStorageItem(STORAGE_KEYS.LAST_VISIT, Date.now().toString());
+    
+    // Start animation with initial delay for dramatic effect
+    setTimeout(() => {
+      setAnimationStep(1);
+    }, ANIMATION_DELAY);
+    
+    // This effect should only run once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Enhanced event listener management
+  useEffect(() => {
+    if (isAnimationComplete || rememberChoiceModal) {
+      return;
+    }
+
+    // Add keyboard support for accessibility
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.code === 'Space' || event.code === 'Enter') {
+        event.preventDefault();
+        handleScreenClick(event as any);
+      }
+      if (event.code === 'Escape') {
+        toggleModal();
+      }
     };
-    //re add ev listenter on each click
-  }, [animationStep])
+
+    document.addEventListener('click', handleScreenClick);
+    document.addEventListener('keydown', handleKeyPress);
+    
+    return () => {
+      document.removeEventListener('click', handleScreenClick);
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [handleScreenClick, isAnimationComplete, rememberChoiceModal, toggleModal]);
+
+  // Computed values
+  const currentAnimationClass = animationSteps[animationStep];
+  const shouldShowScrollContent = isAnimationComplete;
+  const shouldHideAnimationContainer = isAnimationComplete;
+
+  // Enhanced welcome message with dynamic content - FIXED: Stable height container
+  const welcomeMessage = useMemo(() => {
+    if (visitCount === 1) {
+      return (
+        <div style={{ minHeight: '180px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+          <h2 style={{ margin: '0 0 1rem 0' }}>Welcome!</h2>
+          <h2 style={{ margin: '0 0 2rem 0' }}>It looks like it's your first time here!</h2>
+          {/* Fixed height container for typing text to prevent bouncing */}
+          <div style={{ 
+            height: '60px', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            overflow: 'hidden'
+          }}>
+            {currentTypingMessage && (
+              <p style={{ 
+                fontSize: '1.5rem', 
+                margin: '0',
+                color: 'rgba(255, 255, 255, 0.8)',
+                fontStyle: 'italic',
+                textAlign: 'center'
+              }}>
+                {currentTypingMessage}
+                <span style={{ 
+                  animation: 'blink 1s infinite',
+                  marginLeft: '2px' 
+                }}>|</span>
+              </p>
+            )}
+          </div>
+        </div>
+      );
+    }
+    
+    const getMessage = () => {
+      if (visitCount <= 5) return `Welcome Back! Visit #${visitCount}`;
+      if (visitCount <= 10) return `Hey there, regular! Visit #${visitCount}`;
+      if (visitCount <= 25) return `You're becoming a frequent visitor! Visit #${visitCount}`;
+      if (visitCount <= 50) return `Wow, ${visitCount} visits! You really like it here!`;
+      return `${visitCount} visits?! You're practically family now!`;
+    };
+    
+    return (
+      <div style={{ minHeight: '180px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+        <h2 style={{ margin: '0 0 1rem 0' }}>{getMessage()}</h2>
+        <p className="skip-hint" style={{ margin: '0 0 2rem 0' }}>Skip by pressing the button in the top left corner</p>
+        {/* Fixed height container for typing text */}
+        <div style={{ 
+          height: '40px', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          overflow: 'hidden'
+        }}>
+          {currentTypingMessage && (
+            <p style={{ 
+              fontSize: '1rem', 
+              margin: '0',
+              color: 'rgba(255, 255, 255, 0.7)',
+              fontStyle: 'italic',
+              textAlign: 'center'
+            }}>
+              {currentTypingMessage}
+              <span style={{ 
+                animation: 'blink 1s infinite',
+                marginLeft: '2px' 
+              }}>|</span>
+            </p>
+          )}
+        </div>
+      </div>
+    );
+  }, [visitCount, currentTypingMessage]);
+
+  // Progress indicator for animation
+  const progressPercentage = (animationStep / MAX_ANIMATION_STEPS) * 100;
 
   return (
-    <div className={`page-container ${initialAnimationSteps[animationStep]} ${animationStep >= initialAnimationSteps.length - 1 ? "" : "no-scroll"} `}>
-    <div className={`title-animation-container ${animationStep >= initialAnimationSteps.length - 1 ? "hidden-display" : "" }`}>
-      
-      <button 
-    className="skip-animation" 
-    onClick={(e) => {
-        e.stopPropagation(); // Prevent the click from bubbling up
-        HandleModal();
-    }}
->
-    Skip
-</button>
-      
-     <p className={`click-hint ${initialAnimationSteps[animationStep]}`}>(click to continue)</p> 
-    {visitCount == 1 ?
-    <div className={`hello-title ${initialAnimationSteps[animationStep]} `}>
-    <h2>
-        Welcome!
-    </h2>
-    <h2>
-      It looks like it's your first time here!
-    </h2>
-    </div>
-    :
-    <div className={`hello-title ${initialAnimationSteps[animationStep]} `}>
-    <h2>
-        Welcome Back! You have been here {visitCount} times!
-    </h2>
-    <p className="skip-hint">Skip by pressing the button in the top left corner</p>
-    </div>
-}
-   
-    {/* handle conditional visit text rendering here later */}
-    
-    <h2 className={`my-name ${animationStep > 1 ? initialAnimationSteps[animationStep] : ''}`}>
-        My Name is Caden McArthur
-      </h2>
-      <img src={pfp} className={`my-name pfp-image ${animationStep > 1 ? initialAnimationSteps[animationStep] : ''} `} />
-    <h2 className={`software ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''} `}>
-      I'm a Software Engineer and a 2025 graduate from Bethel College
-    </h2>
-    <img src={football} className={`software football-image ${animationStep > 2 ? initialAnimationSteps[animationStep] : ''}`}/>
-    <h2 className={`tenure-text ${animationStep > 3 ? initialAnimationSteps[animationStep] : ''}`}>
-      During my time at Bethel I created the schools first Software club. We built apps, participated in hackathons around the country,
-      and won some amazing awards
-    </h2>
-    <img src={award} className={`award-image ${animationStep > 3 ? initialAnimationSteps[animationStep] : ''}`} />
-    <img src={NASA} className={`nasa-image ${animationStep > 3 ? initialAnimationSteps[animationStep] : ''}`} />
-    <h2 className={`experience-text ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`}>
-      I have expereince building full stack applications with many different tools and frameworks for several different companies.
-      So have fun exploring my site! If you are looking for a challenge. Play one of my homemade chess Bots!
-    </h2>
+    <div className={`page-container ${currentAnimationClass} ${shouldShowScrollContent ? "" : "no-scroll"}`}>
+      {/* Progress indicator */}
+      {!shouldHideAnimationContainer && (
+        <div style={{
+          position: 'fixed',
+          top: '10px',
+          right: '20px',
+          width: '200px',
+          height: '4px',
+          background: 'rgba(255, 255, 255, 0.2)',
+          borderRadius: '2px',
+          zIndex: 1000,
+          overflow: 'hidden'
+        }}>
+          <div style={{
+            width: `${progressPercentage}%`,
+            height: '100%',
+            background: 'linear-gradient(90deg, #1e90ff, #8a2be2)',
+            borderRadius: '2px',
+            transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+            boxShadow: '0 0 10px rgba(30, 144, 255, 0.5)'
+          }} />
+        </div>
+      )}
 
-      
-    <div className={`toolbox ${animationStep > 4 ? initialAnimationSteps[animationStep] : ''}`}>
-      <div className='toolbox-container'>
-      <Tool text="C#" />
-      <Tool text="Python" />
-      <Tool text="Typescript" />
-      <Tool text="Javascript" />
-      <Tool text="Sql" />
-      <Tool text="EFCore" />
-      <Tool text="Docker" />
-      <Tool text="CI/CD" />
-      <Tool text="Git/Github" />
-      <Tool text="HTML/CSS" />
-      <Tool text="React" />
-      <Tool text="Blazor" />
-      <Tool text="Visual Studio" />
-      <Tool text="Visual Studio Code" />
-      <Tool text="Jetbrains Rider" />
-      <Tool text="Jetbrains IntelliJ IDEA" />
-      
+      {/* Animation Container */}
+      <div className={`title-animation-container ${shouldHideAnimationContainer ? "hidden-display" : ""}`}>
+        
+        {/* Enhanced Skip Button */}
+        <button 
+          className="skip-animation" 
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleModal();
+          }}
+          aria-label="Skip animation"
+          title="Skip the introduction animation"
+        >
+          Skip
+        </button>
+        
+        {/* Enhanced Click Hint with fade out */}
+        <p 
+          className={`click-hint ${currentAnimationClass}`}
+          style={{ 
+            opacity: showClickHint ? undefined : 0.3,
+            marginBottom: '4rem',
+            transition: 'opacity 1s ease-in-out'
+          }}
+        >
+          (click anywhere to continue)
+        </p>
+        
+        {/* Welcome Title with Enhanced Content */}
+        <div className={`hello-title ${currentAnimationClass}`}>
+          {welcomeMessage}
+        </div>
+        
+        {/* Name and Profile Picture */}
+        <h2 className={`my-name ${animationStep > 1 ? currentAnimationClass : ''}`}>
+          My Name is Caden McArthur
+        </h2>
+        <img 
+          src={pfp} 
+          alt="Caden McArthur - Software Engineer and Creative Problem Solver"
+          className={`pfp-image ${animationStep > 1 ? currentAnimationClass : ''}`}
+          loading="eager"
+        />
+        
+        {/* Software Engineer Introduction */}
+        <h2 className={`software ${animationStep > 2 ? currentAnimationClass : ''}`}>
+          I'm a Software Engineer and a 2025 graduate from Bethel College
+        </h2>
+        <img 
+          src={football} 
+          alt="Bethel College football team - where teamwork meets technology"
+          className={`football-image ${animationStep > 2 ? currentAnimationClass : ''}`}
+          loading="lazy"
+        />
+        
+        {/* Bethel Experience */}
+        <h2 className={`tenure-text ${animationStep > 3 ? currentAnimationClass : ''}`}>
+          During my time at Bethel I created the school's first Software club. We built apps, 
+          participated in hackathons around the country, and won some amazing awards
+        </h2>
+        <img 
+          src={award} 
+          alt="Programming competition award - recognition for innovation and excellence"
+          className={`award-image ${animationStep > 3 ? currentAnimationClass : ''}`}
+          loading="lazy"
+        />
+        <img 
+          src={NASA} 
+          alt="NASA hackathon event - pushing the boundaries of space technology"
+          className={`nasa-image ${animationStep > 3 ? currentAnimationClass : ''}`}
+          loading="lazy"
+        />
+        
+        {/* Experience Text */}
+        <h2 className={`experience-text ${animationStep > 4 ? currentAnimationClass : ''}`}>
+          I have experience building full stack applications with many different tools and 
+          frameworks for several different companies. So have fun exploring my site! 
+          If you're looking for a challenge, play one of my homemade chess bots!
+        </h2>
+
+        {/* Enhanced Tools/Technologies */}
+        <div className={`toolbox ${animationStep > 4 ? currentAnimationClass : ''}`}>
+          <div className='toolbox-container' role="list" aria-label="Technology skills">
+            {tools.map((tool, index) => (
+              <Tool 
+                key={`${tool}-${index}`} 
+                text={tool}
+              
+              />
+            ))}
+          </div>
+        </div>
+        
+        {/* Modal Overlay */}
+        {rememberChoiceModal && <div className="blur-overlay" onClick={toggleModal} />}
+        
+        {/* Enhanced Skip Choice Modal */}
+        <div className={`skip-modal ${rememberChoiceModal ? "active" : ""}`} role="dialog" aria-modal="true">
+          <div className="modal-dialog">
+            <p>Would you like to remember your choice to skip to the main site from now on?</p>
+            <p>This is reversible at any time, so don't sweat it!</p>
+            <small style={{ marginTop: '10px', display: 'block' }}>
+              You can restart the animation anytime from the main page
+            </small>
+          </div>
+          <div className="modal-buttons-container">
+            <Button 
+              label='Skip This Time' 
+              OnClickCallback={handleSkipOnce}
+              aria-label="Skip animation this time only"
+            />
+            <Button 
+              label='Skip Every Time' 
+              OnClickCallback={handleRememberToSkip}
+              aria-label="Always skip animation in the future"
+            />
+            <Button  
+              label='Close' 
+              OnClickCallback={toggleModal}
+              aria-label="Close dialog and continue animation"
+            />
+          </div>
+        </div>
       </div>
-    </div>
-    {rememberChoiceModal && <div className="blur-overlay"></div>}
-    <div className={`skip-modal ${rememberChoiceModal ? "active" :""}`}>
-      <div className="modal-dialog">
-      <p>Would you like to remember your choice to skip to the main site from now on?</p>
-      <p>This is reversable at any time so dont sweat it!</p>
-      </div>
-      <div className="modal-buttons-container ">
-        <Button label='Skip This Time' OnClickCallback={() => {setAnimationStep(initialAnimationSteps.length - 2 ); setRememberChoiceModal(false);}}  />
-        <Button label='Skip Every Time' OnClickCallback={() => HandleRememberToSkip()} />
-        <Button  label='Close' OnClickCallback={() => HandleModal()} />
-      </div>
-    </div>
-    </div>
-    <div className={`main-page ${animationStep >= 6 ? "slide" : ""}`}>
       
+      {/* Main Page Content */}
+      <div className={`main-page ${shouldShowScrollContent ? "slide" : ""}`}>
+        <AboutMe onRestartAnimation={handleRestartAnimation} />
+      </div>
 
 
-    <AboutMe onRestartAnimation={handleRestartAnimation} />
-
-  
-    
-</div>
     </div>
-  )
-}
+  );
+};
 
-export default Welcome
+
+export default Welcome;
