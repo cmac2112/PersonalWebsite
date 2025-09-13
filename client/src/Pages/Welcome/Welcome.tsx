@@ -7,10 +7,11 @@ import award from '../../assets/award.jpg';
 import NASA from '../../assets/NASA.jpg';
 import Tool from '../../Components/Tool/Tool';
 import Button from '../../Components/Button/Button';
+import "./MediaCss.css"
 
 // Types for better type safety
-type AnimationStep = 0 | 1 | 2 | 3 | 4 | 5 | 6;
-type AnimationClass = '' | 'initial' | 'step-2' | 'step-3' | 'step-4' | 'step-5' | 'step-6';
+type AnimationStep = 0 | 1 | 2 | 3 | 4 | 5;
+type AnimationClass = '' | 'initial' | 'step-2' | 'step-3' | 'step-5' | 'step-6';
 
 interface StorageKeys {
   readonly SKIP_INTRO: 'skipIntro';
@@ -44,7 +45,7 @@ const Welcome = () => {
   } as const;
 
   const ANIMATION_DELAY = 800;
-  const MAX_ANIMATION_STEPS = 6;
+  const MAX_ANIMATION_STEPS = 5;
   const TYPING_SPEED = 100;
   const CLICK_HINT_DURATION = 8000; // 8 seconds
 
@@ -54,16 +55,16 @@ const Welcome = () => {
     1: 'initial',
     2: 'step-2',
     3: 'step-3',
-    4: 'step-4',
-    5: 'step-5',
-    6: 'step-6',
+    4: 'step-5',
+    5: 'step-6',
   } as const;
 
   // Enhanced tools data with categories for better UX
   const tools = useMemo(() => [
-    'C#', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'EF Core',
+    'C#', 'C', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'EF Core',
     'Docker', 'CI/CD', 'Git/GitHub', 'HTML/CSS', 'React', 'Blazor',
-    'Visual Studio', 'VS Code', 'JetBrains Rider', 'IntelliJ IDEA'
+    'Visual Studio', 'VS Code', 'JetBrains Rider', 'IntelliJ IDEA', 
+    "Azure", "Flask", "AI/ML"
   ], []);
 
   // Storage utilities with error handling
@@ -270,8 +271,8 @@ const Welcome = () => {
     if (visitCount === 1) {
       return (
         <div style={{ minHeight: '180px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-          <h2 style={{ margin: '0 0 1rem 0' }}>Welcome!</h2>
-          <h2 style={{ margin: '0 0 2rem 0' }}>It looks like it's your first time here!</h2>
+          <h2 className='title-component' style={{ margin: '0 0 0.5rem 0' }}>Welcome!</h2>
+          <h2 className='title-component' style={{ margin: '0 0 2rem 0' }}>It looks like it's your first time here!</h2>
           {/* Fixed height container for typing text to prevent bouncing */}
           <div style={{ 
             height: '60px', 
@@ -309,8 +310,8 @@ const Welcome = () => {
     };
     
     return (
-      <div style={{ minHeight: '180px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-        <h2 style={{ margin: '0 0 1rem 0' }}>{getMessage()}</h2>
+      <div style={{ minHeight: '180px', display: 'flex', flexDirection: 'column' }}>
+        <h2 className='title-component' style={{ margin: '0 0 1rem 0' }}>{getMessage()}</h2>
         <p className="skip-hint" style={{ margin: '0 0 2rem 0' }}>Skip by pressing the button in the top left corner</p>
         {/* Fixed height container for typing text */}
         <div style={{ 
@@ -386,6 +387,7 @@ const Welcome = () => {
         </button>
         
         {/* Enhanced Click Hint with fade out */}
+        {animationStep < 2 ?
         <p 
           className={`click-hint ${currentAnimationClass}`}
           style={{ 
@@ -396,6 +398,7 @@ const Welcome = () => {
         >
           (click anywhere to continue)
         </p>
+: <></>}
         
         {/* Welcome Title with Enhanced Content */}
         <div className={`hello-title ${currentAnimationClass}`}>
@@ -423,34 +426,13 @@ const Welcome = () => {
           className={`football-image ${animationStep > 2 ? currentAnimationClass : ''}`}
           loading="lazy"
         />
-        
-        {/* Bethel Experience */}
-        <h2 className={`tenure-text ${animationStep > 3 ? currentAnimationClass : ''}`}>
-          During my time at Bethel I created the school's first Software club. We built apps, 
-          participated in hackathons around the country, and won some amazing awards
-        </h2>
-        <img 
-          src={award} 
-          alt="Programming competition award - recognition for innovation and excellence"
-          className={`award-image ${animationStep > 3 ? currentAnimationClass : ''}`}
-          loading="lazy"
-        />
-        <img 
-          src={NASA} 
-          alt="NASA hackathon event - pushing the boundaries of space technology"
-          className={`nasa-image ${animationStep > 3 ? currentAnimationClass : ''}`}
-          loading="lazy"
-        />
-        
-        {/* Experience Text */}
-        <h2 className={`experience-text ${animationStep > 4 ? currentAnimationClass : ''}`}>
+        {/* Enhanced Tools/Technologies */}
+        <h2 className={`experience-text ${animationStep > 3 ? currentAnimationClass : ''}`}>
           I have experience building full stack applications with many different tools and 
           frameworks for several different companies. So have fun exploring my site! 
           If you're looking for a challenge, play one of my homemade chess bots!
         </h2>
-
-        {/* Enhanced Tools/Technologies */}
-        <div className={`toolbox ${animationStep > 4 ? currentAnimationClass : ''}`}>
+        <div className={`toolbox ${animationStep > 3 ? currentAnimationClass : ''}`}>
           <div className='toolbox-container' role="list" aria-label="Technology skills">
             {tools.map((tool, index) => (
               <Tool 

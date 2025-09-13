@@ -1,0 +1,434 @@
+/* need to create media queries for all dimensions */
+
+/* horizontal mobile devices */
+
+@media (min-width: 600px) and (max-width: 950px) and (min-height: 300px) and (max-height: 500px) {
+
+  .title-component {
+    --title-size: 1.5rem;
+    margin-top: 6rem !important;
+  }
+  .pfp-image.step-2 {
+    --pfp-size: 7rem;
+    margin: auto !important;
+    margin-bottom: 2rem !important;
+  }
+  .football-image.step-3 {
+    margin: auto;
+    margin-top: 5rem;
+    --football-width: 6rem;
+    --football-height: 5rem;
+  }
+  .software {
+    margin-top: 6rem;
+    font-size: large;
+  }
+  .tenure-text {
+    margin: auto;
+    font-size: small;
+    text-align: center;
+  }
+  .award-image {
+    visibility: hidden;
+  }
+  .nasa-image {
+    --nasa-width: 100rem;
+  }
+  .experience-text {
+    margin: auto;
+    margin-top: 2rem;
+    font-size: small;
+  }
+}
+
+/* --- Medium screens (tablets, large phones) --- */
+@media (min-width: 700px) and (max-width: 1100px) and (min-height: 500px) and (max-height: 1050px) {
+  .title-component {
+    --title-size: 2.2rem;
+    margin-top: 8rem !important;
+  }
+  .pfp-image.step-2 {
+    --pfp-size: 10rem;
+    margin: auto !important;
+    margin-bottom: 3rem !important;
+  }
+  .football-image.step-3 {
+    margin: auto;
+    margin-top: 8rem;
+    --football-width: 8rem;
+    --football-height: 8rem;
+  }
+  .software {
+    margin-top: 10rem;
+    font-size: x-large;
+  }
+  .tenure-text {
+    margin: auto;
+    font-size: medium;
+    text-align: center;
+  }
+  .award-image {
+    margin: auto;
+    margin-top: 10rem;
+    height: 10rem;
+    visibility: visible;
+  }
+  .nasa-image {
+    --nasa-width: 14rem;
+    margin: auto;
+    margin-top: 12rem;
+  }
+  .experience-text {
+    margin: auto;
+    margin-top: 2rem;
+    font-size: medium;
+  }
+}
+
+/* --- Large screens (desktop) --- */
+@media (min-width: 1101px) {
+  .title-component {
+    --title-size: 3rem;
+    margin-top: 12rem !important;
+  }
+  .pfp-image.step-2 {
+    --pfp-size: 14rem;
+    margin: auto !important;
+    margin-bottom: 5rem !important;
+  }
+  .football-image.step-3 {
+    margin: auto;
+    margin-top: 12rem;
+    --football-width: 12rem;
+    --football-height: 12rem;
+  }
+  .software {
+    margin-top: 14rem;
+    font-size: xx-large;
+  }
+  .tenure-text {
+    margin: auto;
+    font-size: large;
+    text-align: left;
+  }
+  .award-image {
+    margin: auto;
+    margin-top: 12rem;
+    height: 20rem;
+    visibility: visible;
+  }
+  .nasa-image {
+    --nasa-width: 20rem;
+    margin: auto;
+    margin-top: 16rem;
+  }
+  .experience-text {
+    margin: auto;
+    margin-top: 3rem;
+    font-size: large;
+  }
+}
+
+/* --- Ultra-wide desktop screens --- */
+@media (min-width: 1920px) {
+  .title-component {
+    --title-size: 4rem;
+    margin-top: 16rem !important;
+  }
+  .pfp-image.step-2 {
+    --pfp-size: 18rem;
+    margin: auto !important;
+    margin-bottom: 7rem !important;
+  }
+  .football-image.step-3 {
+    margin: auto;
+    margin-top: 16rem;
+    --football-width: 16rem;
+    --football-height: 16rem;
+  }
+  .software {
+    margin-top: 18rem;
+    font-size: xxx-large;
+  }
+  .tenure-text {
+    margin: auto;
+    font-size: x-large;
+    text-align: left;
+  }
+  .award-image {
+    margin: auto;
+    margin-top: 16rem;
+    height: 30rem;
+    visibility: visible;
+  }
+  .nasa-image {
+    --nasa-width: 30rem;
+    margin: auto;
+    margin-top: 20rem;
+  }
+  .experience-text {
+    margin: auto;
+    margin-top: 4rem;
+    font-size: x-large;
+  }
+}
+
+@media((min-width: 1200px) and (max-width: 1300px) and (min-height: 800px) and (max-height: 900px)){
+.pfp-image.step-2{
+    --pfp-size:20rem;
+    margin: auto !important;
+    margin-bottom: 3rem !important;
+    
+  }
+}
+
+
+@media (min-width: 1000px) and (max-width: 1100px) and (min-height: 750px) and (max-height: 780px) {
+  .pfp-image{
+    bottom: 40%;
+    --pfp-size: 17rem
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1300px) and (min-height: 600px) and (max-height: 820px) {
+  .pfp-image{
+    --pfp-size: 12rem;
+  }
+}
+
+/* vertical mobile layout  small*/
+@media(min-width: 300px) and (max-width: 700px) and (max-height: 950px){
+    .title-component{
+        --title-size: 2rem;
+        margin-top: 3rem !important;
+    }
+    .my-name.step-2{
+        font-size: large;
+    }
+    .pfp-image.step-2{
+        margin: auto;
+    }
+    .football-image.step-3{
+        --football-height: 14rem;
+    }
+    .software{
+        grid-area: center;
+        margin-top: 25rem;
+    }
+    .tenure-text{
+      margin: auto;
+      text-align: center;
+  }
+  .award-image{
+    margin: auto;
+    margin-top: 15rem;
+    height: 13rem;
+  }
+  .nasa-image{
+    margin: auto;
+    margin-top:22rem;
+    width: 14rem;
+  }
+  .experience-text{
+    margin: auto;
+    margin-top: 3rem;
+  }
+}
+
+
+
+/* desktop */
+@media(min-width: 1600px){
+  .pfp-image.step-2{
+    margin:auto;
+  }
+  .award-image.step-4{
+    --award-width: 20rem;
+    height: 30rem;
+  }
+  .nasa-image.step-4{
+    margin: auto !important;
+    width: 30rem;
+    margin-top: 32rem !important;
+  }
+  .experience-text{
+    font-size: xx-large !important;
+  }
+}
+@media(min-width: 1100px){
+  .pfp-image.step-2{
+    margin-bottom: 15rem !important;
+    --pfp-width: 20rem;
+  }
+
+.award-image.step-4{
+    width: 20rem;
+    height: 30rem;
+  }
+  .nasa-image.step-4{
+    margin: auto !important;
+    width: 30rem;
+    margin-top: 32rem !important;
+  }
+}
+@media(min-width: 700px){
+  .pfp-image.step-2{
+    --pfp-width: 10rem;
+  }
+}
+
+/* For grid layouts on desktop/tablet, ensure .pfp-image is centered */
+@media (min-width: 769px) {
+  .pfp-image {
+    justify-self: center;
+    margin-left: 0;
+    margin-right: 0;
+    left: unset;
+    right: unset;
+    transform: translateY(-50px) scale(0) rotate(180deg);
+  }
+  .award-image.step-4{
+    width: 20rem;
+    height: 30rem;
+  }
+  .nasa-image.step-4{
+    margin: auto !important;
+    width: 30rem;
+    margin-top: 32rem !important;
+  }
+}
+
+
+/* ===== RESPONSIVE FINE-TUNING WITH ENHANCED EFFECTS ===== */
+
+/* Ultra-small devices */
+@media (max-width: 320px) {
+  :root {
+    --container-padding: 0.5rem;
+    --pfp-size: 12rem;
+    --bg-scale-2: 2;
+    --bg-scale-4: 3.5;
+    --bg-scale-5: 5;
+  }
+  
+  .hello-title h2 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+  
+  .skip-animation {
+    width: 3rem;
+    height: 2rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Large desktop fine-tuning */
+@media (min-width: 1200px) {
+  .skip-animation {
+    left: calc((100vw - var(--container-max-width)) / 2 + var(--spacing-md));
+  }
+  
+  .nasa-image.step-4 {
+    margin-left: clamp(0rem, 8vw, 15rem);
+  }
+  
+  /* Enhanced desktop effects */
+  .page-container.step-5::before {
+    animation: breathe 4s ease-in-out infinite, 
+               desktop-swirl 12s linear infinite;
+  }
+  
+  @keyframes desktop-swirl {
+    0% { filter: blur(2px) brightness(2) hue-rotate(-25deg) saturate(2) contrast(1.3); }
+    25% { filter: blur(1px) brightness(2.1) hue-rotate(-15deg) saturate(2.1) contrast(1.4); }
+    50% { filter: blur(3px) brightness(2.2) hue-rotate(-5deg) saturate(2.2) contrast(1.5); }
+    75% { filter: blur(1px) brightness(2.1) hue-rotate(-35deg) saturate(2.1) contrast(1.4); }
+    100% { filter: blur(2px) brightness(2) hue-rotate(-25deg) saturate(2) contrast(1.3); }
+  }
+}
+
+/* Ultra-wide desktop spectacular effects */
+@media (min-width: 1920px) {
+  :root {
+    --bg-scale-5: 12;
+    --font-size-hero: clamp(3rem, 6vw, 8rem);
+  }
+  
+  .page-container.step-5::before {
+    animation: breathe 6s ease-in-out infinite, 
+               ultrawide-aurora 15s ease-in-out infinite,
+               desktop-swirl 10s linear infinite;
+  }
+  
+  @keyframes ultrawide-aurora {
+    0%, 100% { 
+      background: radial-gradient(ellipse 300px 150px at 50% 40%, 
+        rgba(30, 144, 255, 0.4), 
+        rgba(138, 43, 226, 0.2) 50%,
+        transparent 70%);
+    }
+    33% { 
+      background: radial-gradient(ellipse 400px 200px at 30% 60%, 
+        rgba(255, 20, 147, 0.4), 
+        rgba(0, 255, 127, 0.2) 50%,
+        transparent 70%);
+    }
+    66% { 
+      background: radial-gradient(ellipse 350px 175px at 70% 30%, 
+        rgba(255, 165, 0, 0.4), 
+        rgba(138, 43, 226, 0.2) 50%,
+        transparent 70%);
+    }
+  }
+}
+
+/* High refresh rate displays - smoother animations */
+@media (min-resolution: 120dpi) {
+  :root {
+    --transition-main: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-gradient: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                          transform 2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .page-container::before,
+  .page-container::after {
+    animation: none !important;
+    transition: opacity 0.3s ease !important;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .page-container {
+    background: linear-gradient(135deg, #000000 0%, #0f0f23 50%, #1a1a2e 100%);
+  }
+  
+  .skip-modal {
+    background: linear-gradient(135deg, 
+      rgba(20, 20, 40, 0.98) 0%, 
+      rgba(30, 30, 50, 0.95) 100%);
+    border: 2px solid rgba(30, 144, 255, 0.5);
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .modal-dialog {
+    color: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg, #1e90ff, #8a2be2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+
