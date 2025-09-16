@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import AboutMe from '../../Components/AboutMe';
+import AboutMe from '../../Components/AboutMe/AboutMe';
 import "./Welcome.css";
 import football from '../../assets/football.png';
 import pfp from '../../assets/pfp.jpg';
@@ -287,7 +287,7 @@ const Welcome = () => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.code === 'Space' || event.code === 'Enter') {
         event.preventDefault();
-        handleScreenClick(event as any);
+        handleScreenClick(event as KeyboardEvent);
       }
       if (event.code === 'Escape') {
         toggleModal();

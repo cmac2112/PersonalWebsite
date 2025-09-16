@@ -1,10 +1,10 @@
 import React from 'react'
 import "./AboutMe.css"
 import { Navigate } from 'react-router-dom'
-import pfp from "../assets/pfp.jpg";
-import Button from './Button/Button';
+import pfp from "../../assets/pfp.jpg";
+import Button from '../Button/Button';
 import { useState,useCallback } from 'react';
-import MyExperienceTile from './MyExperienceTile/MyExperienceTile';
+import MyExperienceTile from '../MyExperienceTile/MyExperienceTile';
 
 /*
 this component will appear and house all of the about me after the initial animation plays
