@@ -3,8 +3,6 @@ import AboutMe from '../../Components/AboutMe';
 import "./Welcome.css";
 import football from '../../assets/football.png';
 import pfp from '../../assets/pfp.jpg';
-import award from '../../assets/award.jpg';
-import NASA from '../../assets/NASA.jpg';
 import Tool from '../../Components/Tool/Tool';
 import Button from '../../Components/Button/Button';
 import "./MediaCss.css"
@@ -21,11 +19,55 @@ interface StorageKeys {
 
 // Enhanced typing messages for dynamic effect
 const typingMessages = [
-  "Welcome to my digital universe!",
-  "Prepare for an adventure...",
+  "Welcome Caden McArthur's Site! Click anywhere to begin...",
   "Let's build something amazing together!",
-  "Ready to explore?"
+  "Time is fleeting—walk with wisdom.",
+  "Some treasures cannot be measured in gold.",
+  "True knowledge begins in awe and wonder.",
+  "Iron sharpens iron—growth comes with challenge.",
+  "Every season has its beauty—wait for it.",
+  "A gentle word can turn storms into calm.",
+  "Light shines brightest when night is darkest.",
+  "Wisdom is a path, not a possession.",
+  "Pride builds towers that always fall.",
+  "The heart charts the map of life.",
+  "Entrust your plans, and watch them prosper.",
+  "Patience plants seeds; haste uproots them.",
+  "Truth is a lamp to wandering feet.",
+  "Love never fails, though all else may fade.",
+  "Seek what lasts longer than time.",
+  "The beginning of wisdom is reverence.",
+  "Peace with little is better than riches with strife.",
+  "Words can wound deeper than swords—or heal faster.",
+  "In stillness, eternity whispers.",
+  "Strength is born in surrender.",
+  "Faith sees paths where eyes see walls.",
+  "Life is a vapor—choose wisely.",
+  "Goodness sown today is harvest tomorrow.",
+  "Joy may be delayed, but never denied.",
+  "A true friend is a fortress in storms.",
+  "Wisdom stands at the crossroads, calling.",
+  "Faith can turn valleys into mountaintops.",
+  "Guard your heart—it is the wellspring of life.",
+  "Peace is a gift no storm can steal.",
+  "Knowledge grows proud, but love builds deep roots.",
+  "The narrow way often hides the greatest treasures.",
+  "Where your treasure rests, your heart follows.",
+  "The righteous walk with lionhearted courage.",
+  "Hope is an anchor in restless seas.",
+  "Every good gift is traced back to heaven.",
+  "Blessed are those who mend broken walls.",
+  "The humble inherit what the proud cannot grasp.",
+  "Silence can be louder than haste.",
+  "Truth may cut, but it also heals.",
+  "The wise walk slowly, but arrive surely.",
+  "Faith without action is only a shadow.",
+  "Love covers scars time cannot heal.",
+  "Joy is medicine for weary bones.",
+  "In green pastures or dark valleys—never alone.",
+  "Be still—eternity is closer than you think."
 ];
+
 
 const Welcome = () => {
   // Enhanced state management
@@ -46,7 +88,7 @@ const Welcome = () => {
 
   const ANIMATION_DELAY = 800;
   const MAX_ANIMATION_STEPS = 5;
-  const TYPING_SPEED = 100;
+  const TYPING_SPEED = 50;
   const CLICK_HINT_DURATION = 8000; // 8 seconds
 
   // Animation step mapping - cleaner than array indexing
@@ -98,7 +140,7 @@ const Welcome = () => {
         // Move to next message after a pause
         const timer = setTimeout(() => {
           setCurrentTypingMessage('');
-          setTypingIndex((prev) => (prev + 1) % typingMessages.length);
+          setTypingIndex(Math.floor(Math.random() * typingMessages.length));
         }, 2000);
         return () => clearTimeout(timer);
       }
