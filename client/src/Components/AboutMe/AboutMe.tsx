@@ -8,11 +8,12 @@ import Layout from '../Layout/Layout';
 interface AboutMeProps{
   onRestartAnimation: () => void;
 }
+
 const AboutMe:React.FC<AboutMeProps> = ({
   onRestartAnimation
 }) => {
   const [isRestarting, setIsRestarting] = useState<boolean>(false);
-  const isMobileDevice = (): boolean => {
+  const isMobileDevice = () => {
     return window.innerWidth <= 768 || 
            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   };
@@ -32,14 +33,14 @@ const AboutMe:React.FC<AboutMeProps> = ({
     }, delayTime);
   }, [onRestartAnimation, isRestarting]);
 
+
   return (
-    <Layout>
+    <Layout handleRestartAnimation={handleRestartAnimation}>
       
     <div className='home'>
-      <h1>Home</h1>
-    
+
       <div className='more-about-me'>
-        <h2 className="about-me-header">More About Me!</h2>
+        <h2 className="about-me-header">About Me</h2>
         <img src={pfp} className="pfp-img" />
         <p className='about-me-subtitle'>Click on my tiles below to learn about my experience!</p>
         <section id="experience-section">

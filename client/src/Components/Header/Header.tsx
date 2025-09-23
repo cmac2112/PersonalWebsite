@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import Menu from '../Menu/Menu';
 import './Header.css'
-const Header = (
 
+interface HeaderProps{
+  handleRestartAnimation: () => void;
+}
+const Header:React.FC<HeaderProps> = (
+{
+  handleRestartAnimation
+}
 ) => {
-  const handleRestartAnimation = () =>{
-    return;
-  }
-  const isMobileDevice = ():boolean => {
-    return false;
-  }
+  const isMobileDevice = (): boolean => {
+    return window.innerWidth <= 768 || 
+           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  };
   const [menu, setMenu] = useState<boolean>(false);
 
 

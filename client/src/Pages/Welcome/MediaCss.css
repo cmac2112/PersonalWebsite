@@ -292,6 +292,9 @@
     width: 30rem;
     margin-top: 32rem !important;
   }
+  .skip-modal{
+    top: 30%;
+  }
 }
 
 
