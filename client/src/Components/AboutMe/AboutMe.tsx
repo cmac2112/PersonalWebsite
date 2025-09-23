@@ -1,15 +1,10 @@
 import React from 'react'
 import "./AboutMe.css"
-import { Navigate } from 'react-router-dom'
 import pfp from "../../assets/pfp.jpg";
-import Button from '../Button/Button';
 import { useState,useCallback } from 'react';
 import MyExperienceTile from '../MyExperienceTile/MyExperienceTile';
+import Layout from '../Layout/Layout';
 
-/*
-this component will appear and house all of the about me after the initial animation plays
-this part of the site should slide up from the bottom seamlessly and look nice and neat on all dispalys
- */
 interface AboutMeProps{
   onRestartAnimation: () => void;
 }
@@ -22,9 +17,6 @@ const AboutMe:React.FC<AboutMeProps> = ({
            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   };
 
-  // ========================================
-  // EVENT HANDLERS
-  // ========================================
   const handleRestartAnimation = useCallback(() => {
     if (isRestarting) return; // Prevent multiple clicks
     
@@ -40,61 +32,12 @@ const AboutMe:React.FC<AboutMeProps> = ({
     }, delayTime);
   }, [onRestartAnimation, isRestarting]);
 
-  const handleResumeNavigation = useCallback(() => {
-    const delayTime = isMobileDevice() ? 800 : 400;
-    
-    setTimeout(() => {
-      Navigate({ to: "/CadenMcArthurResume.pdf" });
-    }, delayTime);
-  }, []);
-
-  const handleChessBotNavigation = useCallback(() => {
-    const delayTime = isMobileDevice() ? 800 : 400;
-    
-    setTimeout(() => {
-      console.log("Navigating to Chess Bot - placeholder");
-      // Navigate({ to: "/chess-bot" });
-    }, delayTime);
-  }, []);
-
-  const handleExperienceScroll = useCallback(() => {
-    const experienceSection = document.getElementById('experience-section');
-    if (experienceSection) {
-      const headerOffset = isMobileDevice() ? 80 : 100;
-      const elementPosition = experienceSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  }, []);
-  const handleMyProjectsScroll = useCallback(() => {
-    const myProjectSection = document.getElementById('my-projects');
-    if(myProjectSection){
-      const headerOffset = isMobileDevice() ? 80 : 100;
-
-    const elementPosition = myProjectSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  }, []);
-
   return (
+    <Layout>
+      
     <div className='home'>
       <h1>Home</h1>
-      <div className='button-container'>
-      <Button label="My Resume" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='Work' />
-        <Button label="My Experience" iconPosition='right' OnClickCallback={() => handleExperienceScroll()} materialIcon='Work' />
-          <Button label="My Projects" iconPosition='right' OnClickCallback={() => handleMyProjectsScroll()} materialIcon='Work' />
-      <Button label="Replay Animation" iconPosition='right' OnClickCallback={() => handleRestartAnimation()} materialIcon='Movie' />
-      <Button label="Play My Chess Bots" OnClickCallback={() => handleChessBotNavigation()} materialIcon="chess" iconPosition='right' />
-        </div>
+    
       <div className='more-about-me'>
         <h2 className="about-me-header">More About Me!</h2>
         <img src={pfp} className="pfp-img" />
@@ -200,6 +143,7 @@ const AboutMe:React.FC<AboutMeProps> = ({
         
       </div>
     </div>
+    </Layout>
   )
 }
 

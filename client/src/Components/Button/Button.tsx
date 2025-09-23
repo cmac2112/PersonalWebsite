@@ -26,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
     const disabledClass = disabled ? 'button--disabled' : '';
     const combinedClasses = `${baseClasses} ${variantClass} ${disabledClass} ${className}`.trim();
 
+
     const MaterialIcon = ({name}: {name: string})=>(
 
         <span

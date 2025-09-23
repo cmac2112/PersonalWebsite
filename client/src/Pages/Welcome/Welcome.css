@@ -182,6 +182,7 @@
   width: auto;
   overflow-y: auto;
   overflow-x: hidden;
+  --container-padding: 0rem;
 }
 
 .title-animation-container {
