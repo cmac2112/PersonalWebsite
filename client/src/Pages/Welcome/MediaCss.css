@@ -235,6 +235,9 @@
 
 /* desktop */
 @media(min-width: 1600px){
+  .skip-modal{
+    top: 50% !important;
+  }
   .pfp-image.step-2{
     margin:auto;
   }
@@ -252,6 +255,9 @@
   }
 }
 @media(min-width: 1100px){
+  .skip-modal{
+    top: 50% !important;
+  }
   .pfp-image.step-2{
     margin-bottom: 15rem !important;
     --pfp-width: 20rem;

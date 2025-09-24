@@ -52,6 +52,9 @@ const MyExperienceTile:React.FC<MyExperienceTileProps> = ({
     {technologies.map((t, index) => <Tool key={index} text={t}  /> )}
     </div>
     </div>
+    <div className='space'>
+
+    </div>
     {!isOpened ? 
       <MaterialIcon name='arrow_drop_down' /> :
       <MaterialIcon name='arrow_drop_up' /> 
