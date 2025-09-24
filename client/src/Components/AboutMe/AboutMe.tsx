@@ -4,6 +4,7 @@ import pfp from "../../assets/pfp.jpg";
 import { useState,useCallback } from 'react';
 import MyExperienceTile from '../MyExperienceTile/MyExperienceTile';
 import Layout from '../Layout/Layout';
+import AnimatedImage from '../AnimatedImage/AnimatedImage'
 
 interface AboutMeProps{
   onRestartAnimation: () => void;
@@ -43,12 +44,14 @@ const AboutMe:React.FC<AboutMeProps> = ({
         <h2 className="about-me-header">About Me</h2>
         <img src={pfp} className="pfp-img" />
         <p className='about-me-subtitle'>Click on my tiles below to learn about my experience!</p>
+        <div className='reactive-flexbox'>
         <section id="experience-section">
+          <h2 className="about-me-header">Work Experience</h2>
         <div className='my-experience-list'>
           
         <MyExperienceTile title='Software Developer'
          subtitle='INTRUST Bank'
-         technologies={["C#", "SQL", ".NET", "Blazor", "EFCore", "Javascript", "CI/CD"]}>
+         technologies={["C#", "SQL", ".NET", "EFCore", "Javascript", "CI/CD"]}>
           <h2 className='experience-tile-child-header'>Developed and Maintained 30+ internal banking solutions for INTRUST</h2>
           <ul className="experience-list">
   <li>Developed an app that created, documented, and prepared investment wealth accounts for trading</li>
@@ -100,11 +103,12 @@ const AboutMe:React.FC<AboutMeProps> = ({
         </MyExperienceTile>
       </div>
       </section>
+      <div className='personal-projects-container'>
       <section id='my-projects'>
-        <h2 className="about-me-header">Personal Projects & Hackathon Winners</h2>
+        <h2 className="about-me-header">Personal Projects</h2>
         <div className='my-experience-list'>
         <MyExperienceTile title='Chess with AI Opponents' subtitle='Personal Project (In Progress)'
-        technologies={["React", "Typescript"]}>
+        technologies={["React", "Typescript", "CSS"]}>
           <h2 className='experience-tile-child-header'>Developed chess in react from scratch and adding homemade AI as a self challenge</h2>
           <ul className='experience-list'>
             <li>Rules of the challenge were to come up with my own version of chess and a verson 1.0 of a bot without using any google or AI help</li>
@@ -140,10 +144,12 @@ const AboutMe:React.FC<AboutMeProps> = ({
         </MyExperienceTile>
         </div>
       </section>
-  
-        
       </div>
     </div>
+    </div>
+        
+      </div>
+    
     </Layout>
   )
 }
