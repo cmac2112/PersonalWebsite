@@ -15,3 +15,38 @@
 .footer-icon:hover{
     cursor: pointer;
 }
+/* Small phone screens */
+@media (max-width: 600px) {
+    .Footer {
+        padding: 15px 0;
+    }
+    .footer-icon {
+        margin: 0 8px;
+        height: 32px;
+        font-size: 20px;
+    }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .Footer {
+        padding: 18px 0;
+    }
+    .footer-icon {
+        margin: 0 12px;
+        height: 36px;
+        font-size: 22px;
+    }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1025px) {
+    .Footer {
+        padding: 25px 0;
+    }
+    .footer-icon {
+        margin: 0 15px;
+        height: 44px;
+        font-size: 26px;
+    }
+}

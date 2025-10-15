@@ -10,7 +10,7 @@ const Footer = () => {
             <span onClick={() => window.open('https://www.linkedin.com/in/cadenmcarthur/', '_blank')}>
                 <img src={LinkedInIcon} alt="LinkedIn" className="footer-icon" />
             </span>
-            <span onClick={() => window.open('mailto: caden.mcarthur@gmail.com')}>
+            <span onClick={() => window.open('mailto:caden.mcarthur@gmail.com')}>
                 <img src={GmailIcon} alt='Gmail' className="footer-icon" />
             </span>
             <span onClick={() => window.open('https://github.com/cmac2112', '_blank')}>
