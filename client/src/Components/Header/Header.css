@@ -3,9 +3,9 @@
     justify-content: space-between;
     align-content: center;
     align-items: center;
-      background: linear-gradient(135deg, #060f18, #250e54) padding-box, 
-              linear-gradient(45deg, #1e90ff, #8a2be2) border-box;
-    border: 1px solid grey;
+      background: linear-gradient(135deg, #0c0c0c, #0e0000) padding-box,
+              linear-gradient(45deg, #000000, #130101) border-box;
+    border: 1px solid transparent;
     top: 0;
     width: 100%;
     z-index: 1000;
@@ -16,6 +16,7 @@
 }
 .hamburger{
     padding-inline: 1rem;
+    font-size: 1.5rem;
 }
 .hamburger:hover{
     cursor: pointer;

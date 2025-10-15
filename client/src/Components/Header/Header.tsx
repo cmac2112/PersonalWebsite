@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Menu from '../Menu/Menu';
-import './Header.css'
+import './Header.css';
 
 interface HeaderProps{
   handleRestartAnimation: () => void;
@@ -18,7 +18,6 @@ const Header:React.FC<HeaderProps> = (
 
 
   const handleMenu = () => {
-    console.log(menu)
     setMenu(prev => !prev);
   }
   return (
@@ -29,7 +28,6 @@ const Header:React.FC<HeaderProps> = (
 menu
 </span>
     </div>
-    
     {menu ?
           <Menu handleRestartAnimation={handleRestartAnimation} isMobileDevice={isMobileDevice} />
           : <></>

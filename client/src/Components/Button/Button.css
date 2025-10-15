@@ -25,7 +25,7 @@
     top: 0;
     width: 5px;
     height: 100%;
-    background-color: #1E90FF;
+    background-color: #cdac25;
     border-top-left-radius: 3rem;
     border-bottom-left-radius: 3rem;
     z-index: -1;
@@ -38,7 +38,7 @@
     top: 0;
     width: 0;
     height: 100%;
-    background-color: #1E90FF;
+    background-color: #cdac25;
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
     border-top-right-radius: 3rem;
@@ -57,11 +57,11 @@
 
 .button-component:active {
     transform: translateY(0);
-    box-shadow: 0 2px 6px rgba(30, 144, 255, 0.4);
+    box-shadow: 0 2px 6px rgba(255, 2, 38, 0.4);
 }
 
 .button-component:focus {
-    outline: 2px solid #1E90FF;
+    outline: 2px solid #fff100;
     outline-offset: 2px;
 }
 
@@ -166,12 +166,12 @@
 
     .button-component:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(30, 144, 255, 0.3);
+        box-shadow: 0 8px 20px rgba(255, 207, 13, 0.3);
     }
     
     .button-component:active {
         transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+        box-shadow: 0 4px 12px rgba(248, 193, 21, 0.4);
     }
 }
 @media (min-resolution: 192dpi) {
