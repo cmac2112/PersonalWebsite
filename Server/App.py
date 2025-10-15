@@ -10,10 +10,7 @@ def serve_dist():
 def hello():
     return 'Hello, World!'
 
-@app.route('/api/uniqueVisitor/', methods=['POST'])
-def uniqueVisitor():
-    data = data.from_json(request.json)
-    return 'unique user'
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
