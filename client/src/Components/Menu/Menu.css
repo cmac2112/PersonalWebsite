@@ -17,8 +17,8 @@
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(20px);
-  background: linear-gradient(135deg, #060f18, #250e54) padding-box, 
-              linear-gradient(45deg, #1e90ff, #8a2be2) border-box;
+  background: linear-gradient(135deg, #000000, #390207) padding-box,
+              linear-gradient(45deg, #20050a, #060009) border-box;
 width: fit-content;
   animation: menuWipeDown 0.6s cubic-bezier(0.4, 0.8, 0.2, 1) forwards;
 }
@@ -84,6 +84,93 @@ width: fit-content;
     transform: translate(-20%, 0%) scaleY(1);
   }
 }
+}
+/* At the bottom of Menu.css for clarity and cleanliness */
+
+/* Wipe up animation for closing */
+.menu-modal.closing {
+    animation: menuWipeUp 0.6s cubic-bezier(0.4, 0.8, 0.2, 1) forwards !important;
+}
+
+@keyframes menuWipeUp {
+    0% {
+        opacity: 1;
+        max-height: 800px;
+        transform: translate(-50%, -50%) scaleY(1);
+    }
+    60% {
+        opacity: 0;
+        max-height: 800px;
+        transform: translate(-50%, -100%) scaleY(1);
+    }
+    100% {
+        opacity: 0;
+        max-height: 0;
+        z-index: 0;
+        transform: translate(-50%, -200%) scaleY(1);
+    }
+}
+
+/* Strict code cleanliness: keep all media queries at the bottom, grouped and commented */
+
+/* Small phone screens */
+@media (max-width: 600px) {
+    /* ...existing styles... */
+    .menu-modal.closing {
+        animation: menuWipeUp 0.6s cubic-bezier(0.4, 0.8, 0.2, 1) forwards !important;
+    }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    /* ...existing styles... */
+    .menu-modal.closing {
+        animation: menuWipeUpTablet 0.6s cubic-bezier(0.4, 0.8, 0.2, 1) forwards !important;
+    }
+    @keyframes menuWipeUpTablet {
+        0% {
+            opacity: 1;
+            max-height: 800px;
+            transform: translate(-20%, 0%) scaleY(1);
+        }
+        60% {
+            opacity: 0;
+            max-height: 800px;
+            transform: translate(-20%, -40%) scaleY(1);
+        }
+        100% {
+            opacity: 0;
+            max-height: 0;
+            z-index: 0;
+            transform: translate(-20%, -80%) scaleY(1);
+        }
+    }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1025px) {
+    /* ...existing styles... */
+    .menu-modal.closing {
+        animation: menuWipeUpDesktop 0.6s cubic-bezier(0.4, 0.8, 0.2, 1) forwards !important;
+    }
+    @keyframes menuWipeUpDesktop {
+        0% {
+            opacity: 1;
+            max-height: 800px;
+            transform: translate(-20%, 0%) scaleY(1);
+        }
+        60% {
+            opacity: 0;
+            max-height: 800px;
+            transform: translate(-20%, -40%) scaleY(1);
+        }
+        100% {
+            opacity: 0;
+            max-height: 0;
+            z-index: 0;
+            transform: translate(-20%, -80%) scaleY(1);
+        }
+    }
 }
 
 /* Large screens (desktops) */

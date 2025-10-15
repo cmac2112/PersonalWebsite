@@ -413,11 +413,7 @@
   }
 }
 
-/* Dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-  .page-container {
-    background: linear-gradient(135deg, #000000 0%, #0f0f23 50%, #1a1a2e 100%);
-  }
+
   
   .skip-modal {
     background: linear-gradient(135deg, 

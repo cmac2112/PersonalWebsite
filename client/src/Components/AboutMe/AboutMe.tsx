@@ -4,7 +4,6 @@ import pfp from "../../assets/pfp.jpg";
 import { useState,useCallback } from 'react';
 import MyExperienceTile from '../MyExperienceTile/MyExperienceTile';
 import Layout from '../Layout/Layout';
-//import AnimatedImage from '../AnimatedImage/AnimatedImage'
 
 interface AboutMeProps{
   onRestartAnimation: () => void;

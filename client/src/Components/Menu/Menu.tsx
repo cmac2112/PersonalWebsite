@@ -1,5 +1,4 @@
 import React, {useCallback} from 'react'
-import {Navigate} from 'react-router-dom'
 import Button from '../Button/Button'
 import "./Menu.css"
 interface MenuProps{
@@ -8,13 +7,15 @@ interface MenuProps{
 }
 const Menu:React.FC<MenuProps> = ({
     handleRestartAnimation,
-    isMobileDevice
+    isMobileDevice,
 }) => {
+
+
     const handleResumeNavigation = useCallback(() => {
     const delayTime = isMobileDevice() ? 800 : 400;
     
     setTimeout(() => {
-      Navigate({ to: "/CadenMcArthurResume.pdf" });
+      window.open('/CadenMcArthurResume.pdf', '_blank');
     }, delayTime);
   }, []);
 
@@ -23,8 +24,20 @@ const Menu:React.FC<MenuProps> = ({
     
     setTimeout(() => {
       console.log("Navigating to Chess Bot - placeholder");
-      // Navigate({ to: "/chess-bot" });
     }, delayTime);
+  }, []);
+
+  const handleContactScroll = useCallback(() => {
+  const contactSection = document.getElementById('contact-section');
+    if (contactSection) {
+      const headerOffset = isMobileDevice() ? 80 : 100;
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+      });
+    }
   }, []);
 
   const handleExperienceScroll = useCallback(() => {
@@ -58,9 +71,10 @@ const Menu:React.FC<MenuProps> = ({
   return (
     <div className='menu-modal'>
      <div className='button-container'>
-      <Button label="My Resume" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='Work' />
+      <Button label="My Resume" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='work_history' />
+      <Button label="Contact Me" iconPosition='right' OnClickCallback={() => handleContactScroll()} materialIcon='call' />
         <Button label="My Experience" iconPosition='right' OnClickCallback={() => handleExperienceScroll()} materialIcon='Work' />
-          <Button label="My Projects" iconPosition='right' OnClickCallback={() => handleMyProjectsScroll()} materialIcon='Work' />
+          <Button label="My Projects" iconPosition='right' OnClickCallback={() => handleMyProjectsScroll()} materialIcon='experiment' />
       <Button label="Replay Animation" iconPosition='right' OnClickCallback={() => handleRestartAnimation()} materialIcon='Movie' />
       <Button label="Play My Chess Bots" OnClickCallback={() => handleChessBotNavigation()} materialIcon="chess" iconPosition='right' />
         </div>

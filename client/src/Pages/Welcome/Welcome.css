@@ -72,7 +72,7 @@
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.95);
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    background: linear-gradient(135deg, #0a0a0a 0%, #0e0303 20%, #100202 40%, #130101 60%, #130101 80%, #330a11 100%);
   overflow: hidden;
 }
 
@@ -85,9 +85,9 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    ellipse 300px 150px at 50% 40%, 
-    rgba(30, 144, 255, 0.4), 
-    rgba(138, 43, 226, 0.2) 50%,
+    ellipse 300px 150px at 50% 40%,
+    rgba(218, 141, 11, 0.4),
+    rgba(80, 69, 17, 0.2) 50%,
     transparent 70%
   );
   opacity: 0;
