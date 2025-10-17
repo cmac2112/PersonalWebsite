@@ -1,9 +1,9 @@
-.footer{
-    background-color: #f8f9fa;
-    padding: 20px 0;
+.Footer{
     text-align: center;
-    border-top: 1px solid #e7e7e7;
+        color: white;
+    font-family:  "Archivo Black", sans-serif;;
 }
+
 .footer-icon{
     margin: 0 10px;
     color: #333;

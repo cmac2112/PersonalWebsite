@@ -1,6 +1,7 @@
 import React, {useCallback} from 'react'
 import Button from '../Button/Button'
 import "./Menu.css"
+import { useNavigate } from 'react-router-dom';
 interface MenuProps{
     handleRestartAnimation: () => void;
     isMobileDevice: () => boolean;
@@ -10,9 +11,19 @@ const Menu:React.FC<MenuProps> = ({
     isMobileDevice,
 }) => {
 
+  const navigate = useNavigate();
 
+
+    const handleHomeNavigation = useCallback(() => {
+      const delayTime = isMobileDevice() ? 400 : 300;
+    
+    setTimeout(() => {
+        navigate('/')
+    }, delayTime);
+  }, []);
+    
     const handleResumeNavigation = useCallback(() => {
-    const delayTime = isMobileDevice() ? 800 : 400;
+    const delayTime = isMobileDevice() ? 400 : 300;
     
     setTimeout(() => {
       window.open('/CadenMcArthurResume.pdf', '_blank');
@@ -20,10 +31,10 @@ const Menu:React.FC<MenuProps> = ({
   }, []);
 
   const handleChessBotNavigation = useCallback(() => {
-    const delayTime = isMobileDevice() ? 800 : 400;
+    const delayTime = isMobileDevice() ? 400 : 300;
     
     setTimeout(() => {
-      console.log("Navigating to Chess Bot - placeholder");
+      navigate("/chess")
     }, delayTime);
   }, []);
 
@@ -71,6 +82,7 @@ const Menu:React.FC<MenuProps> = ({
   return (
     <div className='menu-modal'>
      <div className='button-container'>
+      <Button label="Home" iconPosition='right' OnClickCallback={() => handleHomeNavigation()} materialIcon='home' />
       <Button label="My Resume" iconPosition='right' OnClickCallback={() => handleResumeNavigation()} materialIcon='work_history' />
       <Button label="Contact Me" iconPosition='right' OnClickCallback={() => handleContactScroll()} materialIcon='call' />
         <Button label="My Experience" iconPosition='right' OnClickCallback={() => handleExperienceScroll()} materialIcon='Work' />

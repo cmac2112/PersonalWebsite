@@ -4,7 +4,8 @@ import pfp from "../../assets/pfp.jpg";
 import { useState,useCallback } from 'react';
 import MyExperienceTile from '../MyExperienceTile/MyExperienceTile';
 import Layout from '../Layout/Layout';
-
+import Button from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
 interface AboutMeProps{
   onRestartAnimation: () => void;
 }
@@ -33,6 +34,7 @@ const AboutMe:React.FC<AboutMeProps> = ({
     }, delayTime);
   }, [onRestartAnimation, isRestarting]);
 
+  const navigate = useNavigate();
 
   return (
     <Layout handleRestartAnimation={handleRestartAnimation}>
@@ -113,7 +115,7 @@ const AboutMe:React.FC<AboutMeProps> = ({
             <li>Rules of the challenge were to come up with my own version of chess and a verson 1.0 of a bot without using any google or AI help</li>
             <li>Game logic was simple enough to implement, but took it a step further to make it more user friendly in many ways</li>
             <li>Currently only version 1.0 of my bot is playable at the moment (and its sort of impossible to lose against beacuse its not very smart)</li>
-            <a href="/chess">Play chess against my AI bot</a>
+            <Button label='Play My Chess Bots!' OnClickCallback={() => navigate("/chess")} />
             <a href='https://github.com/cmac2112/Chess-With-AI-Opponents'>View the Repository</a>
             
           </ul>
