@@ -578,7 +578,7 @@
   content: '';
   position: absolute;
   inset: -20px;
-  background: radial-gradient(circle, rgba(30, 144, 255, 0.1) 0%, transparent 70%);
+
   border-radius: 20px;
   opacity: 0;
   transition: opacity 1s ease;
@@ -595,16 +595,7 @@
   animation: toolbox-aura 4s ease-in-out infinite alternate;
 }
 
-@keyframes toolbox-aura {
-  from { 
-    background: radial-gradient(circle, rgba(30, 144, 255, 0.1) 0%, transparent 70%);
-    transform: scale(2);
-  }
-  to { 
-    background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
-    transform: scale(3);
-  }
-}
+
 
 .toolbox-container {
   max-width: min(95vw, 900px);

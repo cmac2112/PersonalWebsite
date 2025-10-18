@@ -84,7 +84,7 @@ const Welcome = () => {
     'C#', 'C', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'EF Core',
     'Docker', 'CI/CD', 'Git/GitHub', 'HTML/CSS', 'React', 'Blazor',
     'Visual Studio', 'VS Code', 'JetBrains Rider', 'IntelliJ IDEA', 
-    "Azure", "Flask", "AI/ML"
+    "Azure", "Flask"
   ], []);
 
   // Storage utilities with error handling
