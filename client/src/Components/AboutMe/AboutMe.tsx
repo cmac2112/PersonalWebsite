@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import StellarViewImage from "../../assets/stellarView.png";
 import SolarEyeImage from "../../assets/solareye.png";
 import Slideshow from '../Slideshow/Slideshow';
+import MaterialIcon from '../MaterialIcon/MaterialIcon';
 interface AboutMeProps{
   onRestartAnimation: () => void;
 }
@@ -51,9 +52,9 @@ const AboutMe:React.FC<AboutMeProps> = ({
     <div className='home'>
       <Slideshow />
       <div className='more-about-me'>
-        <h2 className="about-me-header">About Me</h2>
-        <img src={pfp} className="pfp-img" />
-        <p className='about-me-subtitle'>Click on my tiles below to learn about my experience!</p>
+        <p className='about-me-subtitle'>Just skimming? Below are some quick descriptions of my projects and experience.</p>
+        <p className='about-me-subtitle'>More in depth descriptions can be found on the Personal Projects page.</p>
+        <MaterialIcon name="arrow_downward" />
         <div className='reactive-flexbox'>
         <section id="experience-section">
           <h2 className="about-me-header">Work Experience</h2>
