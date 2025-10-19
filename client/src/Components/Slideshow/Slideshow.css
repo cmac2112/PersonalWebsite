@@ -1,0 +1,97 @@
+.slideshow-container{
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+}
+.slide.fade-in{
+    animation: slideshowFadeIn 2s cubic-bezier(0.4, 0.8, 0.2, 1) forwards;
+}
+.fade-in{
+      animation: slideshowFadeIn 2s cubic-bezier(0.4, 0.8, 0.2, 1) forwards;
+}
+.slide{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+.back-arrow {
+  display: flex;
+    position: absolute;
+    left: 20%;
+    top: 90%;
+    transform: translateY(-50%);
+    color: rgb(7, 7, 7);
+    font-size: 2rem;
+    z-index: 2;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0.3rem;
+    gap: 2px;
+  }
+  .arrow-label{
+    font-size: 1rem;
+  }
+
+  .forward-arrow {
+  display: flex;
+    position: absolute;
+    right: 20%;
+    top: 90%;
+    transform: translateY(-50%);
+    color: rgb(7, 7, 7);
+    font-size: 2rem;
+    z-index: 2;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0.3rem;
+    gap: 2px;
+  }
+
+  .slide-1-hello{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: black;
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    top: 0;
+  }
+  .title-position{
+    position: absolute
+  }
+  .slide-title{
+    font-size: 10rem;
+    padding: 0;
+    margin: 0;
+
+  }
+  .slide-subtitle{
+    font-size: 5rem;
+    padding: 0;
+    margin: 0;
+  }
+  .white{
+    color:white;
+
+  }
+  
+@media(min-width: 1025px){
+    .slideshow-container{
+        height: 80vh;
+    }
+}
+
+
+@keyframes slideshowFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

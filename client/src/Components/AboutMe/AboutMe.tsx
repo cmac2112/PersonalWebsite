@@ -8,6 +8,7 @@ import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import StellarViewImage from "../../assets/stellarView.png";
 import SolarEyeImage from "../../assets/solareye.png";
+import Slideshow from '../Slideshow/Slideshow';
 interface AboutMeProps{
   onRestartAnimation: () => void;
 }
@@ -48,6 +49,7 @@ const AboutMe:React.FC<AboutMeProps> = ({
   return (
     <Layout handleRestartAnimation={handleRestartAnimation}>
     <div className='home'>
+      <Slideshow />
       <div className='more-about-me'>
         <h2 className="about-me-header">About Me</h2>
         <img src={pfp} className="pfp-img" />
