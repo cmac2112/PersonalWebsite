@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     overflow-x: hidden;
-    
+    background: linear-gradient(135deg, #0a0a0a 0%, #0e0303 20%, #100202 40%, #130101 60%, #130101 80%, #330a11 100%);
 }
 .button-container{
     display: flex;
@@ -76,4 +76,7 @@
 }
 .app-images{
     width: 100%;
+}
+.white{
+    color:white;
 }

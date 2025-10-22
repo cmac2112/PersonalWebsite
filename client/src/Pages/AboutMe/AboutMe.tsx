@@ -1,42 +1,18 @@
-import React from 'react'
 import "./AboutMe.css"
-import pfp from "../../assets/pfp.jpg";
-import { useState,useCallback } from 'react';
-import MyExperienceTile from '../MyExperienceTile/MyExperienceTile';
-import Layout from '../Layout/Layout';
-import Button from '../Button/Button';
+import MyExperienceTile from '../../Components/MyExperienceTile/MyExperienceTile';
+import Layout from '../../Components/Layout/Layout';
+import Button from '../../Components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import StellarViewImage from "../../assets/stellarView.png";
 import SolarEyeImage from "../../assets/solareye.png";
-import Slideshow from '../Slideshow/Slideshow';
-import MaterialIcon from '../MaterialIcon/MaterialIcon';
-interface AboutMeProps{
-  onRestartAnimation: () => void;
-}
+import Slideshow from '../../Components/Slideshow/Slideshow';
+import MaterialIcon from '../../Components/MaterialIcon/MaterialIcon';
 
-const AboutMe:React.FC<AboutMeProps> = ({
-  onRestartAnimation
-}) => {
-  const [isRestarting, setIsRestarting] = useState<boolean>(false);
+const AboutMe = () => {
   const isMobileDevice = () => {
     return window.innerWidth <= 768 || 
            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   };
-
-  const handleRestartAnimation = useCallback(() => {
-    if (isRestarting) return; // Prevent multiple clicks
-    
-    setIsRestarting(true);
-    console.log("Restarting animation with mobile-optimized delay");
-    
-    // Mobile devices get longer delay for button animation completion
-    const delayTime = isMobileDevice() ? 600 : 300;
-    
-    setTimeout(() => {
-      onRestartAnimation();
-      setIsRestarting(false);
-    }, delayTime);
-  }, [onRestartAnimation, isRestarting]);
 
   const navigate = useNavigate();
 
@@ -48,12 +24,12 @@ const AboutMe:React.FC<AboutMeProps> = ({
   }
 
   return (
-    <Layout handleRestartAnimation={handleRestartAnimation}>
+    <Layout handleRestartAnimation={() => navigate("/")}>
     <div className='home'>
       <Slideshow />
-      <div className='more-about-me'>
-        <p className='about-me-subtitle'>Just skimming? Below are some quick descriptions of my projects and experience.</p>
-        <p className='about-me-subtitle'>More in depth descriptions can be found on the Personal Projects page.</p>
+      <div className='more-about-me white'>
+        <p className='about-me-subtitle white'>Just skimming? Below are some quick descriptions of my projects and experience.</p>
+        <p className='about-me-subtitle white'>More in depth descriptions can be found on the Personal Projects page.</p>
         <MaterialIcon name="arrow_downward" />
         <div className='reactive-flexbox'>
         <section id="experience-section">

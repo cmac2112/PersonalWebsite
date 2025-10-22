@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import AboutMe from '../../Components/AboutMe/AboutMe';
 import "./Welcome.css";
 import football from '../../assets/football.png';
 import pfp from '../../assets/pfp.jpg';
 import Tool from '../../Components/Tool/Tool';
 import Button from '../../Components/Button/Button';
 import "./MediaCss.css"
+import { useNavigate } from 'react-router-dom';
 
 // Types for better type safety
 type AnimationStep = 0 | 1 | 2 | 3 | 4 | 5;
@@ -57,6 +57,8 @@ const Welcome = () => {
   const [typingIndex, setTypingIndex] = useState<number>(0);
   const [showClickHint, setShowClickHint] = useState<boolean>(true);
 
+  const navigate = useNavigate();
+
   // Constants
   const STORAGE_KEYS: StorageKeys = {
     SKIP_INTRO: 'skipIntro',
@@ -86,6 +88,7 @@ const Welcome = () => {
     'Visual Studio', 'VS Code', 'JetBrains Rider', 'IntelliJ IDEA', 
     "Azure", "Flask"
   ], []);
+
 
   // Storage utilities with error handling
   const getStorageItem = useCallback((key: string): string | null => {
@@ -155,6 +158,7 @@ const Welcome = () => {
   const skipToEnd = useCallback(() => {
     setAnimationStep(MAX_ANIMATION_STEPS as AnimationStep);
     setIsAnimationComplete(true);
+    navigate("/about-me")
   }, []);
 
   // Enhanced click handling with haptic feedback
@@ -164,11 +168,6 @@ const Welcome = () => {
       event.preventDefault();
       event.stopPropagation();
       return;
-    }
-
-    // Add haptic feedback on mobile
-    if ('navigator' in window && 'vibrate' in navigator) {
-      navigator.vibrate(50);
     }
 
     if (animationStep < MAX_ANIMATION_STEPS) {
@@ -202,6 +201,7 @@ const Welcome = () => {
   }, [skipToEnd]);
 
   // Enhanced animation restart functionality
+  /*
   const handleRestartAnimation = useCallback(() => {
     // Reset skip preference temporarily
     const skipPreference = getStorageItem(STORAGE_KEYS.SKIP_INTRO);
@@ -225,7 +225,7 @@ const Welcome = () => {
       }
     }, ANIMATION_DELAY);
   }, [getStorageItem, setStorageItem, STORAGE_KEYS.SKIP_INTRO]);
-
+*/
   // Initialize component and handle visit tracking
   useEffect(() => {
     const skipAnimationChoice = getStorageItem(STORAGE_KEYS.SKIP_INTRO);
@@ -258,6 +258,7 @@ const Welcome = () => {
   // Enhanced event listener management
   useEffect(() => {
     if (isAnimationComplete || rememberChoiceModal) {
+      navigate("/about-me")
       return;
     }
 
@@ -495,13 +496,6 @@ const Welcome = () => {
           </div>
         </div>
       </div>
-      
-      {/* Main Page Content */}
-      <div className={`main-page ${shouldShowScrollContent ? "slide" : ""}`}>
-        <AboutMe onRestartAnimation={handleRestartAnimation} />
-      </div>
-
-
     </div>
   );
 };

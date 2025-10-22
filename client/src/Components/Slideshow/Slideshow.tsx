@@ -99,6 +99,7 @@ const Slideshow = () => {
         : slideNumber === 3 ? (
           <div className={`slide-1-hello ${fadeIn ? " fade-in" : ""}`}>
             <h1 className="slide-title white">My Gallery</h1>
+            <h2 className="slide-subtitle white">Explore The Cosmos</h2>
             <div className="slide-button-container">
               <Button
                 label="My Astrophotography"
