@@ -24,8 +24,9 @@ const AboutMe = () => {
   }
 
   return (
-    <Layout handleRestartAnimation={() => navigate("/")}>
+    
     <div className='home'>
+      <Layout>
       <Slideshow />
       <div className='more-about-me white'>
         <p className='about-me-subtitle white'>Just skimming? Below are some quick descriptions of my projects and experience.</p>
@@ -37,7 +38,7 @@ const AboutMe = () => {
         <div className='my-experience-list'>
         <MyExperienceTile title='Software Developer'
          subtitle='INTRUST Bank'
-         technologies={["C#", "SQL", ".NET", "EFCore", "Javascript", "CI/CD", "Azure"]}>
+         technologies={["Blazor", "C#", "SQL", ".NET", "EFCore", "Javascript", "CI/CD", "Azure"]}>
           <h2 className='experience-tile-child-header'>Developed and Maintained 30+ internal banking solutions for INTRUST</h2>
           <ul className="experience-list">
   <li>Developed an app that created, documented, and prepared investment wealth accounts for trading</li>
@@ -156,10 +157,10 @@ const AboutMe = () => {
       </div>
     </div>
     </div>
+    </Layout>
         
       </div>
     
-    </Layout>
   )
 }
 

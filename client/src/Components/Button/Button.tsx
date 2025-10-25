@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
     variant = 'primary',
     className = '',
     materialIcon,
-    iconPosition = 'left'
+    iconPosition = 'left',
 }) => {
 
     const baseClasses = 'button-component';

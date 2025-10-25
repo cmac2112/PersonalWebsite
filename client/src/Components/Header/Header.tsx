@@ -2,12 +2,9 @@ import React, { useState } from 'react'
 import Menu from '../Menu/Menu';
 import './Header.css';
 
-interface HeaderProps{
-  handleRestartAnimation: () => void;
-}
-const Header:React.FC<HeaderProps> = (
+
+const Header = (
 {
-  handleRestartAnimation
 }
 ) => {
   const isMobileDevice = (): boolean => {
@@ -29,7 +26,7 @@ menu
 </span>
     </div>
     {menu ?
-          <Menu handleRestartAnimation={handleRestartAnimation} isMobileDevice={isMobileDevice} />
+          <Menu isMobileDevice={isMobileDevice} handleClose={handleMenu}/>
           : <></>
     }
  </>

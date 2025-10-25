@@ -257,8 +257,11 @@ const Welcome = () => {
 
   // Enhanced event listener management
   useEffect(() => {
-    if (isAnimationComplete || rememberChoiceModal) {
+    if(isAnimationComplete){
       navigate("/about-me")
+    }
+    if (rememberChoiceModal) {
+    
       return;
     }
 

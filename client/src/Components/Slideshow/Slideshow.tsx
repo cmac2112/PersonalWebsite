@@ -28,7 +28,7 @@ const Slideshow = () => {
   const [fadeIn, setFadeIn] = useState<boolean>(true);
 
   const handleNewWindowNavigation = (url: string) => {
-    const delayTime = isMobileDevice() ? 200 : 100;
+    const delayTime = isMobileDevice() ? 350 : 0;
     setTimeout(() => {
       navigate(url);
     }, delayTime);

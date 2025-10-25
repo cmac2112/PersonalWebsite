@@ -3,27 +3,34 @@ import Button from '../Button/Button'
 import "./Menu.css"
 import { useNavigate } from 'react-router-dom';
 interface MenuProps{
-    handleRestartAnimation: () => void;
     isMobileDevice: () => boolean;
+    handleClose: () => void;
 }
 const Menu:React.FC<MenuProps> = ({
-    handleRestartAnimation,
     isMobileDevice,
+    handleClose
 }) => {
 
   const navigate = useNavigate();
 
 
+  const handleRestartAnimation = () => {
+    const delayTime = isMobileDevice() ? 400 : 0;
+    setTimeout(() => {
+      localStorage.removeItem("skipIntro");
+      navigate('/')
+    }, delayTime);
+  }
     const handleHomeNavigation = useCallback(() => {
-      const delayTime = isMobileDevice() ? 400 : 300;
+      const delayTime = isMobileDevice() ? 400 : 0;
     
     setTimeout(() => {
-        navigate('/')
+        navigate('/about-me')
     }, delayTime);
   }, []);
     
     const handleResumeNavigation = useCallback(() => {
-    const delayTime = isMobileDevice() ? 400 : 300;
+    const delayTime = isMobileDevice() ? 400 : 0;
     
     setTimeout(() => {
       window.open('/CadenMcArthurResume.pdf', '_blank');
@@ -31,7 +38,7 @@ const Menu:React.FC<MenuProps> = ({
   }, []);
 
   const handleChessBotNavigation = useCallback(() => {
-    const delayTime = isMobileDevice() ? 400 : 300;
+    const delayTime = isMobileDevice() ? 400 : 0;
     
     setTimeout(() => {
       navigate("/chess")
@@ -89,6 +96,7 @@ const Menu:React.FC<MenuProps> = ({
           <Button label="My Projects" iconPosition='right' OnClickCallback={() => handleMyProjectsScroll()} materialIcon='experiment' />
       <Button label="Replay Animation" iconPosition='right' OnClickCallback={() => handleRestartAnimation()} materialIcon='Movie' />
       <Button label="Play My Chess Bots" OnClickCallback={() => handleChessBotNavigation()} materialIcon="chess" iconPosition='right' />
+        <Button label="Close" OnClickCallback={() => handleClose()} materialIcon="chess" iconPosition='right' />
         </div>
         </div>
   )
