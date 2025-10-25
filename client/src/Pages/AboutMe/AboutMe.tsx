@@ -1,40 +1,18 @@
-import React from 'react'
 import "./AboutMe.css"
-import pfp from "../../assets/pfp.jpg";
-import { useState,useCallback } from 'react';
-import MyExperienceTile from '../MyExperienceTile/MyExperienceTile';
-import Layout from '../Layout/Layout';
-import Button from '../Button/Button';
+import MyExperienceTile from '../../Components/MyExperienceTile/MyExperienceTile';
+import Layout from '../../Components/Layout/Layout';
+import Button from '../../Components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import StellarViewImage from "../../assets/stellarView.png";
 import SolarEyeImage from "../../assets/solareye.png";
-interface AboutMeProps{
-  onRestartAnimation: () => void;
-}
+import Slideshow from '../../Components/Slideshow/Slideshow';
+import MaterialIcon from '../../Components/MaterialIcon/MaterialIcon';
 
-const AboutMe:React.FC<AboutMeProps> = ({
-  onRestartAnimation
-}) => {
-  const [isRestarting, setIsRestarting] = useState<boolean>(false);
+const AboutMe = () => {
   const isMobileDevice = () => {
     return window.innerWidth <= 768 || 
            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   };
-
-  const handleRestartAnimation = useCallback(() => {
-    if (isRestarting) return; // Prevent multiple clicks
-    
-    setIsRestarting(true);
-    console.log("Restarting animation with mobile-optimized delay");
-    
-    // Mobile devices get longer delay for button animation completion
-    const delayTime = isMobileDevice() ? 600 : 300;
-    
-    setTimeout(() => {
-      onRestartAnimation();
-      setIsRestarting(false);
-    }, delayTime);
-  }, [onRestartAnimation, isRestarting]);
 
   const navigate = useNavigate();
 
@@ -46,19 +24,21 @@ const AboutMe:React.FC<AboutMeProps> = ({
   }
 
   return (
-    <Layout handleRestartAnimation={handleRestartAnimation}>
+    
     <div className='home'>
-      <div className='more-about-me'>
-        <h2 className="about-me-header">About Me</h2>
-        <img src={pfp} className="pfp-img" />
-        <p className='about-me-subtitle'>Click on my tiles below to learn about my experience!</p>
+      <Layout>
+      <Slideshow />
+      <div className='more-about-me white'>
+        <p className='about-me-subtitle white'>Just skimming? Below are some quick descriptions of my projects and experience.</p>
+        <p className='about-me-subtitle white'>More in depth descriptions can be found on the Personal Projects page.</p>
+        <MaterialIcon name="arrow_downward" />
         <div className='reactive-flexbox'>
         <section id="experience-section">
           <h2 className="about-me-header">Work Experience</h2>
         <div className='my-experience-list'>
         <MyExperienceTile title='Software Developer'
          subtitle='INTRUST Bank'
-         technologies={["C#", "SQL", ".NET", "EFCore", "Javascript", "CI/CD", "Azure"]}>
+         technologies={["Blazor", "C#", "SQL", ".NET", "EFCore", "Javascript", "CI/CD", "Azure"]}>
           <h2 className='experience-tile-child-header'>Developed and Maintained 30+ internal banking solutions for INTRUST</h2>
           <ul className="experience-list">
   <li>Developed an app that created, documented, and prepared investment wealth accounts for trading</li>
@@ -177,10 +157,10 @@ const AboutMe:React.FC<AboutMeProps> = ({
       </div>
     </div>
     </div>
+    </Layout>
         
       </div>
     
-    </Layout>
   )
 }
 

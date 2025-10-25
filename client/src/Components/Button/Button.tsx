@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Button.css"
-
+import MaterialIcon from '../MaterialIcon/MaterialIcon';
 interface ButtonProps{
     label: string;
     OnClickCallback: () => void;
@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
     variant = 'primary',
     className = '',
     materialIcon,
-    iconPosition = 'left'
+    iconPosition = 'left',
 }) => {
 
     const baseClasses = 'button-component';
@@ -27,14 +27,7 @@ const Button: React.FC<ButtonProps> = ({
     const combinedClasses = `${baseClasses} ${variantClass} ${disabledClass} ${className}`.trim();
 
 
-    const MaterialIcon = ({name}: {name: string})=>(
-
-        <span
-        className="material-symbols-outlined button__material-icon align-icon"
-        aria-hidden="true">
-            {name}
-        </span>
-    )
+    
   // Content rendering with proper icon positioning
     const renderContent = () => {
         if (!materialIcon) {
