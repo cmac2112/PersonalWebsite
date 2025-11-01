@@ -15,7 +15,7 @@ const ObservatoryImage = () => {
           isOpened == false ? setIsOpened(true) : setIsOpened(false);
         }
 
-        //lets load the images from the server asychronously
+        // lets load the images from the server asynchronously
 
         useEffect(() => {
             setLoading(true);
