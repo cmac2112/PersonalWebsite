@@ -8,30 +8,30 @@ interface ObservatoryImageProps{
 }
 
 
-const ObservatoryImage = () => {
+const ObservatoryImage = ({ title, subtitle }: ObservatoryImageProps) => {
     const [isOpened, setIsOpened] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
-        const HandleTileClick = () =>{
-          isOpened == false ? setIsOpened(true) : setIsOpened(false);
-        }
+    const HandleTileClick = () => {
+        setIsOpened((prev) => !prev);
+    }
 
-        // lets load the images from the server asynchronously
+    // lets load the images from the server asynchronously
 
-        useEffect(() => {
-            setLoading(true);
-            //make call to image endpoint
-            
-        }, [])
-  return (
-    <div onClick={HandleTileClick}
-    className='observatory-image-container'>
-      <div className='image'>
+    useEffect(() => {
+        setLoading(true);
+        // make call to image endpoint
+        
+    }, []);
+    return (
+        <div onClick={HandleTileClick}
+            className='observatory-image-container'>
+            <div className='image'>
 
-      </div>
-      <h2 className='observatory-title'>title</h2>
-      <p className='observatory-subtitle'>subtitle</p>
-    </div>
-  )
+            </div>
+            <h2 className='observatory-title'>{title}</h2>
+            <p className='observatory-subtitle'>{subtitle}</p>
+        </div>
+    )
 }
 
 export default ObservatoryImage
