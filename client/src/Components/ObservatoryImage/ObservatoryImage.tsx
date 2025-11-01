@@ -1,4 +1,4 @@
-import {use, useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 
 // will contain the clickable image component along side its subtitle and an option to route the user to a 4k view
 interface ObservatoryImageProps{
