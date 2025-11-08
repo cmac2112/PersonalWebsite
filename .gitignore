@@ -42,3 +42,6 @@ sql/pwsql1/obj/Debug/pwsql1.GeneratedMSBuildEditorConfig.editorconfig
 sql/pwsql1/obj/Debug/pwsql1.pdb
 sql/pwsql1/obj/Debug/pwsql1.sourcelink.json
 sql/pwsql1/obj/Debug/pwsql1.sqlproj.FileListAbsolute.txt
+Server/personalwebsite-476922-90013c87f50c.json
+Server/cloud-sql-proxy.exe
+Server/Models/__pycache__/Blog.cpython-312.pyc

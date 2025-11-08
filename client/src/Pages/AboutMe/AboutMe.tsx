@@ -7,6 +7,7 @@ import StellarViewImage from "../../assets/stellarView.png";
 import SolarEyeImage from "../../assets/solareye.png";
 import Slideshow from '../../Components/Slideshow/Slideshow';
 import MaterialIcon from '../../Components/MaterialIcon/MaterialIcon';
+import { useEffect, useState } from "react";
 
 const AboutMe = () => {
   const isMobileDevice = () => {
@@ -22,13 +23,18 @@ const AboutMe = () => {
       window.open(url, "_blank");
     }, delayTime);
   }
-
+  const [fadingIn, setFadingIn] = useState<boolean>(false)
+  useEffect(() => {
+    setFadingIn(true);
+    const timeout = setTimeout(() => setFadingIn(false), 500); // match animation duration
+    return () => clearTimeout(timeout);
+  },[])
   return (
     
     <div className='home'>
       <Layout>
       <Slideshow />
-      <div className='more-about-me white'>
+      <div className={`more-about-me white ${fadingIn ? "fade-in" : ""}`}>
         <p className='about-me-subtitle white'>Just skimming? Below are some quick descriptions of my projects and experience.</p>
         <p className='about-me-subtitle white'>More in depth descriptions can be found on the Personal Projects page.</p>
         <MaterialIcon name="arrow_downward" />

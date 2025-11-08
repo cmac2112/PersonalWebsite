@@ -1,21 +1,21 @@
 .experience-title-bounds{
     height: 10px;
 }
+.home{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #0a0a0a 0%, #0e0303 20%, #100202 40%, #130101 60%, #130101 80%, #330a11 100%);
+}
 .my-experience-list{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-}
-.home{
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
-    background: linear-gradient(135deg, #0a0a0a 0%, #0e0303 20%, #100202 40%, #130101 60%, #130101 80%, #330a11 100%);
 }
 .button-container{
     display: flex;
@@ -78,4 +78,7 @@
 }
 .white{
     color:white;
+}
+.fade-in{
+      animation: slideshowFadeIn 0.5s cubic-bezier(0.4, 0.8, 0.2, 1) forwards;
 }

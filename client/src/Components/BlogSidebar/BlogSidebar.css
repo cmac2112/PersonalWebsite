@@ -1,0 +1,20 @@
+.sidebar-container{
+    background-color:rgba(48, 48, 48, 0.7);
+    max-width: 20vw;
+    height: 100vh;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+.sidebar-header-container{
+    padding: 1rem;
+    
+}
+
+.sidebar-header{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+.sidebar-list > li{
+    color: grey;
+}
