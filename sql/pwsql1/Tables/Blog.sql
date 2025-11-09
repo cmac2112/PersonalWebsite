@@ -4,6 +4,6 @@ CREATE TABLE [dbo].[Blog]
   [DateCreated] datetime2 null,
   [Topic] VARCHAR(255) null,
   [Text] VARCHAR(MAX) null,
-  [LinksTo] VARCHAR(MAX) null,
+  [LinksTo] VARCHAR(MAX) null
 
 )
