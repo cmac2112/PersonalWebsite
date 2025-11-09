@@ -10,3 +10,4 @@ class BlogItem(Base):
     DateCreated = Column(DateTime)
     Text = Column(String)
     LinksTo = Column(String)
+    Topic = Column(String)

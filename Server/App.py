@@ -1,4 +1,5 @@
 from flask import Flask, request, send_from_directory
+from flask_cors import CORS
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from Models.Blog import Base, BlogItem
@@ -27,8 +28,7 @@ Base.metadata.create_all(bind=engine)
 
 
 app = Flask(__name__, static_folder="../client/dist", static_url_path="/")
-
-
+CORS(app)
 
 @app.route('/')
 def serve_dist():
@@ -42,16 +42,17 @@ def get_blogs():
     blogs = session.query(BlogItem).all()
     #dispose
     session.close()
-    return {"blogs": [{"id": b.id, "date": str(b.DateCreated), "text": b.Text, "links": b.LinksTo} for b in blogs]}
+    return {"blogs": [{"id": b.id, "date": str(b.DateCreated), "topic": b.Topic, "text": b.Text, "links": b.LinksTo} for b in blogs]}
 
 @app.route('/api/blog/<id>', methods=['GET'])
-def get_blog_by_Id(id):
+def get_blog_by_Id(id: int):
+    print(f"GET /api/blog/{id}")
     session = SessionLocal()
     
-    blog = session.query(BlogItem).filter(BlogItem.id == id).first()
+    blog: BlogItem = session.query(BlogItem).filter(BlogItem.id == id).first()
     session.close()
     
-    if blog:
+    if blog:    
         return {
             "id": blog.id,
             "date": str(blog.DateCreated),
@@ -60,6 +61,21 @@ def get_blog_by_Id(id):
         }
     else:
         return {"error": "Blog not found"}, 404
-        
+       
+@app.route('/api/blog/latest', methods=['GET'])
+def get_latest_blog():
+    print('GET /api/blog/latest')
+    
+    session = SessionLocal()
+    blog: BlogItem = session.query(BlogItem).first()
+    if blog:
+        return {
+            "id": blog.id,
+            "date": str(blog.DateCreated),
+            "text": blog.Text,
+            "links":blog.LinksTo
+        }
+    else:
+        return {"error": "blog not found"}, 404
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)

@@ -13,7 +13,8 @@ import axios from 'axios';
 
 interface SidebarLink{
   Id: string,
-  display: string, // string displayed in li
+  Topic: string, // string displayed in li
+  Date: string,
 
 }
 
@@ -29,8 +30,17 @@ const [data, setData] = useState<SidebarLink[]>([]);
 
 const fetchLogs = async () => {
   try{
-    const response = await axios.get("someurl");
-    
+    const response = await axios.get(`${import.meta.env.VITE_URL_DEV}/api/blogs`);
+    //console.log(response)
+    if(response.status === 200){
+      const formatted: SidebarLink[] = response.data.blogs.map((item: any) => ({
+        Id: item.id,
+        Topic: item.topic,
+        Date: item.date
+      }))
+      console.log(formatted)
+      setData(formatted)
+    }
   }catch(err){
     setError(true)
   }finally{
@@ -51,7 +61,9 @@ useEffect(() => {
         <p>loading...</p> :
         
         <ul className='sidebar-list'>
-          <li>2025-12-05: Some topics</li>
+          {data.map(link => (
+            <li key={link.Id}><a href={`/my-blog/${link.Id}`}>{link.Date}: {link.Topic}</a></li>
+          ))}
         </ul>
 }
           {error ? <p>failed to load blog links</p> : <></>}
