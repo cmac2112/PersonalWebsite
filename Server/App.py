@@ -1,6 +1,8 @@
 from flask import Flask, request, send_from_directory
 from flask_cors import CORS
 from sqlalchemy import create_engine
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from sqlalchemy.orm import sessionmaker
 from Models.Blog import Base, BlogItem
 import os
@@ -18,7 +20,6 @@ DATABASE_URL = (
     f"mssql+pyodbc://{DB_USERNAME}:{DB_PASSWORD}@127.0.0.1:{DB_PORT}/{DB_NAME}"
     f"?driver=ODBC+Driver+18+for+SQL+Server&Encrypt=no"
 )
-print(DATABASE_URL)
 
 engine = create_engine(DATABASE_URL, echo=True)
 SessionLocal = sessionmaker(bind=engine)
@@ -28,7 +29,19 @@ Base.metadata.create_all(bind=engine)
 
 
 app = Flask(__name__, static_folder="../client/dist", static_url_path="/")
+
+#allow cros origin requests
 CORS(app)
+
+#define basic rate limiting, applied by default to all endpoints
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["10000 per day", "1000 per hour"],
+    storage_uri="memory://"
+)
+
+
 
 @app.route('/')
 def serve_dist():
@@ -55,7 +68,7 @@ def get_blog_by_Id(id: int):
     if blog:    
         return {
             "id": blog.id,
-            "date": str(blog.DateCreated),
+            "date": str(blog.DateCreated.date),
             "text": blog.Text,
             "links":blog.LinksTo
         }

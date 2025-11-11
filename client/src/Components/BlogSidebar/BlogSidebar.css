@@ -2,7 +2,7 @@
     background-color:rgba(48, 48, 48, 0.7);
     max-width: 20vw;
     min-width: 17vw;
-    height: 100vh;
+    height: 100%;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
@@ -18,4 +18,23 @@
 }
 .sidebar-list > li{
     color: grey;
+}
+.sidebar-list-item{
+    min-height: 40px;
+}
+.sidebar-list-item > a{
+    color: white;
+    text-decoration: none;
+}
+.sidebar-list-item > a:hover{
+    color: gold;
+    text-decoration: none;
+}
+.sidebar-list-item > a:visited:hover{
+    color: gold;
+    text-decoration: none;
+}
+.sidebar-list-item > a:visited{
+    color: rgb(165, 138, 238);
+    text-decoration: none;
 }

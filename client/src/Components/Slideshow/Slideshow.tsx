@@ -59,7 +59,7 @@ const Slideshow = () => {
             <h2 className="slide-subtitle">I'm Caden McArthur</h2>
             <div className="slide-button-container">
               <Button
-                label="My Story"
+                label="Explore"
                 OnClickCallback={() => handleNewWindowNavigation("/my-story")}
                 materialIcon="person_celebrate"
                 iconPosition="right"

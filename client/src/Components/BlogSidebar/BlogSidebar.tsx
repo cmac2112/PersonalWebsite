@@ -36,9 +36,9 @@ const fetchLogs = async () => {
       const formatted: SidebarLink[] = response.data.blogs.map((item: any) => ({
         Id: item.id,
         Topic: item.topic,
-        Date: item.date
+        Date: item.date,
       }))
-      console.log(formatted)
+
       setData(formatted)
     }
   }catch(err){
@@ -56,17 +56,17 @@ useEffect(() => {
   return (
     <div className='sidebar-container'>
       <div className='sidebar-header-container'>
-        <h3 className='sidebar-header'>Development Log</h3>
+        <h3 className='sidebar-header'>Latest Posts</h3>
         {Loading ?
         <p>loading...</p> :
         
         <ul className='sidebar-list'>
           {data.map(link => (
-            <li key={link.Id}><a href={`/my-blog/${link.Id}`}>{link.Date}: {link.Topic}</a></li>
+            <li className='sidebar-list-item' key={link.Id}><a href={`/my-blog/${link.Id}`}>{link.Date.slice(0, 10)}<br/> {link.Topic}</a></li>
           ))}
         </ul>
 }
-          {error ? <p>failed to load blog links</p> : <></>}
+          {error ? <p style={{color: "red"}}>failed to load blog links</p> : <></>}
       </div>
     </div>
   )

@@ -20,7 +20,6 @@ const Blog = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [blogContent, setBlogContent] = useState<BlogContent>();
-
   const fetchBlog = async () => {
     try {
       setLoading(true);
@@ -68,26 +67,38 @@ const Blog = () => {
           <div className="blog-sidebar-container">
             <BlogSidebar />
           </div>
-          <div className="blog-content">
-          {loading ? (
-  <div className="blog-text">Loading...</div>
-) : error ? (
-  <div className="blog-text">
-    <p>Error loading blog entry</p>
-  </div>
-) : blogContent ? (
-  <>
-    <div className="blog-header-containter">
-      <h2 className="blog-header">{blogContent.Topic}</h2>
-    </div>
-    <div className="blog-text">
-      <p>{blogContent.Text}</p>
-    </div>
-    </>
-) : null}
-</div>
+          <div className="obsidian-blog-col">
+            <div className="blog-content">
+              {loading ? (
+                <div className="blog-text">Loading...</div>
+              ) : error ? (
+                <div className="blog-text">
+                  <p>
+                    Error loading blog entry Error loading blog entry Error
+                    loading blog entry Error loading blog entry Error loading
+                    blog entry Error loading blog entry Error loading blog entry
+                    Error loading blog entry Error loading blog entry Error
+                    loading blog entry Error loading blog entry Error loading
+                    blog entry Error loading blog entry Error loading blog entry
+                    Error loading blog entry
+                  </p>
+                </div>
+              ) : blogContent ? (
+                <>
+                  <div className="blog-header-containter">
+                    <h2 className="blog-header">{blogContent.Topic}</h2>
+                  </div>
+                  <div className="blog-text">
+                    <p>{blogContent.Text}</p>
+                  </div>
+                </>
+              ) : null}
+            </div>
+            <div className="obsidian-container">
+              <ObsidianViewer />
+            </div>
+          </div>
         </div>
-        <ObsidianViewer />
       </Layout>
     </div>
   );

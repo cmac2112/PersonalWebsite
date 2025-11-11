@@ -35,7 +35,7 @@ const AboutMe = () => {
       <Layout>
       <Slideshow />
       <div className={`more-about-me white ${fadingIn ? "fade-in" : ""}`}>
-        <p className='about-me-subtitle white'>Just skimming? Below are some quick descriptions of my projects and experience.</p>
+        <p className='about-me-subtitle white'>Just skimming? Below are some quick hits of my projects and experience.</p>
         <p className='about-me-subtitle white'>More in depth descriptions can be found on the Personal Projects page.</p>
         <MaterialIcon name="arrow_downward" />
         <div className='reactive-flexbox'>
