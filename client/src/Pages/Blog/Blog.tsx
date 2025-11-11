@@ -4,6 +4,7 @@ import Layout from "../../Components/Layout/Layout";
 import "./Blog.css";
 import BlogSidebar from "../../Components/BlogSidebar/BlogSidebar";
 import axios from "axios";
+import ObsidianViewer from "../../Components/ObsidianViewer/ObsidianViewer";
 interface BlogContent {
   Id: string;
   Text: string;
@@ -67,21 +68,26 @@ const Blog = () => {
           <div className="blog-sidebar-container">
             <BlogSidebar />
           </div>
+          <div className="blog-content">
           {loading ? (
   <div className="blog-text">Loading...</div>
 ) : error ? (
-  <div className="blog-text">Error loading blog.</div>
+  <div className="blog-text">
+    <p>Error loading blog entry</p>
+  </div>
 ) : blogContent ? (
-  <div className="blog-content">
+  <>
     <div className="blog-header-containter">
       <h2 className="blog-header">{blogContent.Topic}</h2>
     </div>
     <div className="blog-text">
       <p>{blogContent.Text}</p>
     </div>
-  </div>
+    </>
 ) : null}
+</div>
         </div>
+        <ObsidianViewer />
       </Layout>
     </div>
   );

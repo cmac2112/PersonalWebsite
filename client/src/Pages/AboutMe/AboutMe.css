@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
-    background: linear-gradient(135deg, #0a0a0a 0%, #0e0303 20%, #100202 40%, #130101 60%, #130101 80%, #330a11 100%);
+    background: linear-gradient(135deg, #0a0a0a 0%, #0e0303 20%, #100202 40%, #130101 60%, #130101 80%, #130101 100%);
 }
 .my-experience-list{
     display: flex;

@@ -24,3 +24,6 @@
 .hamburger:hover{
     cursor: pointer;
 }
+.title-span:hover{
+    cursor: pointer;
+}
