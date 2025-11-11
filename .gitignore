@@ -47,3 +47,4 @@ Server/cloud-sql-proxy.exe
 Server/Models/__pycache__/Blog.cpython-312.pyc
 client/.env
 client/package-lock.json
+Server/__pycache__/App.cpython-310.pyc
