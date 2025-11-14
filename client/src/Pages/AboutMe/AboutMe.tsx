@@ -8,6 +8,8 @@ import SolarEyeImage from "../../assets/solareye.png";
 import Slideshow from '../../Components/Slideshow/Slideshow';
 import MaterialIcon from '../../Components/MaterialIcon/MaterialIcon';
 import { useEffect, useState } from "react";
+import ObsidianViewer from "../../Components/ObsidianViewer/ObsidianViewer";
+import Emphasis from "../../Components/Emphasis/Emphasis";
 
 const AboutMe = () => {
   const isMobileDevice = () => {
@@ -45,15 +47,14 @@ const AboutMe = () => {
         <MyExperienceTile title='Software Developer'
          subtitle='INTRUST Bank'
          technologies={["Blazor", "C#", "SQL", ".NET", "EFCore", "Javascript", "CI/CD", "Azure"]}>
-          <h2 className='experience-tile-child-header'>Developed and Maintained 30+ internal banking solutions for INTRUST</h2>
+          <h2 className='experience-tile-child-header'>Developed and Maintained 40+ internal banking solutions for INTRUST</h2>
           <ul className="experience-list">
-  <li>Developed an app that created, documented, and prepared investment wealth accounts for trading</li>
-  <li>Developed incident tracking software for multiple units, including Physical Security</li>
+  <li>Designed and implemented a multi-stage account-documentation system used across teams to prepare investment portfolios, <Emphasis>supporting asset flows in the hundreds of millions</Emphasis> </li>
+  <li>Developed an EF Core–driven microservice to synchronize and share data across multiple applications and databases in a scalable, maintainable architecture.</li>
   <li>Built statistical dashboards for developers to monitor errors and active users in real time</li>
   <li>Implemented unit tests and integrated CI/CD pipelines to streamline test server deployments</li>
   <li>Collaborated with business units by attending meetings and gathering requirements</li>
-  <li>Leading migration of developer operations to Azure Dev Ops</li>
-  <li>Continuously developed reusable components and enhancements on an internal Nuget library that is used across all INTRUST apps</li>
+  <li>Continuously developed reusable components and enhancements for an internal NuGet library used across all INTRUST applications</li>
 </ul>
         </MyExperienceTile>
         <MyExperienceTile
@@ -85,12 +86,12 @@ const AboutMe = () => {
           <h2 className='experience-tile-child-header'>Established Bethel's first ever Software Club</h2>
             <ul className='experience-list'>
               <li>Represented Bethel in hackathons around the country</li>
-              <li>Award winning projects at hackathons like NASA's yearly Space-App Challenge</li>
+              <li><Emphasis>Award winning projects </Emphasis>at hackathons like NASA's yearly Space-App Challenge</li>
               <li>Developed projects such as BC-Social, a social media for clubs on campus to better communicate with Students</li>
               <li>Provided job interview prep for members, worked on projects using SCRUM project management for experience, reviewed pull requests and provided feedback, 
                 worked on commonly asked job interview DSA questions as a team
               </li>
-              <li>Voted 'Best Up and Coming Club'</li>
+              <li><Emphasis>Voted 'Best Up and Coming Club' and still prospering long after my graduation</Emphasis></li>
             </ul>
           
         </MyExperienceTile>
@@ -133,7 +134,7 @@ const AboutMe = () => {
         title='Solar Eye'
          subtitle='NASA Space-Apps Award Winner'
          technologies={["React", "ThreeJs", "3D-Graphics", "Simulation", "GLSL"]}>
-          <h2 className='experience-tile-child-header'>Dangerous Asteroid Visualizer NASA Award Winner</h2>
+          <h2 className='experience-tile-child-header'>Dangerous Asteroid Visualizer <Emphasis>NASA Award Winner</Emphasis></h2>
           <ul className='experience-list'>
           
             <li>Developed a 3D interactable solar system simulation to display near earth asteroids that have the potential to impact earth in the future</li>
@@ -162,7 +163,11 @@ const AboutMe = () => {
       </section>
       </div>
     </div>
+    <div className="site-explorer">
+    <ObsidianViewer />
     </div>
+    </div>
+    
     </Layout>
         
       </div>

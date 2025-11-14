@@ -1,7 +1,7 @@
 .obsidian-menu{
     display: flex;
     justify-content: space-between;
-    background-color: black;
+    background: rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid grey;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -30,6 +30,12 @@
     color: gold;
     cursor: pointer;
 }
+.obsidian-ref{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+}
 .obsidian-ref:hover{
     cursor:crosshair;
 }
@@ -39,4 +45,13 @@
 .obsidian-right >h2:hover{
     color: gold;
     cursor: pointer;
+}
+.explorer-container{
+    padding: 1rem;
+    border-bottom: 1px solid gray;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+}
+.explorer-container > p, li, h3{
+    color: white;
 }

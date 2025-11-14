@@ -96,7 +96,7 @@ const Menu:React.FC<MenuProps> = ({
           <Button label="My Projects" iconPosition='right' OnClickCallback={() => handleMyProjectsScroll()} materialIcon='experiment' />
       <Button label="Replay Animation" iconPosition='right' OnClickCallback={() => handleRestartAnimation()} materialIcon='Movie' />
       <Button label="Play My Chess Bots" OnClickCallback={() => handleChessBotNavigation()} materialIcon="chess" iconPosition='right' />
-        <Button label="Close" OnClickCallback={() => handleClose()} materialIcon="chess" iconPosition='right' />
+        <Button label="Close" OnClickCallback={() => handleClose()} materialIcon="close" iconPosition='right' />
         </div>
         </div>
   )

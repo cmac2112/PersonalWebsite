@@ -2,7 +2,7 @@
     position: relative;
     background-color: #222222;
     border: none;
-    border-radius: 3rem;
+    border-radius: 1rem;
     min-width: 10rem;
     min-height: 2.5rem;
     max-height: 3rem;
@@ -90,18 +90,18 @@
         max-height: 2.5rem;
         font-size: 0.8125rem;
         padding: 0.675rem 1.05rem;
-        border-radius: 2.5rem; 
+        border-radius: 1.5rem; 
     }
     
     .button-component::before {
         width: 4px;
-        border-radius: 2.5rem 0 0 2.5rem;
+        border-radius: 1.5rem 0 0 1.5rem;
     }
     
     .button-component::after {
         left: 0px;
         width: 0;
-        border-radius: 0 2.5rem 2.5rem 0;
+        border-radius: 0 1.5rem 1.5rem 0;
     }
     
     .button-component:hover::after,
@@ -120,17 +120,17 @@
         max-height: 3.25rem;
         font-size: 0.875rem;
         padding: 0.8125rem 1.375rem;
-        border-radius: 2.75rem;
+        border-radius: 1.75rem;
     }
     
     .button-component::before {
         width: 4px;
-        border-radius: 2.75rem 0 0 2.75rem;
+        border-radius: 1.75rem 0 0 1.75rem;
     }
     
     .button-component::after {
         left: 0px;
-        border-radius: 0 2.75rem 2.75rem 0;
+        border-radius: 0 1.75rem 1.75rem 0;
     }
     
     .button-component:hover::after,
@@ -150,17 +150,17 @@
         max-height: 3rem;
         font-size: 0.9375rem;
         padding: 0.875rem 1.75rem;
-        border-radius: 3rem;
+        border-radius: 1rem;
     }
     
     .button-component::before {
         width: 6px;
-        border-radius: 3rem 0 0 3rem;
+        border-radius: 1rem 0 0 1rem;
     }
     
     .button-component::after {
         left: 0px;
-        border-radius: 0 3rem 3rem 0;
+        border-radius: 0 1rem 1rem 0;
     }
     
     .button-component:hover::after,
@@ -180,12 +180,12 @@
 }
 @media (min-resolution: 192dpi) {
     .button-component {
-        border-radius: 3.125rem;
+        border-radius: 1.125rem;
     }
     
     .button-component::before,
     .button-component::after {
-        border-radius: 3.125rem;
+        border-radius: 1.125rem;
     }
 }
 @media (prefers-reduced-motion: reduce) {

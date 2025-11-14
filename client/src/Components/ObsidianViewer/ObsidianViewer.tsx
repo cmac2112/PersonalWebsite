@@ -20,6 +20,7 @@ const ObsidianViewer = () => {
   const [resetVar, setResetVar] = useState<boolean>(false);
   const [closed, setClosed] = useState<boolean>(false);
 
+  const [modal, setModal] = useState<boolean>(false);
   //size the svg on mount
   useEffect(() => {
     function updateWidth() {
@@ -168,18 +169,45 @@ const ObsidianViewer = () => {
     setClosed(prev => !prev)
   }
 
+  const HandleModal = () => {
+    setModal(prev => !prev)
+  }
   
+
+  const RenderModal = () => {
+    return (
+      <div className="explorer-container">
+          <h3>Node Explorer</h3>
+          <p>The site explorer is a unique way to traverse my website!</p>
+          <ol>
+          <li>Each node is a page on the site that you can visit and are grouped together by type.</li>
+          <li>Hold and drag to travese the environment</li>
+          <li>Click on any node to go to that page of the site</li>
+          </ol>
+          <p>Still Confused? Dont worry! You can still travel the site through the hamburger menu on the top right of each page!</p>
+          
+      </div>
+    )
+  }
+
   return (
     <div ref={containerRef} className="obsidian-container-ref">
       <div className="obsidian-menu">
+        
         <div className="obsidian-left">
         <h2>Site Explorer</h2>
         <p onClick={() => Reset()}>Reset</p>
+        <p onClick={() => HandleModal()}>About The Explorer</p>
         </div>
         <div className="obsidian-right">
-          <h2 onClick={() => HandleMinimize()}>X</h2>
+          <h2 onClick={() => HandleMinimize()}>
+            {!closed ?
+            "Close" : "Open" }</h2>
         </div>
       </div>
+      {modal ?
+        RenderModal()
+      : <></>}
       {!closed ?
       <svg
         ref={svgRef}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import HHNebula from "../../assets/slideshow/hhnebulaj700.jpg";
 import SatView from "../../assets/slideshow/StellarSatView.jpg";
 import PfpDesktop from "../../assets/slideshow/pfpdesktop.jpg";
@@ -27,24 +27,47 @@ const Slideshow = () => {
   const [slideNumber, setSlideNumber] = useState<number>(0);
   const [fadeIn, setFadeIn] = useState<boolean>(true);
 
+  
+  const manualAdvanceRef = useRef<boolean>(false);
+
   const handleNewWindowNavigation = (url: string) => {
     const delayTime = isMobileDevice() ? 350 : 0;
     setTimeout(() => {
       navigate(url);
     }, delayTime);
   };
-  useEffect(() => {
-    setFadeIn(true);
-    const timeout = setTimeout(() => setFadeIn(false), 500); // match animation duration
-    return () => clearTimeout(timeout);
-  }, [slideNumber]);
+
   const HandleSlideChange = (forwards: boolean) => {
+    manualAdvanceRef.current = true;
     if (forwards) {
       setSlideNumber((prev) => (prev === slideArray.length - 1 ? 0 : prev + 1));
     } else {
       setSlideNumber((prev) => (prev === 0 ? slideArray.length - 1 : prev - 1));
     }
   };
+
+  useEffect(() => {
+  let timeout;
+  if (manualAdvanceRef.current) {
+    timeout = setTimeout(() => {
+      HandleSlideChange(true);
+      manualAdvanceRef.current = false;
+    }, 20000); // 20 seconds after manual
+  } else {
+    timeout = setTimeout(() => {
+      HandleSlideChange(true);
+    }, 8000); // 8 seconds auto
+  }
+  return () => clearTimeout(timeout);
+}, [slideNumber]);
+
+  useEffect(() => {
+    setFadeIn(true);
+    const timeout = setTimeout(() => setFadeIn(false), 500); // match animation duration
+    return () => clearTimeout(timeout);
+  }, [slideNumber]);
+
+  
   return (
     <>
       <div className="slideshow-container">
@@ -59,7 +82,7 @@ const Slideshow = () => {
             <h2 className="slide-subtitle">I'm Caden McArthur</h2>
             <div className="slide-button-container">
               <Button
-                label="Explore"
+                label="My Experience"
                 OnClickCallback={() => handleNewWindowNavigation("/my-story")}
                 materialIcon="person_celebrate"
                 iconPosition="right"
