@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Menu from '../Menu/Menu';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
+import { DefinedRoutes } from '../../Helpers/RouteConstants';
 
 const Header = (
 {
@@ -21,7 +22,7 @@ const Header = (
   return (
       <>
     <div className='header-container'>
-      <span className='title-span' onClick={() => navigate("/about-me")}>
+      <span className='title-span' onClick={() => navigate(DefinedRoutes.Home)}>
         <h2 className='title-header'>Caden McArthur</h2>
         </span>
         <span className="material-symbols-outlined hamburger" onClick={handleMenu}>

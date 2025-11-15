@@ -3,7 +3,7 @@ import * as d3 from "d3";
 import Button from "../Button/Button";
 import "./ObsidianViewer.css"
 import type { ObsidianNode, ObsidianLink } from "../../Helpers/DefaultExplorer";
-import { defaultNodes, defaultLinks } from "../../Helpers/DefaultExplorer";
+import { defaultNodes, defaultLinks, TypeColorTranslator } from "../../Helpers/DefaultExplorer";
 import { useNavigate } from "react-router-dom";
 const ObsidianViewer = () => {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -15,6 +15,9 @@ const ObsidianViewer = () => {
   const [closed, setClosed] = useState<boolean>(false);
 
   const [modal, setModal] = useState<boolean>(false);
+
+  // used to turn on the tools and framework links for each project
+  const [advancedView, setAdvancedview] = useState<boolean>(false);
 
   const navigate = useNavigate();
   //size the svg on mount
@@ -75,7 +78,7 @@ const ObsidianViewer = () => {
           .distance(20)
       )
       .force("charge", d3.forceManyBody().strength(-800))
-      .force("center", d3.forceCenter(250, 250));
+      .force("center", d3.forceCenter(svgHeight / 2, svgWidth / 3));
 
     const link = g
       .append("g")
@@ -84,24 +87,25 @@ const ObsidianViewer = () => {
       .selectAll("line")
       .data(links)
       .join("line")
-      .attr("stroke-width", 4);
+      .attr("stroke-width", 2);
 
     const node = g
       .append("g")
-      
-      .attr("stroke", "#fff")
-      .attr("stroke-width", 1)
-      .attr("fill", "red")
+      .attr("stroke", "black")
+      .attr("stroke-width", 2)
       .selectAll<SVGCircleElement, ObsidianNode>("circle")
       .data(nodes)
       .join("circle")
       .attr("r", 10)
+      .attr("fill", d => TypeColorTranslator(d.type))
       .on("click", HandleClickEvent)
       .on("mouseover", function(){
         d3.select(this).style("cursor","pointer")
+        d3.select(this).style("stroke", "white")
       })
       .on("mouseout", function () {
     d3.select(this).style("cursor", "default");
+    d3.select(this).style("stroke", "black")
   });
 
 
@@ -112,7 +116,7 @@ const ObsidianViewer = () => {
   .data(nodes)
   .join("text")
   .text(d => d.title)
-  .attr("font-size", 14)
+  .attr("font-size", 12)
   .attr("font-family", "Archivo Black, sans-serif")
   .attr("fill", "#dfdfdfff") // goldish
   .attr("text-anchor", "middle")

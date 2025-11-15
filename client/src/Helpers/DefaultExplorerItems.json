@@ -1,0 +1,132 @@
+[
+    {
+        "id": "Home",
+        "link": "/home",
+        "title": "Home",
+        "type": "master",
+        "LinksTo": [
+            "Experience", "Projects", "Blog", "Astrophotography", "Chess", "Resume"
+        ]
+    },
+    {
+        "id": "Experience",
+        "link": "/projects",
+        "title": "Experience",
+        "type": "experience",
+        "LinksTo": ["INTRUST BANK", "Legget & Platt", "Bethel College", "Software Club"]
+    },
+    {
+        "id": "Projects",
+        "link": "/projects",
+        "title": "Projects",
+        "type": "projects",
+        "LinksTo": ["Obby-Parser", "Stellar View", "Chess", "Solar Eye", "Sky Watch", "Ez Documents", "BC Social"]
+    },
+    {
+        "id": "Blog",
+        "link": "/my-blog",
+        "title": "Blog",
+        "type": "blog",
+        "LinksTo": []
+    },
+    {
+        "id": "Astrophotography",
+        "link": "/images",
+        "title": "Astrophotography",
+        "type": "images",
+        "LinksTo": []
+    },
+    {
+        "id": "Chess",
+        "link": "/chess",
+        "title": "Chess",
+        "type": "chess",
+        "LinksTo": []
+    },
+    {
+        "id": "Resume",
+        "link": "/CadenMcArthurResume.pdf",
+        "title": "Resume",
+        "type": "resume",
+        "LinksTo": []
+    },
+    {
+        "id": "INTRUST BANK",
+        "link": "/projects",
+        "title": "INTRUST BANK",
+        "type": "experience",
+        "LinksTo": []
+    },
+    {
+        "id": "Legget & Platt",
+        "link": "/projects",
+        "title": "Legget & Platt",
+        "type": "experience",
+        "LinksTo": []
+    },
+    {
+        "id": "Bethel College",
+        "link": "/projects",
+        "title": "Bethel College",
+        "type": "experience",
+        "LinksTo": []
+    },
+    {
+        "id": "Obby-Parser",
+        "link": "/projects",
+        "title": "Obby-Parser",
+        "type": "projects",
+        "LinksTo": []
+    },
+    {
+        "id": "Stellar View",
+        "link": "/projects",
+        "title": "Stellar View",
+        "type": "projects",
+        "LinksTo": []
+    },
+    {
+        "id": "Solar Eye",
+        "link": "/projects",
+        "title": "Solar Eye",
+        "type": "projects",
+        "LinksTo": []
+    },
+    {
+        "id": "Software Club",
+        "link": "/projects",
+        "title": "Software Club",
+        "type": "experience",
+        "LinksTo": ["Solar Eye", "Sky Watch", "BC Social"]
+    },
+    {
+        "id": "Course Search",
+        "link": "/projects",
+        "title": "Course Search",
+        "type": "projects",
+        "LinksTo": []
+    },
+    {
+        "id": "BC Social",
+        "link": "/projects",
+        "title": "BC Social",
+        "type": "projects",
+        "LinksTo": []
+    },
+    {
+        "id": "Sky Watch",
+        "link": "/projects",
+        "title": "Sky Watch",
+        "type": "projects",
+        "LinksTo": []
+    },
+    {
+        "id": "Ez Documents",
+        "link": "/projects",
+        "title": "Ez Documents",
+        "type": "projects",
+        "LinksTo": []
+    }
+        
+
+]

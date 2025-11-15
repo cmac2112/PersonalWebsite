@@ -2,11 +2,11 @@
 
 export const DefinedRoutes = {
     Landing: "/",
-    Home: "/about-me",
+    Home: "/home",
     Chess: "/chess",
     Projects: "/projects",
     Images: "/images",
     Story: "/story",
-    Blog: "/my-blog/:id?",
+    Blog: "/my-blog",
     Resume: "/CadenMcArthurResume.pdf",
 } as const
