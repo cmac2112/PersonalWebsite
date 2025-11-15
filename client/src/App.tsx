@@ -10,18 +10,19 @@ import MyStory from "./Pages/MyStory/MyStory";
 import Blog from "./Pages/Blog/Blog";
 import MyProjects from "./Pages/MyProjects/MyProjects";
 import AboutMe from "./Pages/AboutMe/AboutMe";
+import { DefinedRoutes } from "./Helpers/RouteConstants";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/about-me" element={<AboutMe />} />
-        <Route path="/chess" element={<Chess />} />
-        <Route path="/my-projects" element={<MyProjects />} />
-        <Route path="/my-images" element={<MyImages />} />
-        <Route path="/my-story" element={<MyStory />} />
-        <Route path="/my-blog/:id?" element={<Blog />} />
+        <Route path={DefinedRoutes.Landing} element={<Welcome />} />
+        <Route path={DefinedRoutes.Home} element={<AboutMe />} />
+        <Route path={DefinedRoutes.Chess} element={<Chess />} />
+        <Route path={DefinedRoutes.Projects} element={<MyProjects />} />
+        <Route path={DefinedRoutes.Images} element={<MyImages />} />
+        <Route path={DefinedRoutes.Story} element={<MyStory />} />
+        <Route path={DefinedRoutes.Blog} element={<Blog />} />
       </Routes>
     </Router>
   )

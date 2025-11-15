@@ -2,15 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import Button from "../Button/Button";
 import "./ObsidianViewer.css"
-interface ObsidianNode extends d3.SimulationNodeDatum {
-  id: string;
-  title: string;
-}
-
-interface ObsidianLink extends d3.SimulationLinkDatum<ObsidianNode> {
-  source: string | ObsidianNode;
-  target: string | ObsidianNode;
-}
+import type { ObsidianNode, ObsidianLink } from "../../Helpers/DefaultExplorer";
+import { defaultNodes, defaultLinks } from "../../Helpers/DefaultExplorer";
+import { useNavigate } from "react-router-dom";
 const ObsidianViewer = () => {
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -21,6 +15,8 @@ const ObsidianViewer = () => {
   const [closed, setClosed] = useState<boolean>(false);
 
   const [modal, setModal] = useState<boolean>(false);
+
+  const navigate = useNavigate();
   //size the svg on mount
   useEffect(() => {
     function updateWidth() {
@@ -62,18 +58,12 @@ const ObsidianViewer = () => {
 
     //need to extend the class in typscript to support type saftey
 
-    const nodes: ObsidianNode[] = [
-      { id: "master", title: "master node" },
-      { id: "test", title: "test node" },
-      { id: "test2", title: "test2 node" },
-    ];
+    //default nodes
+
+    const nodes: ObsidianNode[] = defaultNodes;
 
     //create links and their targets
-    const links: ObsidianLink[] = [
-      { source: "test", target: "master" },
-      { source: "test2", target: "master" },
-      {source: "test", target: "test2"}
-    ];
+    const links: ObsidianLink[] = defaultLinks;
 
     const simulation = d3
       .forceSimulation<ObsidianNode>(nodes)
@@ -84,7 +74,7 @@ const ObsidianViewer = () => {
           .id((d) => d.id)
           .distance(20)
       )
-      .force("charge", d3.forceManyBody().strength(-200))
+      .force("charge", d3.forceManyBody().strength(-800))
       .force("center", d3.forceCenter(250, 250));
 
     const link = g
@@ -98,13 +88,36 @@ const ObsidianViewer = () => {
 
     const node = g
       .append("g")
+      
       .attr("stroke", "#fff")
       .attr("stroke-width", 1)
       .attr("fill", "red")
       .selectAll<SVGCircleElement, ObsidianNode>("circle")
       .data(nodes)
       .join("circle")
-      .attr("r", 10);
+      .attr("r", 10)
+      .on("click", HandleClickEvent)
+      .on("mouseover", function(){
+        d3.select(this).style("cursor","pointer")
+      })
+      .on("mouseout", function () {
+    d3.select(this).style("cursor", "default");
+  });
+
+
+
+  const labels = g
+  .append("g")
+  .selectAll<SVGTextElement, ObsidianNode>("text")
+  .data(nodes)
+  .join("text")
+  .text(d => d.title)
+  .attr("font-size", 14)
+  .attr("font-family", "Archivo Black, sans-serif")
+  .attr("fill", "#dfdfdfff") // goldish
+  .attr("text-anchor", "middle")
+  .attr("dy", -15); // float above the node
+      
 
     simulation.on("tick", () => {
       link
@@ -132,6 +145,10 @@ const ObsidianViewer = () => {
       node
         .attr("cx", (d) => (d.x !== undefined ? d.x : 0))
         .attr("cy", (d) => (d.y !== undefined ? d.y : 0));
+
+        labels
+        .attr("x", d => d.x !== undefined ? d.x : 0)
+        .attr("y", d => d.y !== undefined ? d.y : 0)
     });
     node.call(
       d3
@@ -139,8 +156,15 @@ const ObsidianViewer = () => {
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended)
+      
     );
-
+    function HandleClickEvent(event: any, d: ObsidianNode){
+      console.log("clicked", d.title)
+      if(!event) return;
+      if(d.link){
+        navigate(d.link)
+      }
+    }
     function dragstarted(event: d3.D3DragEvent<SVGCircleElement, ObsidianNode, unknown>, d: ObsidianNode) {
       if (!event.active) simulation.alphaTarget(0.3).restart();
       d.fx = d.x;
