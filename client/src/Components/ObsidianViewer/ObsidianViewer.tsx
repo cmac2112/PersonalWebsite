@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
-import Button from "../Button/Button";
 import "./ObsidianViewer.css"
 import type { ObsidianNode, ObsidianLink } from "../../Helpers/DefaultExplorer";
 import { defaultNodes, defaultLinks, TypeColorTranslator } from "../../Helpers/DefaultExplorer";
