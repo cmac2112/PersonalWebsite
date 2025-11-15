@@ -57,14 +57,15 @@ def get_blogs():
     session.close()
     return {"blogs": [{"id": b.id, "date": str(b.DateCreated), "topic": b.Topic, "text": b.Text, "links": b.LinksTo} for b in blogs]}
 
-@app.route('/api/blog/<id>', methods=['GET'])
+@app.route('/api/blog/<int:id>', methods=['GET'])
 def get_blog_by_Id(id: int):
     print(f"GET /api/blog/{id}")
+    # Validate that id is a positive integer
+    if not isinstance(id, int) or id <= 0:
+        return {"error": "Invalid blog id. Must be a positive integer."}, 400
     session = SessionLocal()
-    
     blog: BlogItem = session.query(BlogItem).filter(BlogItem.id == id).first()
     session.close()
-    
     if blog:    
         return {
             "id": blog.id,
