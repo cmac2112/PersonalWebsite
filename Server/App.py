@@ -85,6 +85,7 @@ def get_latest_blog():
     if blog:
         return {
             "id": blog.id,
+            "link": blog.link,
             "date": str(blog.DateCreated),
             "text": blog.Text,
             "links":blog.LinksTo

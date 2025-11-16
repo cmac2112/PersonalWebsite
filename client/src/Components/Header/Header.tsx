@@ -25,10 +25,14 @@ const Header = (
       <span className='title-span' onClick={() => navigate(DefinedRoutes.Home)}>
         <h2 className='title-header'>Caden McArthur</h2>
         </span>
+        <div className='right-header'>
+        {/* leaving this for a future ui enhancement */}
         <span className="material-symbols-outlined hamburger" onClick={handleMenu}>
 menu
 </span>
+</div>
     </div>
+   
     {menu ?
           <Menu isMobileDevice={isMobileDevice} handleClose={handleMenu}/>
           : <></>

@@ -4,6 +4,7 @@ import "./ObsidianViewer.css"
 import type { ObsidianNode, ObsidianLink } from "../../Helpers/DefaultExplorer";
 import { defaultNodes, defaultLinks, TypeColorTranslator } from "../../Helpers/DefaultExplorer";
 import { useNavigate } from "react-router-dom";
+import Emphasis from "../Emphasis/Emphasis";
 const ObsidianViewer = () => {
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -186,7 +187,7 @@ const ObsidianViewer = () => {
     return () => {
       simulation.stop();
     };
-  }, [svgWidth, svgHeight, resetVar, closed]);
+  }, [svgWidth, svgHeight, resetVar, closed, advancedView]);
 
 
   const Reset = () => {
@@ -209,7 +210,8 @@ const ObsidianViewer = () => {
           <ol>
           <li>Each node is a page on the site that you can visit and are grouped together by type.</li>
           <li>Hold and drag to travese the environment</li>
-          <li>Click on any node to go to that page of the site</li>
+          <li>Or click and drag on nodes to move them around</li>
+          <li><Emphasis>Click on any node to visit that part of the site!</Emphasis></li>
           </ol>
           <p>Still Confused? Dont worry! You can still travel the site through the hamburger menu on the top right of each page!</p>
           

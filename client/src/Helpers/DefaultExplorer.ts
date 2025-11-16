@@ -47,3 +47,6 @@ export const TypeColorTranslator = (type: string): string => {
 
   return map[type] ?? "gray"; // default fallback
 };
+
+//cache for blogstuff
+export let blogCache: ExplorerItem[] = [];
