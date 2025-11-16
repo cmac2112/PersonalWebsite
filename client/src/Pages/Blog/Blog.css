@@ -1,0 +1,70 @@
+.blog-container{
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #0e0303 20%, #100202 40%, #130101 60%, #130101 80%, #130101 100%);
+}
+.blog-header{
+    color: white;
+}
+
+.my-blog-flex-container{
+    display: flex;
+    justify-content: start;
+    margin-right: 1rem;
+    
+}
+.blog-sidebar-container{
+    width: auto;
+}
+.blog-content{
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    padding-inline-start: 1rem;
+    border: 1px solid rgb(110, 105, 105);
+    border-radius: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    
+}
+.blog-text > p{
+    color: white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: none;
+    padding: none;
+    
+}
+.blog-text > h1 {
+    color: white;
+}
+a{
+    color: gold;
+    
+}
+.blog-text{
+    color: white;
+    font-family: "Archivo Black", sans-serif;
+    
+}
+.obsidian-container{
+    padding: 0.1rem;
+    border: 1px solid rgb(110, 105, 105);
+    border-radius: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.obsidian-blog-col{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}

@@ -6,6 +6,7 @@ import Tool from '../../Components/Tool/Tool';
 import Button from '../../Components/Button/Button';
 import "./MediaCss.css"
 import { useNavigate } from 'react-router-dom';
+import { DefinedRoutes } from '../../Helpers/RouteConstants';
 
 // Types for better type safety
 type AnimationStep = 0 | 1 | 2 | 3 | 4 | 5;
@@ -158,7 +159,7 @@ const Welcome = () => {
   const skipToEnd = useCallback(() => {
     setAnimationStep(MAX_ANIMATION_STEPS as AnimationStep);
     setIsAnimationComplete(true);
-    navigate("/about-me")
+    navigate(DefinedRoutes.Home);
   }, []);
 
   // Enhanced click handling with haptic feedback
@@ -200,32 +201,6 @@ const Welcome = () => {
     setRememberChoiceModal(false);
   }, [skipToEnd]);
 
-  // Enhanced animation restart functionality
-  /*
-  const handleRestartAnimation = useCallback(() => {
-    // Reset skip preference temporarily
-    const skipPreference = getStorageItem(STORAGE_KEYS.SKIP_INTRO);
-    if (skipPreference) {
-      setStorageItem(STORAGE_KEYS.SKIP_INTRO, '0');
-    }
-
-    // Reset all state
-    setAnimationStep(0);
-    setIsAnimationComplete(false);
-    setRememberChoiceModal(false);
-    setCurrentTypingMessage('');
-    setTypingIndex(0);
-    setShowClickHint(true);
-
-    // Start animation with dramatic effect
-    setTimeout(() => {
-      setAnimationStep(1);
-      if ('navigator' in window && 'vibrate' in navigator) {
-        navigator.vibrate([200, 100, 200, 100, 200]);
-      }
-    }, ANIMATION_DELAY);
-  }, [getStorageItem, setStorageItem, STORAGE_KEYS.SKIP_INTRO]);
-*/
   // Initialize component and handle visit tracking
   useEffect(() => {
     const skipAnimationChoice = getStorageItem(STORAGE_KEYS.SKIP_INTRO);
@@ -258,7 +233,7 @@ const Welcome = () => {
   // Enhanced event listener management
   useEffect(() => {
     if(isAnimationComplete){
-      navigate("/about-me")
+      navigate(DefinedRoutes.Home)
     }
     if (rememberChoiceModal) {
     
@@ -442,7 +417,7 @@ const Welcome = () => {
         
         {/* Software Engineer Introduction */}
         <h2 className={`software ${animationStep > 2 ? currentAnimationClass : ''}`}>
-          I'm a Software Engineer and a 2025 graduate from Bethel College
+          I'm a Software Engineer and one of Bethel College's first software graduates
         </h2>
         <img 
           src={football} 

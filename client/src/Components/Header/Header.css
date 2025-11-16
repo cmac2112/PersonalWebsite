@@ -24,3 +24,15 @@
 .hamburger:hover{
     cursor: pointer;
 }
+.title-span:hover{
+    cursor: pointer;
+}
+.right-header{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 3rem;
+}
+.right-header > p{
+    color: white;
+}

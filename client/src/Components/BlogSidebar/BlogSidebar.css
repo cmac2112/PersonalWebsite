@@ -1,0 +1,40 @@
+.sidebar-container{
+    background: rgba(255, 255, 255, 0.05);
+    max-width: 20vw;
+    min-width: 17vw;
+    height: 100%;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+.sidebar-header-container{
+    padding: 1rem;
+    
+}
+
+.sidebar-header{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+.sidebar-list > li{
+    color: grey;
+}
+.sidebar-list-item{
+    min-height: 40px;
+}
+.sidebar-list-item > a{
+    color: white;
+    text-decoration: none;
+}
+.sidebar-list-item > a:hover{
+    color: gold;
+    text-decoration: none;
+}
+.sidebar-list-item > a:visited:hover{
+    color: gold;
+    text-decoration: none;
+}
+.sidebar-list-item > a:visited{
+    color: rgb(165, 138, 238);
+    text-decoration: none;
+}
