@@ -36,6 +36,21 @@
     color: white;
     padding-left: 1rem;
     padding-right: 1rem;
+    margin: none;
+    padding: none;
+    
+}
+.blog-text > h1 {
+    color: white;
+}
+a{
+    color: gold;
+    
+}
+.blog-text{
+    color: white;
+    font-family: "Archivo Black", sans-serif;
+    
 }
 .obsidian-container{
     padding: 0.1rem;

@@ -1,7 +1,7 @@
 //default nodes for the site explorer
 import explorerItems from "./DefaultExplorerItems.json"
 
-interface ExplorerItem{
+export interface ExplorerItem{
   id: string;
   link: string;
   title: string;
@@ -19,6 +19,22 @@ export interface ObsidianNode extends d3.SimulationNodeDatum {
 export interface ObsidianLink extends d3.SimulationLinkDatum<ObsidianNode> {
   source: string | ObsidianNode;
   target: string | ObsidianNode;
+}
+
+export const MapItemsToNode = (items: ExplorerItem[]): ObsidianNode[] => {
+  return items.map(item => ({
+    id: item.id,
+    title: item.title,
+    type: item.type,
+    link: item.link,
+  }));
+}
+export const MapLinks = (items: ExplorerItem[]): ObsidianLink[] => {
+  return items.filter(item => item.LinksTo && item.LinksTo.length > 0)
+.flatMap(item => item.LinksTo.map(targetId => ({
+  source: item.id,
+  target: targetId
+})));
 }
 
 export const defaultNodes: ObsidianNode[] = items.map(item => ({
@@ -48,5 +64,3 @@ export const TypeColorTranslator = (type: string): string => {
   return map[type] ?? "gray"; // default fallback
 };
 
-//cache for blogstuff
-export let blogCache: ExplorerItem[] = [];

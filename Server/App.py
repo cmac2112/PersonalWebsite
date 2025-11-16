@@ -5,6 +5,8 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from sqlalchemy.orm import sessionmaker
 from Models.Blog import Base, BlogItem
+from datetime import datetime
+import json
 import os
 from dotenv import load_dotenv
 
@@ -17,7 +19,7 @@ DB_PORT = os.getenv("database_port")
 DB_NAME = os.getenv("database_name")
 DB_DRIVER = os.getenv("DB_DRIVER")
 DATABASE_URL = (
-    f"mssql+pyodbc://{DB_USERNAME}:{DB_PASSWORD}@127.0.0.1:{DB_PORT}/{DB_NAME}"
+    f"mssql+pyodbc://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
     f"?driver=ODBC+Driver+18+for+SQL+Server&Encrypt=no"
 )
 
@@ -54,6 +56,8 @@ def get_blogs():
     #query
     blogs = session.query(BlogItem).all()
     #dispose
+    for blog in blogs:
+        print(blog)
     session.close()
     return {"blogs": [{"id": b.id, "date": str(b.DateCreated), "topic": b.Topic, "text": b.Text, "links": b.LinksTo} for b in blogs]}
 
@@ -92,5 +96,33 @@ def get_latest_blog():
         }
     else:
         return {"error": "blog not found"}, 404
+    
+@app.route('/api/addblog', methods=['POST'])
+def add_latest_blog():
+    print('POST /api/addblog')
+    
+    data = request.get_json()
+    
+    blog = BlogItem()
+    blog.DateCreated = datetime.now()
+    blog.Text = data.get("text")
+    blog.LinksTo = json.dumps(data.get("links"))
+    blog.Topic = data.get("topic")
+    
+    try:
+        db = SessionLocal() #create the context (like efcore)
+    
+        db.add(blog) # add the blog
+        db.commit() # commit transaction to save to db
+        db.close() # close and dispose of context
+        return "Blog posted successfully"
+    except:
+        return "An exception has occurred 500"
+        
+        
+    
+    
+    
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)

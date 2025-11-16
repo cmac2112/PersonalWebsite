@@ -12,6 +12,7 @@ import MyProjects from "./Pages/MyProjects/MyProjects";
 import AboutMe from "./Pages/AboutMe/AboutMe";
 import { DefinedRoutes } from "./Helpers/RouteConstants";
 
+// for project links they will need to be rerouted to /projects
 function App() {
   return (
     <Router>
@@ -22,7 +23,7 @@ function App() {
         <Route path={DefinedRoutes.Projects} element={<MyProjects />} />
         <Route path={DefinedRoutes.Images} element={<MyImages />} />
         <Route path={DefinedRoutes.Story} element={<MyStory />} />
-        <Route path={DefinedRoutes.Blog} element={<Blog />} />
+        <Route path="/my-blog/:id?" element={<Blog />} />
       </Routes>
     </Router>
   )

@@ -74,12 +74,6 @@ const Blog = () => {
               ) : error ? (
                 <div className="blog-text">
                   <p>
-                    Error loading blog entry Error loading blog entry Error
-                    loading blog entry Error loading blog entry Error loading
-                    blog entry Error loading blog entry Error loading blog entry
-                    Error loading blog entry Error loading blog entry Error
-                    loading blog entry Error loading blog entry Error loading
-                    blog entry Error loading blog entry Error loading blog entry
                     Error loading blog entry
                   </p>
                 </div>
@@ -88,8 +82,8 @@ const Blog = () => {
                   <div className="blog-header-containter">
                     <h2 className="blog-header">{blogContent.Topic}</h2>
                   </div>
-                  <div className="blog-text">
-                    <p>{blogContent.Text}</p>
+                  <div className="blog-text" style={{whiteSpace: "pre-wrap"}} dangerouslySetInnerHTML={{ __html: blogContent.Text}}>
+                    
                   </div>
                 </>
               ) : null}

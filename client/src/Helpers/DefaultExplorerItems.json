@@ -20,7 +20,7 @@
         "link": "/projects",
         "title": "Projects",
         "type": "projects",
-        "LinksTo": ["Obby-Parser", "Stellar View", "Chess", "Solar Eye", "Sky Watch", "Ez Documents", "BC Social"]
+        "LinksTo": ["Obby-Parser", "Stellar View", "Chess", "Solar Eye", "Sky Watch", "Ez Documents", "BC Social", "Course Search"]
     },
     {
         "id": "Blog",
@@ -127,6 +127,7 @@
         "type": "projects",
         "LinksTo": []
     }
+
         
 
 ]

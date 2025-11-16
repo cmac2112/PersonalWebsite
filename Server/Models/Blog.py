@@ -11,3 +11,6 @@ class BlogItem(Base):
     Text = Column(String, nullable=False)
     LinksTo = Column(String)
     Topic = Column(String)
+    
+    def __str__(self):
+        return f"{self.id}, {self.DateCreated}, {self.Text}, {self.LinksTo}, {self.Topic}"
