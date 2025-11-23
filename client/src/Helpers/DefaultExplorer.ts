@@ -1,6 +1,13 @@
 //default nodes for the site explorer
 import explorerItems from "./DefaultExplorerItems.json"
 
+export interface SidebarLink{
+Id: string;
+  Topic: string; // string displayed in li
+  Date: string;
+}
+
+
 export interface ExplorerItem{
   id: string;
   link: string;

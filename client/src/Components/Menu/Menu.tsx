@@ -30,8 +30,8 @@ const Menu: React.FC<MenuProps> = ({ isMobileDevice, handleClose }) => {
     const delayTime = isMobileDevice() ? 400 : 0;
 
     setTimeout(() => {
-      window.open(DefinedRoutes.Resume, "_blank");
     }, delayTime);
+    window.open(DefinedRoutes.Resume, "_blank");
   }, []);
 
   const handleContactScroll = useCallback(() => {

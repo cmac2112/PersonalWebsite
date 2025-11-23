@@ -49,10 +49,10 @@ const AboutMe = () => {
          technologies={["Blazor", "C#", "SQL", ".NET", "EFCore", "Javascript", "CI/CD", "Azure"]}>
           <h2 className='experience-tile-child-header'>Developed and Maintained 40+ internal banking solutions for INTRUST</h2>
           <ul className="experience-list">
-  <li>Designed and implemented a multi-stage account-documentation system used across teams to prepare investment portfolios, <Emphasis>supporting asset flows in the hundreds of millions</Emphasis> </li>
-  <li>Developed an EF Core–driven microservice to synchronize and share data across multiple applications and databases in a scalable, maintainable architecture.</li>
-  <li>Built statistical dashboards for developers to monitor errors and active users in real time</li>
-  <li>Implemented unit tests and integrated CI/CD pipelines to streamline test server deployments</li>
+  <li>Designed and implemented a multi-stage wealth/investment account-documentation system used across teams to prepare investment portfolios, <Emphasis>supporting asset flows in the hundreds of millions</Emphasis> </li>
+  <li>Architected an EF Core–driven microservice to synchronize and share data across multiple legacy applications and databases in a scalable, maintainable architecture.</li>
+  <li>Built and enhanced statistical dashboards for developers to monitor errors and active users in real time</li>
+  <li>Implemented unit tests and integrated CI/CD pipelines to streamline testing and deployments</li>
   <li>Collaborated with business units by attending meetings and gathering requirements</li>
   <li>Continuously developed reusable components and enhancements for an internal NuGet library used across all INTRUST applications</li>
 </ul>
