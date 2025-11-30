@@ -12,9 +12,15 @@ import {
 import { useNavigate } from "react-router-dom";
 import Emphasis from "../Emphasis/Emphasis";
 import axios from "axios";
+import LoadingSpinner from "../Spinners/LoadingSpinner";
+import { DefinedRoutes } from "../../Helpers/RouteConstants";
+import { useObbyViewer } from "../../Contexts/ObbyViewerContext";
 
 
 const ObsidianViewer = () => {
+
+  const {blogItems, explorerLoading, explorerError, refreshExplorer } = useObbyViewer();
+
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -25,11 +31,6 @@ const ObsidianViewer = () => {
 
   const [modal, setModal] = useState<boolean>(false);
 
-  const [blogItems, setBlogItems] = useState<ObsidianNode[]>([]);
-
-  const [loading, setLoading] = useState<boolean>(false);
-
-  const blogCache = useRef<ExplorerItem[]>([]);
   // used to turn on the tools and framework links for each project
   //on hold for now. Maybe if they click on these ones that dont have dedicated page we can just display the mentions
   // of an item. I dont know how difficult that would be or if it would even be worth it
@@ -51,53 +52,21 @@ const ObsidianViewer = () => {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  const GetblogDataAsync = async(): Promise<ExplorerItem[]> => {
-    try{
-      const response = await axios.get(`${import.meta.env.VITE_URL_DEV}/api/blogs`)
-      console.log(response)
-      if(response.status === 200){
-        console.log(response.data.blogs)
-        const items: ExplorerItem[] = response.data.blogs.map((item: any) => ({
-          Id: item.id,
-          link: `/my-blog/${item.id}`,
-          title: item.topic,
-          type: "blog",
-          LinksTo:
-  item.links && item.links.trim() !== ""
-    ? JSON.parse(item.links).concat()
-    : []
-          
-        })
-      )
-      
-        console.log("req items", items);
-          blogCache.current = items;
-          return items;
-      }
-      console.log("error")
-      return []
-  } catch (err) {
-    console.error(err)
-    return [];
-  }
-};
+
+
   //build simulation
   useEffect(() => {
-    setLoading(true)
+      if (explorerLoading) return; // Wait for data to load
+  if (blogItems.length === 0) return; // No data, nothing to build
     const buildGraph = async () => {
 
       let reqnodes: ObsidianNode[] = [];
       let reqlinks: ObsidianLink[] = [];
 
-      if(blogCache.current.length === 0){
-      const blogData = await GetblogDataAsync();
-      console.log("blog data",blogData)
-      reqnodes = MapItemsToNode(blogData)
-      reqlinks = MapLinks(blogData)
-      console.log("got blogs since ref was empty")
-      }
-      reqnodes = MapItemsToNode(blogCache.current)
-      reqlinks = MapLinks(blogCache.current)
+
+      reqnodes = MapItemsToNode(blogItems)
+      reqlinks = MapLinks(blogItems)
+      
       const svgElement = svgRef.current;
       if (!svgElement) return;
 
@@ -116,15 +85,11 @@ const ObsidianViewer = () => {
         })
       );
 
-      console.log(reqnodes)
-      console.log(reqlinks)
+
       const nodes: ObsidianNode[] = defaultNodes.concat(reqnodes);
 
       //create links and their targets
       const links: ObsidianLink[] = defaultLinks.concat(reqlinks);
-
-      console.log(nodes)
-      console.log(links)
 
       const simulation = d3
         .forceSimulation<ObsidianNode>(nodes)
@@ -219,7 +184,18 @@ const ObsidianViewer = () => {
       function HandleClickEvent(event: any, d: ObsidianNode) {
         if (!event) return;
         if (d.link) {
+          console.log("clicked on", d)
+          if(d.title !== "Resume"){
+          
+            if(d.type === "projects"){
+              console.log("is a project")
+              navigate(`${d.link}?project=${d.title.replace(" ", "")}`)
+            }
           navigate(d.link);
+          }
+          if(d.title === "Resume"){
+            window.open(DefinedRoutes.Resume, "_blank")
+          }
         }
       }
       function dragstarted(
@@ -248,9 +224,7 @@ const ObsidianViewer = () => {
       }
     };
     buildGraph();
-    setLoading(false);
-  
-  }, [resetVar, closed]);
+  }, [resetVar, closed, explorerLoading]);
 
   const Reset = () => {
     setResetVar((prev) => !prev);
@@ -296,8 +270,10 @@ const ObsidianViewer = () => {
           <h2>Site Explorer</h2>
           <p onClick={() => Reset()}>Reset</p>
           <p onClick={() => HandleModal()}>About The Explorer</p>
+          {explorerError ? <p>Failed to load some nodes</p> : <></>}
         </div>
         <div className="obsidian-right">
+          {explorerLoading ? <LoadingSpinner /> : <></>}
           <h2 onClick={() => HandleMinimize()}>{!closed ? "Close" : "Open"}</h2>
         </div>
       </div>

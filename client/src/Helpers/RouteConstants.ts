@@ -4,7 +4,7 @@ export const DefinedRoutes = {
     Landing: "/",
     Home: "/home",
     Chess: "/chess",
-    Projects: "/projects",
+    Projects: "/projects-and-experience",
     Images: "/images",
     Story: "/story",
     Blog: "/my-blog",

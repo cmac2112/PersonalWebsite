@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import "./BlogSidebar.css"
-import axios from 'axios';
+import "./BlogSidebar.css";
+import LoadingSpinner from "../Spinners/LoadingSpinner";
+import SimpleButton from "../SimpleButton/SimpleButton";
+import { useObbyViewer } from "../../Contexts/ObbyViewerContext";
 //sidebar to contain links to all of my blogs
 //page will need to uniquely render the markup
 
@@ -11,65 +12,44 @@ import axios from 'axios';
 
 //ex: 2025-12-05: Some topic
 
-interface SidebarLink{
-  Id: string,
-  Topic: string, // string displayed in li
-  Date: string,
-
-}
-
 const BlogSidebar = () => {
-const [Loading, setLoading] = useState<boolean>(true);
-
-
-const [error, setError] = useState<boolean>(false);
-
-const [data, setData] = useState<SidebarLink[]>([]);
-
-
-
-const fetchLogs = async () => {
-  try{
-    const response = await axios.get(`${import.meta.env.VITE_URL_DEV}/api/blogs`);
-    //console.log(response)
-    if(response.status === 200){
-      const formatted: SidebarLink[] = response.data.blogs.map((item: any) => ({
-        Id: item.id,
-        Topic: item.topic,
-        Date: item.date,
-      }))
-
-      setData(formatted)
-    }
-  }catch(err){
-    setError(true)
-  }finally{
-    setLoading(false);
-  }
-
-}
-
-useEffect(() => {
-  fetchLogs();
-}, [])
+  const {sidebarLoading, sidebarError, sidebarLinks, refreshSidebar } = useObbyViewer();
 
   return (
-    <div className='sidebar-container'>
-      <div className='sidebar-header-container'>
-        <h3 className='sidebar-header'>Latest Posts</h3>
-        {Loading ?
-        <p>loading...</p> :
-        
-        <ul className='sidebar-list'>
-          {data.map(link => (
-            <li className='sidebar-list-item' key={link.Id}><a href={`/my-blog/${link.Id}`}>{link.Date.slice(0, 10)}<br/> {link.Topic}</a></li>
-          ))}
-        </ul>
-}
-          {error ? <p style={{color: "red"}}>failed to load blog links</p> : <></>}
+    <div className="sidebar-container">
+      <div className="sidebar-header-container">
+        <h3 className="sidebar-header">Latest Posts</h3>
+        {sidebarLoading ? (
+          <div className="sidebar-flex">
+          <LoadingSpinner />
+          </div>
+        ) : (
+          <ul className="sidebar-list">
+            {sidebarLinks.map((link) => (
+              <li className="sidebar-list-item" key={link.Id}>
+                <a href={`/my-blog/${link.Id}`}>
+                  {link.Date.slice(0, 10)}
+                  <br /> {link.Topic}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+        {sidebarError ? (
+          <div className="sidebar-flex">
+            {" "}
+            <p style={{ color: "red" }}>failed to load blog links</p>
+            <SimpleButton
+              label="Retry"
+              onClickCallback={refreshSidebar}
+            />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BlogSidebar
+export default BlogSidebar;

@@ -1,0 +1,8 @@
+.simple-button{
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background-color: #cdac25;
+    color: white;
+    font-family: "Archivo Black", sans-serif;
+    padding: 5px;
+}

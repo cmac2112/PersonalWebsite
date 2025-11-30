@@ -10,7 +10,11 @@
     padding: 1rem;
     
 }
-
+.sidebar-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .sidebar-header{
     color: white;
     display: flex;

@@ -56,8 +56,8 @@ def get_blogs():
     #query
     blogs = session.query(BlogItem).all()
     #dispose
-    for blog in blogs:
-        print(blog)
+
+
     session.close()
     return {"blogs": [{"id": b.id, "date": str(b.DateCreated), "topic": b.Topic, "text": b.Text, "links": b.LinksTo} for b in blogs]}
 
@@ -89,7 +89,6 @@ def get_latest_blog():
     if blog:
         return {
             "id": blog.id,
-            "link": blog.link,
             "date": str(blog.DateCreated),
             "text": blog.Text,
             "links":blog.LinksTo

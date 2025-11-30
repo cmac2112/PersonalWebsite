@@ -5,6 +5,7 @@ import "./Blog.css";
 import BlogSidebar from "../../Components/BlogSidebar/BlogSidebar";
 import axios from "axios";
 import ObsidianViewer from "../../Components/ObsidianViewer/ObsidianViewer";
+import LoadingSpinner from "../../Components/Spinners/LoadingSpinner";
 interface BlogContent {
   Id: string;
   Text: string;
@@ -31,9 +32,7 @@ const Blog = () => {
       } else {
         url = `${import.meta.env.VITE_URL_DEV}/api/blog/${id}`;
       }
-      console.log("req url", url);
       const response = await axios.get(url);
-      console.log(response);
       if (response.status === 200) {
         setBlogContent({
           Id: response.data.id,
@@ -70,7 +69,7 @@ const Blog = () => {
           <div className="obsidian-blog-col">
             <div className="blog-content">
               {loading ? (
-                <div className="blog-text">Loading...</div>
+                <LoadingSpinner />
               ) : error ? (
                 <div className="blog-text">
                   <p>
