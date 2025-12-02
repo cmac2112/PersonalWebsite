@@ -1,0 +1,60 @@
+//run this script on deploy to parse all current blogs into json
+import fs from "fs";
+import path from "path";
+import { parseMarkdown } from "obby-parser";
+
+//combination of node and text, conditionally pick items from it to render to page
+interface ParsedJsonNode{
+    Id: number;
+    link: string;
+    title: string;
+    type: string;
+    html: string;
+    LinksTo: string[];
+}
+
+const BLOGS_DIR = path.join(process.cwd(), "Blogs")
+const OUTPUT_JSON = path.join(process.cwd(), "parsedBlog.json")
+function getAllMarkdownFiles(dir: string): string[] {
+    return fs.readdirSync(dir).filter(file => file.endsWith(".md"))
+    .map(file => path.join(dir, file));
+}
+
+function main() {
+  if (!fs.existsSync(BLOGS_DIR)) {
+    console.error("Blogs directory not found:", BLOGS_DIR);
+    process.exit(1);
+  }
+
+  const files = getAllMarkdownFiles(BLOGS_DIR);
+  const result: ParsedJsonNode[] = [];
+
+  //parse the nodes
+  let Id: number = 0;
+  for (const file of files) {
+    const content = fs.readFileSync(file, "utf8");
+    Id += 1
+    const title = "Test" //this should be the date and topic
+    const link = `/my-blog/${Id}`;
+    const type = "blog";
+    const { links_set, html } = parseMarkdown(content, link);
+
+    result.push({
+      Id,
+      link,
+      title,
+      type,
+      html,
+      LinksTo: Array.from(links_set),
+    });
+
+  }
+  //parse the content to query
+
+
+
+  fs.writeFileSync(OUTPUT_JSON, JSON.stringify(result, null, 2), "utf8");
+  console.log(`Parsed ${result.length} blogs to ${OUTPUT_JSON}`);
+}
+
+main();
