@@ -8,6 +8,7 @@ interface ParsedJsonNode{
     Id: number;
     link: string;
     title: string;
+    date: string;
     type: string;
     html: string;
     LinksTo: string[];
@@ -34,7 +35,15 @@ function main() {
   for (const file of files) {
     const content = fs.readFileSync(file, "utf8");
     Id += 1
-    const title = "Test" //this should be the date and topic
+      // Split lines and extract title/date
+  const lines = content.split("\n");
+  const titleLine = lines[0] || "";
+  const dateLine = lines[1] || "";
+
+  // Remove "##" prefix and trim
+  
+  const title = titleLine.replace(/^##\s*/, "").trim();
+  const date = dateLine.replace(/^##\s*/, "").trim();
     const link = `/my-blog/${Id}`;
     const type = "blog";
     const { links_set, html } = parseMarkdown(content, link);
@@ -43,6 +52,7 @@ function main() {
       Id,
       link,
       title,
+      date,
       type,
       html,
       LinksTo: Array.from(links_set),

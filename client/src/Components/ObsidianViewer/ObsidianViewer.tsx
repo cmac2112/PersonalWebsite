@@ -1,25 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import "./ObsidianViewer.css";
-import type { ObsidianNode, ObsidianLink, ExplorerItem } from "../../Helpers/DefaultExplorer";
+import type { ObsidianNode, ObsidianLink} from "../../Helpers/DefaultExplorer";
 import {
-  defaultNodes,
-  defaultLinks,
   TypeColorTranslator,
-  MapItemsToNode,
-  MapLinks,
+  CompiledNodes,
+  CompiledMapLinks,
 } from "../../Helpers/DefaultExplorer";
 import { useNavigate } from "react-router-dom";
 import Emphasis from "../Emphasis/Emphasis";
-import axios from "axios";
-import LoadingSpinner from "../Spinners/LoadingSpinner";
 import { DefinedRoutes } from "../../Helpers/RouteConstants";
-import { useObbyViewer } from "../../Contexts/ObbyViewerContext";
 
 
 const ObsidianViewer = () => {
 
-  const {blogItems, explorerLoading, explorerError, refreshExplorer } = useObbyViewer();
 
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -56,17 +50,7 @@ const ObsidianViewer = () => {
 
   //build simulation
   useEffect(() => {
-      if (explorerLoading) return; // Wait for data to load
-  if (blogItems.length === 0) return; // No data, nothing to build
-    const buildGraph = async () => {
-
-      let reqnodes: ObsidianNode[] = [];
-      let reqlinks: ObsidianLink[] = [];
-
-
-      reqnodes = MapItemsToNode(blogItems)
-      reqlinks = MapLinks(blogItems)
-      
+    const buildGraph = async () => {      
       const svgElement = svgRef.current;
       if (!svgElement) return;
 
@@ -85,12 +69,13 @@ const ObsidianViewer = () => {
         })
       );
 
+      const nodes: ObsidianNode[] = CompiledNodes;
+      
+      const links: ObsidianLink[] = CompiledMapLinks;
+      console.log(links);
 
-      const nodes: ObsidianNode[] = defaultNodes.concat(reqnodes);
 
-      //create links and their targets
-      const links: ObsidianLink[] = defaultLinks.concat(reqlinks);
-
+      console.log(nodes.length)
       const simulation = d3
         .forceSimulation<ObsidianNode>(nodes)
         .force(
@@ -224,7 +209,7 @@ const ObsidianViewer = () => {
       }
     };
     buildGraph();
-  }, [resetVar, closed, explorerLoading]);
+  }, [resetVar, closed]);
 
   const Reset = () => {
     setResetVar((prev) => !prev);
@@ -270,10 +255,8 @@ const ObsidianViewer = () => {
           <h2>Site Explorer</h2>
           <p onClick={() => Reset()}>Reset</p>
           <p onClick={() => HandleModal()}>About The Explorer</p>
-          {explorerError ? <p>Failed to load some nodes</p> : <></>}
         </div>
         <div className="obsidian-right">
-          {explorerLoading ? <LoadingSpinner /> : <></>}
           <h2 onClick={() => HandleMinimize()}>{!closed ? "Close" : "Open"}</h2>
         </div>
       </div>

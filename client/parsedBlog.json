@@ -2,84 +2,12 @@
   {
     "Id": 1,
     "link": "/my-blog/1",
-    "title": "Test",
+    "title": "This is the title",
+    "date": "01/01/2000",
     "type": "blog",
-    "html": "<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n",
-    "LinksTo": []
-  },
-  {
-    "Id": 2,
-    "link": "/my-blog/2",
-    "title": "Test",
-    "type": "blog",
-    "html": "<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n",
-    "LinksTo": []
-  },
-  {
-    "Id": 3,
-    "link": "/my-blog/3",
-    "title": "Test",
-    "type": "blog",
-    "html": "<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n",
-    "LinksTo": []
-  },
-  {
-    "Id": 4,
-    "link": "/my-blog/4",
-    "title": "Test",
-    "type": "blog",
-    "html": "<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n",
-    "LinksTo": []
-  },
-  {
-    "Id": 5,
-    "link": "/my-blog/5",
-    "title": "Test",
-    "type": "blog",
-    "html": "<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n",
-    "LinksTo": []
-  },
-  {
-    "Id": 6,
-    "link": "/my-blog/6",
-    "title": "Test",
-    "type": "blog",
-    "html": "<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n",
-    "LinksTo": []
-  },
-  {
-    "Id": 7,
-    "link": "/my-blog/7",
-    "title": "Test",
-    "type": "blog",
-    "html": "<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n",
-    "LinksTo": []
-  },
-  {
-    "Id": 8,
-    "link": "/my-blog/8",
-    "title": "Test",
-    "type": "blog",
-    "html": "<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n",
-    "LinksTo": []
-  },
-  {
-    "Id": 9,
-    "link": "/my-blog/9",
-    "title": "Test",
-    "type": "blog",
-    "html": "<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n",
-    "LinksTo": []
-  },
-  {
-    "Id": 10,
-    "link": "/my-blog/10",
-    "title": "Test",
-    "type": "blog",
-    "html": "<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls\n&lt;a href=&quot; /my-blog/10test&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;test&lt;/a&gt; &lt;a href=&quot; /my-blog/10again&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;again&lt;/a&gt;</p>\n",
+    "html": "<h2>This is the title</h2>\n<h2>01/01/2000</h2>\n<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n<p>all links must be valid so the workflow must also contain a list of links and alert the developer on publish if their link will not work\neventually in the future maybe add it so it creates a node automatically, but i think i will leave that for tektite, this is a personal portfolio after all\n<a href=\"/home\" target=\"_blank\" rel=\"noopener noreferrer\">Home Link</a></p>\n",
     "LinksTo": [
-      "test",
-      "again"
+      "Blog"
     ]
   }
 ]

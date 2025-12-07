@@ -11,12 +11,10 @@ import Blog from "./Pages/Blog/Blog";
 import MyProjects from "./Pages/MyProjects/MyProjects";
 import AboutMe from "./Pages/AboutMe/AboutMe";
 import { DefinedRoutes } from "./Helpers/RouteConstants";
-import { ObbyViewerProvider } from "./Contexts/ObbyViewerContext";
 
 // for project links they will need to be rerouted to /projects
 function App() {
   return (
-    <ObbyViewerProvider>
     <Router>
       <Routes>
         <Route path={DefinedRoutes.Landing} element={<Welcome />} />
@@ -28,7 +26,6 @@ function App() {
         <Route path="/my-blog/:id?" element={<Blog />} />
       </Routes>
     </Router>
-    </ObbyViewerProvider>
   )
 }
 
