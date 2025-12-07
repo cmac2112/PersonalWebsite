@@ -16,6 +16,7 @@ jobs:
           node-version: '18'
           cache: 'npm'
       - name: Install Dependencies and ts-node
+        working-directory: ./client
         run: |
           #install project dependences
           if [ -f client/package.json ]; then
