@@ -60,14 +60,12 @@ const Blog = () => {
                   </p>
                 </div>
               ) : blogContent ? (
-                <>
-                  <div className="blog-header-containter">
-                    <h2 className="blog-header">{blogContent.Topic}</h2>
-                  </div>
+                
+                  
                   <div className="blog-text" style={{whiteSpace: "pre-wrap"}} dangerouslySetInnerHTML={{ __html: blogContent.Text}}>
                     
                   </div>
-                </>
+                
               ) : null}
             </div>
             <div className="obsidian-container">
