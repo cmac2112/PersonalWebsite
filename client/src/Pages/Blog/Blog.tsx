@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Layout from "../../Components/Layout/Layout";
 import "./Blog.css";
 import BlogSidebar from "../../Components/BlogSidebar/BlogSidebar";
-import axios from "axios";
+import type { BlogContent } from "../../Helpers/DefaultExplorer"
+import { GetBlogContentById } from "../../Helpers/DefaultExplorer";
 import ObsidianViewer from "../../Components/ObsidianViewer/ObsidianViewer";
 import LoadingSpinner from "../../Components/Spinners/LoadingSpinner";
-interface BlogContent {
-  Id: string;
-  Text: string;
-  Links: string[];
-  Topic: string;
-  date: string;
-}
+
 
 const Blog = () => {
   const [fadingIn, setFadingIn] = useState<boolean>(false);
@@ -23,25 +18,13 @@ const Blog = () => {
   const [blogContent, setBlogContent] = useState<BlogContent>();
   const fetchBlog = async () => {
     try {
-      setLoading(true);
-      setError(false);
-      //if Id is not provdided then we need to select from the top
-      let url;
-      if (id === undefined) {
-        url = `${import.meta.env.VITE_URL_DEV}/api/blog/latest`;
-      } else {
-        url = `${import.meta.env.VITE_URL_DEV}/api/blog/${id}`;
-      }
-      const response = await axios.get(url);
-      if (response.status === 200) {
-        setBlogContent({
-          Id: response.data.id,
-          Text: response.data.text,
-          Links: response.data.links,
-          Topic: response.data.topic,
-          date: response.data.date,
-        });
-      } else {
+      
+
+      const item: BlogContent | undefined = GetBlogContentById(id);
+      if(!item){
+        setError(true);
+      }else{
+        setBlogContent(item)
       }
     } catch (err) {
       setError(true);

@@ -1,34 +1,7 @@
 from flask import Flask, request, send_from_directory
 from flask_cors import CORS
-from sqlalchemy import create_engine
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from sqlalchemy.orm import sessionmaker
-from Models.Blog import Base, BlogItem
-from datetime import datetime
-import json
-import os
-from dotenv import load_dotenv
-
-
-load_dotenv()
-DB_USERNAME = os.getenv("sqlusername")
-DB_PASSWORD = os.getenv("password")
-DB_HOST = os.getenv("cloudsql_public_ip")
-DB_PORT = os.getenv("database_port")
-DB_NAME = os.getenv("database_name")
-DB_DRIVER = os.getenv("DB_DRIVER")
-DATABASE_URL = (
-    f"mssql+pyodbc://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-    f"?driver=ODBC+Driver+18+for+SQL+Server&Encrypt=no"
-)
-
-engine = create_engine(DATABASE_URL, echo=True)
-SessionLocal = sessionmaker(bind=engine)
-
-Base.metadata.create_all(bind=engine)
-
-
 
 app = Flask(__name__, static_folder="../client/dist", static_url_path="/")
 
@@ -43,85 +16,9 @@ limiter = Limiter(
     storage_uri="memory://"
 )
 
-
-
 @app.route('/')
 def serve_dist():
     return send_from_directory(app.static_folder, "index.html")
 
-@app.route('/api/blogs', methods=['GET'])
-def get_blogs():
-    #initialize our context
-    session = SessionLocal()
-    #query
-    blogs = session.query(BlogItem).all()
-    #dispose
-
-
-    session.close()
-    return {"blogs": [{"id": b.id, "date": str(b.DateCreated), "topic": b.Topic, "text": b.Text, "links": b.LinksTo} for b in blogs]}
-
-@app.route('/api/blog/<int:id>', methods=['GET'])
-def get_blog_by_Id(id: int):
-    print(f"GET /api/blog/{id}")
-    # Validate that id is a positive integer
-    if not isinstance(id, int) or id <= 0:
-        return {"error": "Invalid blog id. Must be a positive integer."}, 400
-    session = SessionLocal()
-    blog: BlogItem = session.query(BlogItem).filter(BlogItem.id == id).first()
-    session.close()
-    if blog:    
-        return {
-            "id": blog.id,
-            "date": str(blog.DateCreated.date),
-            "text": blog.Text,
-            "links":blog.LinksTo
-        }
-    else:
-        return {"error": "Blog not found"}, 404
-       
-@app.route('/api/blog/latest', methods=['GET'])
-def get_latest_blog():
-    print('GET /api/blog/latest')
-    
-    session = SessionLocal()
-    blog: BlogItem = session.query(BlogItem).first()
-    if blog:
-        return {
-            "id": blog.id,
-            "date": str(blog.DateCreated),
-            "text": blog.Text,
-            "links":blog.LinksTo
-        }
-    else:
-        return {"error": "blog not found"}, 404
-    
-@app.route('/api/addblog', methods=['POST'])
-def add_latest_blog():
-    print('POST /api/addblog')
-    
-    data = request.get_json()
-    
-    blog = BlogItem()
-    blog.DateCreated = datetime.now()
-    blog.Text = data.get("text")
-    blog.LinksTo = json.dumps(data.get("links"))
-    blog.Topic = data.get("topic")
-    
-    try:
-        db = SessionLocal() #create the context (like efcore)
-    
-        db.add(blog) # add the blog
-        db.commit() # commit transaction to save to db
-        db.close() # close and dispose of context
-        return "Blog posted successfully"
-    except:
-        return "An exception has occurred 500"
-        
-        
-    
-    
-    
-    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)

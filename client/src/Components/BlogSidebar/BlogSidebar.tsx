@@ -1,7 +1,8 @@
 import "./BlogSidebar.css";
 import LoadingSpinner from "../Spinners/LoadingSpinner";
-import SimpleButton from "../SimpleButton/SimpleButton";
-import { useObbyViewer } from "../../Contexts/ObbyViewerContext";
+
+import { useState } from "react"
+import { CompiledSidebarLinks } from "../../Helpers/DefaultExplorer";
 //sidebar to contain links to all of my blogs
 //page will need to uniquely render the markup
 
@@ -13,7 +14,8 @@ import { useObbyViewer } from "../../Contexts/ObbyViewerContext";
 //ex: 2025-12-05: Some topic
 
 const BlogSidebar = () => {
-  const {sidebarLoading, sidebarError, sidebarLinks, refreshSidebar } = useObbyViewer();
+const [sidebarLoading, setSidebarLoading] = useState<boolean>(false);
+
 
   return (
     <div className="sidebar-container">
@@ -25,7 +27,7 @@ const BlogSidebar = () => {
           </div>
         ) : (
           <ul className="sidebar-list">
-            {sidebarLinks.map((link) => (
+            {CompiledSidebarLinks.map((link) => (
               <li className="sidebar-list-item" key={link.Id}>
                 <a href={`/my-blog/${link.Id}`}>
                   {link.Date.slice(0, 10)}
@@ -35,18 +37,7 @@ const BlogSidebar = () => {
             ))}
           </ul>
         )}
-        {sidebarError ? (
-          <div className="sidebar-flex">
-            {" "}
-            <p style={{ color: "red" }}>failed to load blog links</p>
-            <SimpleButton
-              label="Retry"
-              onClickCallback={refreshSidebar}
-            />
-          </div>
-        ) : (
-          <></>
-        )}
+        
       </div>
     </div>
   );
