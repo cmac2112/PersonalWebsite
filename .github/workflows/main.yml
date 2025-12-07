@@ -17,9 +17,8 @@ jobs:
           cache: 'npm'
       - name: Install Dependencies and ts-node
         run: |
-          cd client
           #install project dependences
-          if [ -f package.json ]; then
+          if [ -f client/package.json ]; then
           npm ci --no-audit --no-fund || npm install --no-audit --no-fund
           fi
           # ensure ts-node and typescript are available for running
