@@ -28,7 +28,7 @@ jobs:
       - name: find and run ts file
         run: |
           cd client
-          npx ts-node ParseBlogsToJson.ts
+          node --loader ts-node/esm ParseBlogsToJson.ts
 
       - name: Create pull request to master for generated changes
         uses: peter-evans/create-pull-request@v4
