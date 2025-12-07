@@ -1,0 +1,30 @@
+name: compile md files for blog
+on:
+  push:
+    branches:
+    - Blog
+jobs:
+  run-ts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - name: Install Dependencies and ts-node
+        run: |
+          cd .\client\
+          #install project dependences
+          if [ -f package.json ]; then
+          npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+          fi
+          # ensure ts-node and typescript are available for running
+          npm install ts-node typescript --no-save
+      - name: find and run ts file
+        run: |
+          cd .\client\
+          nps ts-node .\ParseBlogsToJson.ts
