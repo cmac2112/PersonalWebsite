@@ -1,6 +1,9 @@
 {
-  "type":"module",
+  "type": "module",
   "dependencies": {
     "obby-parser": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3"
   }
 }

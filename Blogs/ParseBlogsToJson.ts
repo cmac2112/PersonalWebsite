@@ -14,14 +14,16 @@ interface ParsedJsonNode{
     LinksTo: string[];
 }
 
-const BLOGS_DIR = path.join(process.cwd(), "Blogs")
-const OUTPUT_JSON = path.join(process.cwd(), "../client/parsedBlog.json")
+const BLOGS_DIR = path.join(process.cwd(), "Blogs/Blogs")
+
+const OUTPUT_JSON = path.join(process.cwd(), "/client/parsedBlog.json")
 function getAllMarkdownFiles(dir: string): string[] {
     return fs.readdirSync(dir).filter(file => file.endsWith(".md"))
     .map(file => path.join(dir, file));
 }
 
 function main() {
+  console.log(process.cwd())
   if (!fs.existsSync(BLOGS_DIR)) {
     console.error("Blogs directory not found:", BLOGS_DIR);
     process.exit(1);
@@ -29,6 +31,8 @@ function main() {
 
   const files = getAllMarkdownFiles(BLOGS_DIR);
   const result: ParsedJsonNode[] = [];
+
+  console.log(files);
 
   //parse the nodes
   let Id: number = 0;
