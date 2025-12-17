@@ -9,15 +9,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
+          cache-dependency-path: './Blogs/package-lock.json'
       - name: Install Dependencies and ts-node
+        working-directory: ./Blogs
         run: |
-          cd .\client\
           #install project dependences
           if [ -f package.json ]; then
           npm ci --no-audit --no-fund || npm install --no-audit --no-fund
@@ -26,5 +27,15 @@ jobs:
           npm install ts-node typescript --no-save
       - name: find and run ts file
         run: |
-          cd .\client\
-          nps ts-node .\ParseBlogsToJson.ts
+          cd Blogs
+          node --loader ts-node/esm ParseBlogsToJson.ts
+
+      - name: Create pull request to master for generated changes
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: add generated file from Blog workflow"
+          branch: "auto/blog-generated-${{ github.run_id }}"
+          base: master
+          title: "Automated file(s) generated from Blog branch"
+          body: "This PR was created automatically by the Blog branch workflow to add generated file(s)."
