@@ -27,6 +27,7 @@ jobs:
           npm install ts-node typescript --no-save
       - name: find and run ts file
         run: |
+          ls
           node --loader ts-node/esm ParseBlogsToJson.ts
 
       - name: Create pull request to master for generated changes
