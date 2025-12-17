@@ -27,6 +27,7 @@ jobs:
           npm install ts-node typescript --no-save
       - name: find and run ts file
         run: |
+          cd Blogs
           ls
           node --loader ts-node/esm ParseBlogsToJson.ts
 
