@@ -2,7 +2,7 @@ name: compile md files for blog
 on:
   push:
     branches:
-    - Blog
+    - master
 jobs:
   run-ts:
     runs-on: ubuntu-latest
