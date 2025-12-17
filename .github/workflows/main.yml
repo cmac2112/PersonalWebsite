@@ -17,6 +17,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: './Blogs/package-lock.json'
       - name: Install Dependencies and ts-node
+        working-directory: ./Blogs
         run: |
           #install project dependences
           if [ -f package.json ]; then
@@ -26,7 +27,6 @@ jobs:
           npm install ts-node typescript --no-save
       - name: find and run ts file
         run: |
-          cd Blogs
           node --loader ts-node/esm ParseBlogsToJson.ts
 
       - name: Create pull request to master for generated changes
