@@ -68,3 +68,6 @@ function main() {
 }
 
 main();
+/// for next time: i have moved the blogs directory to have its own package.json
+// change the workflow to reference this one, we did this to prevent conflicts with how the client side app is setup since it needs to run
+//differently than a one time script
