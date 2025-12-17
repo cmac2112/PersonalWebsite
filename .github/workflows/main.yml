@@ -34,11 +34,11 @@ jobs:
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/cmac2112/PersonalWebsite.git
+          git remote set-url origin https://x-access-token:${{ secrets.PAT_Token }}@github.com/cmac2112/PersonalWebsite.git
       - name: Create pull request to master for generated changes
         uses: peter-evans/create-pull-request@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_Token }}
           commit-message: "chore: add generated file from Blog workflow"
           branch: "auto/blog-generated-${{ github.run_id }}"
           base: master
