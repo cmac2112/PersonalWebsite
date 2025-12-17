@@ -14,7 +14,7 @@ interface ParsedJsonNode{
     LinksTo: string[];
 }
 
-const BLOGS_DIR = path.join(process.cwd(), "Blogs")
+const BLOGS_DIR = process.cwd();
 
 const OUTPUT_JSON = path.join(process.cwd(), "/client/parsedBlog.json")
 function getAllMarkdownFiles(dir: string): string[] {
