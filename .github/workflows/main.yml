@@ -17,7 +17,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: './Blogs/package-lock.json'
       - name: Install Dependencies and ts-node
-        working-directory: ./Blogs
         run: |
           #install project dependences
           if [ -f package.json ]; then
