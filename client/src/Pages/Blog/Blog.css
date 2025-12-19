@@ -5,8 +5,9 @@
     align-items: center;
     overflow-x: hidden;
     height: 100vh;
-    background: linear-gradient(135deg, #0a0a0a 0%, #0e0303 20%, #100202 40%, #130101 60%, #130101 80%, #130101 100%);
+    background: linear-gradient(135deg, #0a0a0a 0%, #080707 20%, #080606 40%, #0c0707 60%, #000000 80%, #0a0808 100%);
 }
+
 .blog-header{
     color: white;
 }
