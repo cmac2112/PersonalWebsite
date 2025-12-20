@@ -1,4 +1,3 @@
-import React from 'react'
 import Layout from '../../Components/Layout/Layout'
 import "./BadRoute.css"
 import patrick from "../../assets/patrick.gif"

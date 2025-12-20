@@ -1,4 +1,4 @@
-import "./AboutMe.css"
+import "./Home.css"
 import MyExperienceTile from '../../Components/MyExperienceTile/MyExperienceTile';
 import Layout from '../../Components/Layout/Layout';
 import Button from '../../Components/Button/Button';
@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import ObsidianViewer from "../../Components/ObsidianViewer/ObsidianViewer";
 import Emphasis from "../../Components/Emphasis/Emphasis";
 
-const AboutMe = () => {
+const Home = () => {
   const isMobileDevice = () => {
     return window.innerWidth <= 768 || 
            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -177,4 +177,4 @@ const AboutMe = () => {
 
 
 
-export default AboutMe
+export default Home

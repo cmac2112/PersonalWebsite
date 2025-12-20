@@ -10,35 +10,35 @@
     },
     {
         "id": "Experience",
-        "link": "/projects-and-experience",
+        "link": "/Experience",
         "title": "Experience",
         "type": "experience",
         "LinksTo": ["INTRUST BANK", "Legget & Platt", "Bethel College", "Software Club"]
     },
     {
         "id": "Projects",
-        "link": "/projects-and-experience",
+        "link": "/Experience",
         "title": "Projects",
         "type": "projects",
         "LinksTo": ["Obby-Parser", "Stellar View", "Chess", "Solar Eye", "Sky Watch", "Ez Documents", "BC Social", "Course Search"]
     },
     {
         "id": "Blog",
-        "link": "/my-blog",
+        "link": "/Blog",
         "title": "Blog",
         "type": "blog",
         "LinksTo": []
     },
     {
         "id": "Astrophotography",
-        "link": "/images",
+        "link": "/Images",
         "title": "Astrophotography",
         "type": "images",
         "LinksTo": []
     },
     {
         "id": "Chess",
-        "link": "/chess",
+        "link": "/Chess",
         "title": "Chess",
         "type": "chess",
         "LinksTo": []
@@ -52,77 +52,77 @@
     },
     {
         "id": "INTRUST BANK",
-        "link": "/projects-and-experience",
+        "link": "/Experience/intrustbank",
         "title": "INTRUST BANK",
         "type": "experience",
         "LinksTo": []
     },
     {
         "id": "Legget & Platt",
-        "link": "/projects-and-experience",
+        "link": "/Experience/leggetplatt",
         "title": "Legget & Platt",
         "type": "experience",
         "LinksTo": []
     },
     {
         "id": "Bethel College",
-        "link": "/projects-and-experience",
+        "link": "/Experience/bethelcollege",
         "title": "Bethel College",
         "type": "experience",
         "LinksTo": []
     },
     {
         "id": "Obby-Parser",
-        "link": "/projects-and-experience",
+        "link": "/Experience/obbyparser",
         "title": "Obby-Parser",
         "type": "projects",
         "LinksTo": []
     },
     {
         "id": "Stellar View",
-        "link": "/projects-and-experience",
+        "link": "/Experience/stellarview",
         "title": "Stellar View",
         "type": "projects",
         "LinksTo": []
     },
     {
         "id": "Solar Eye",
-        "link": "/projects-and-experience",
+        "link": "/Experience/solareye",
         "title": "Solar Eye",
         "type": "projects",
         "LinksTo": []
     },
     {
         "id": "Software Club",
-        "link": "/projects-and-experience",
+        "link": "/Experience/softwareclub",
         "title": "Software Club",
         "type": "experience",
         "LinksTo": ["Solar Eye", "Sky Watch", "BC Social"]
     },
     {
         "id": "Course Search",
-        "link": "/projects-and-experience",
+        "link": "/Experience/coursesearch",
         "title": "Course Search",
         "type": "projects",
         "LinksTo": []
     },
     {
         "id": "BC Social",
-        "link": "/projects-and-experience",
+        "link": "/Experience/bcsocial",
         "title": "BC Social",
         "type": "projects",
         "LinksTo": []
     },
     {
         "id": "Sky Watch",
-        "link": "/projects-and-experience",
+        "link": "/Experience/skywatch",
         "title": "Sky Watch",
         "type": "projects",
         "LinksTo": []
     },
     {
         "id": "Ez Documents",
-        "link": "/projects-and-experience",
+        "link": "/Experience/ezdocuments",
         "title": "Ez Documents",
         "type": "projects",
         "LinksTo": []

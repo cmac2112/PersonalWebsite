@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 
 // will contain the clickable image component along side its subtitle and an option to route the user to a 4k view
 interface ObservatoryImageProps{
@@ -9,21 +8,9 @@ interface ObservatoryImageProps{
 
 
 const ObservatoryImage = ({ title, subtitle }: ObservatoryImageProps) => {
-    const [isOpened, setIsOpened] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(false);
-    const HandleTileClick = () => {
-        setIsOpened((prev) => !prev);
-    }
 
-    // lets load the images from the server asynchronously
-
-    useEffect(() => {
-        setLoading(true);
-        // make call to image endpoint
-        
-    }, []);
     return (
-        <div onClick={HandleTileClick}
+        <div
             className='observatory-image-container'>
             <div className='image'>
 

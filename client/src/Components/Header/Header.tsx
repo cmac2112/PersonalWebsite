@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Menu from '../Menu/Menu';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';

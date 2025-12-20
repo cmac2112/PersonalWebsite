@@ -13,7 +13,7 @@
 }
 .experience-tile:hover {
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        transform: scale(1.04) translateY(-3px);
+        transform: scale(1.03) translateY(-3px);
     
     box-shadow: 
         0 10px 40px rgba(0, 0, 0, 0.3),

@@ -47,7 +47,7 @@ function main() {
   
   const title = titleLine.replace(/^##\s*/, "").trim();
   const date = dateLine.replace(/^##\s*/, "").trim();
-    const link = `/my-blog/${Id}`;
+    const link = `/Blog/${Id}`;
     const type = "blog";
     const { links_set, html } = parseMarkdown(content, link);
 

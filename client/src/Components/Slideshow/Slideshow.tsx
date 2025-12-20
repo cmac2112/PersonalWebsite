@@ -7,6 +7,7 @@ import MaterialIcon from "../MaterialIcon/MaterialIcon";
 import Button from "../Button/Button";
 import Blog from "../../assets/slideshow/code.jpg";
 import { useNavigate } from "react-router-dom";
+import { DefinedRoutes } from "../../Helpers/RouteConstants";
 // slideshow component that should have arrow buttons on left and right to move between slides
 // slides should have text on it that is not part of the picture (so overlayed)
 
@@ -83,7 +84,7 @@ const Slideshow = () => {
             <div className="slide-button-container">
               <Button
                 label="Who Am I?"
-                OnClickCallback={() => handleNewWindowNavigation("/home")}
+                OnClickCallback={() => handleNewWindowNavigation(`${DefinedRoutes.Story}`)}
                 materialIcon="person_celebrate"
                 iconPosition="right"
               />
@@ -97,7 +98,7 @@ const Slideshow = () => {
               <Button
                 label="Explore"
                 OnClickCallback={() =>
-                  handleNewWindowNavigation("/my-projects")
+                  handleNewWindowNavigation(`${DefinedRoutes.Projects}`)
                 }
                 materialIcon="ar_stickers"
                 iconPosition="right"
@@ -111,7 +112,7 @@ const Slideshow = () => {
             <div className="slide-button-container">
               <Button
                 label="Blog"
-                OnClickCallback={() => handleNewWindowNavigation("/my-blog")}
+                OnClickCallback={() => handleNewWindowNavigation(`${DefinedRoutes.Blog}`)}
                 materialIcon="edit"
                 iconPosition="right"
               />
@@ -126,7 +127,7 @@ const Slideshow = () => {
             <div className="slide-button-container">
               <Button
                 label="My Astrophotography"
-                OnClickCallback={() => handleNewWindowNavigation("/my-images")}
+                OnClickCallback={() => handleNewWindowNavigation(`${DefinedRoutes.Images}`)}
                 materialIcon="moon_stars"
                 iconPosition="right"
               />
