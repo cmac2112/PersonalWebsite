@@ -1,6 +1,3 @@
-//import React from 'react'
-
-import { useNavigate } from "react-router-dom"
 import Layout from "../../Components/Layout/Layout"
 import './Chess.css'
   import { useState, useRef, useEffect} from "react";
@@ -9,8 +6,6 @@ import { getPossiblePawnMoves, getPossibleRookMoves, getPossibleBishopMoves, get
 import { FindAGivenPeice, GetAllPossibleMovesForTeam, IsMoveArrayInGivenArray, ValidMoveCheckForCheck, GetPossibleMovesForAPeiceAtAPosition, SimulateMovesFromAnArray } from "./ChessUtilities";
 import { type AIMove, HandleAICalculation } from "./AICalculation";
 const Chess = () => {
-
-  const navigate = useNavigate();
 
   const [selected, setSelected] = useState({
     peice: "",
@@ -563,7 +558,7 @@ const Chess = () => {
   
   return (
     <div className="chess-container">
-    <Layout handleRestartAnimation={() => navigate("/")} >
+    <Layout>
       
     <div className="game">
       <div className="board-container">

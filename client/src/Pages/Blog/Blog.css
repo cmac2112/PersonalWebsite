@@ -1,17 +1,9 @@
 .blog-container{
-    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
-    height: 100vh;
-    background: linear-gradient(135deg, #0a0a0a 0%, #080707 20%, #080606 40%, #0c0707 60%, #000000 80%, #0a0808 100%);
 }
-
-.blog-header{
-    color: white;
-}
-
 .my-blog-flex-container{
     display: flex;
     justify-content: start;
@@ -34,22 +26,14 @@
     
 }
 .blog-text > p{
-    color: white;
     padding-left: 1rem;
     padding-right: 1rem;
     margin: none;
     padding: none;
     
 }
-.blog-text > h1 {
-    color: white;
-}
-a{
-    color: gold;
-    
-}
 .blog-text{
-    color: white;
+
     font-family: "Archivo Black", sans-serif;
     
 }

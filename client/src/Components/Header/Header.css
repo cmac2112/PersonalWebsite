@@ -8,18 +8,13 @@
     top: 0;
     width: 100%;
     z-index: 1000;
-    
-
 }
 .title-header{
     padding-inline: 1rem;
-    color: white;
-    font-family:  "Archivo Black", sans-serif;;
 }
 .hamburger{
     padding-inline: 1rem;
     font-size: 1.5rem;
-    color: white;
 }
 .hamburger:hover{
     cursor: pointer;
@@ -32,7 +27,4 @@
     justify-content: end;
     align-items: center;
     gap: 3rem;
-}
-.right-header > p{
-    color: white;
 }

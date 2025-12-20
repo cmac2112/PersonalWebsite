@@ -3,10 +3,10 @@
 export const DefinedRoutes = {
     Landing: "/",
     Home: "/home",
-    Chess: "/chess",
-    Projects: "/projects-and-experience",
-    Images: "/images",
-    Story: "/story",
-    Blog: "/my-blog",
+    Chess: "/Chess",
+    Projects: "/Experience",
+    Images: "/Images",
+    Story: "/Who-Am-I",
+    Blog: "/Blog",
     Resume: "/CadenMcArthurResume.pdf",
 } as const

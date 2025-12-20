@@ -1,7 +1,4 @@
 import "./BlogSidebar.css";
-import LoadingSpinner from "../Spinners/LoadingSpinner";
-
-import { useState } from "react"
 import { CompiledSidebarLinks } from "../../Helpers/DefaultExplorer";
 //sidebar to contain links to all of my blogs
 //page will need to uniquely render the markup
@@ -14,30 +11,20 @@ import { CompiledSidebarLinks } from "../../Helpers/DefaultExplorer";
 //ex: 2025-12-05: Some topic
 
 const BlogSidebar = () => {
-const [sidebarLoading, setSidebarLoading] = useState<boolean>(false);
-
-
   return (
     <div className="sidebar-container">
       <div className="sidebar-header-container">
         <h3 className="sidebar-header">Latest Posts</h3>
-        {sidebarLoading ? (
-          <div className="sidebar-flex">
-          <LoadingSpinner />
-          </div>
-        ) : (
           <ul className="sidebar-list">
             {CompiledSidebarLinks.map((link) => (
               <li className="sidebar-list-item" key={link.Id}>
-                <a href={`/my-blog/${link.Id}`}>
+                <a href={`/Blog/${link.Id}`}>
                   {link.Date.slice(0, 10)}
                   <br /> {link.Topic}
                 </a>
               </li>
             ))}
           </ul>
-        )}
-        
       </div>
     </div>
   );

@@ -54,9 +54,6 @@
     background: rgba(255, 255, 255, 0.05);
     border-radius: 1rem;
 }
-.explorer-container > p, li, h3{
-    color: white;
-}
 
 @media (max-width: 500px){
     .obsidian-left > h2{

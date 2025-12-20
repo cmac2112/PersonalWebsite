@@ -1,6 +1,8 @@
 home
 chess
-projects-and-experience
+Experience
 images
 story
-my-blog
+Blog
+Sky Watch
+

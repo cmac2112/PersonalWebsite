@@ -1,7 +1,7 @@
 [
   {
     "Id": 1,
-    "link": "/my-blog/1",
+    "link": "/Blog/1",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -14,7 +14,7 @@
   },
   {
     "Id": 2,
-    "link": "/my-blog/2",
+    "link": "/Blog/2",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -27,7 +27,7 @@
   },
   {
     "Id": 3,
-    "link": "/my-blog/3",
+    "link": "/Blog/3",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -40,7 +40,7 @@
   },
   {
     "Id": 4,
-    "link": "/my-blog/4",
+    "link": "/Blog/4",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -53,7 +53,7 @@
   },
   {
     "Id": 5,
-    "link": "/my-blog/5",
+    "link": "/Blog/5",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -66,7 +66,7 @@
   },
   {
     "Id": 6,
-    "link": "/my-blog/6",
+    "link": "/Blog/6",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -79,7 +79,7 @@
   },
   {
     "Id": 7,
-    "link": "/my-blog/7",
+    "link": "/Blog/7",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -92,7 +92,7 @@
   },
   {
     "Id": 8,
-    "link": "/my-blog/8",
+    "link": "/Blog/8",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -105,7 +105,7 @@
   },
   {
     "Id": 9,
-    "link": "/my-blog/9",
+    "link": "/Blog/9",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -118,7 +118,7 @@
   },
   {
     "Id": 10,
-    "link": "/my-blog/10",
+    "link": "/Blog/10",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -131,7 +131,7 @@
   },
   {
     "Id": 11,
-    "link": "/my-blog/11",
+    "link": "/Blog/11",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -144,7 +144,7 @@
   },
   {
     "Id": 12,
-    "link": "/my-blog/12",
+    "link": "/Blog/12",
     "title": "This is another test",
     "date": "01/01/2000",
     "type": "blog",
@@ -157,7 +157,7 @@
   },
   {
     "Id": 13,
-    "link": "/my-blog/13",
+    "link": "/Blog/13",
     "title": "This is the title",
     "date": "01/01/2000",
     "type": "blog",

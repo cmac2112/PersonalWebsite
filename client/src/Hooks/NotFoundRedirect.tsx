@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-
+import { DefinedRoutes } from '../Helpers/RouteConstants';
 const NotFoundRedirect = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     const attemptedPath = location.pathname.replace("/", "");
-
     navigate(
-        `/projects-and-experience/${encodeURIComponent(attemptedPath)}`,
+        `${DefinedRoutes.Projects}/${encodeURIComponent(attemptedPath)}`,
         { replace: true}
     )
 

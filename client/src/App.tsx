@@ -1,6 +1,7 @@
 import Welcome from "./Pages/Welcome/Welcome"
 import Chess from "./Pages/Chess/Chess";
 import './App.css'
+import './index.css'
 import { BrowserRouter as Router,
   Routes,
   Route,
@@ -9,7 +10,7 @@ import MyImages from "./Pages/MyImages/MyImages";
 import MyStory from "./Pages/MyStory/MyStory";
 import Blog from "./Pages/Blog/Blog";
 import MyProjects from "./Pages/MyProjects/MyProjects";
-import AboutMe from "./Pages/AboutMe/AboutMe";
+import Home from "./Pages/AboutMe/Home";
 import { DefinedRoutes } from "./Helpers/RouteConstants";
 import NotFoundRedirect from "./Hooks/NotFoundRedirect";
 import BadRoute from "./Pages/BadRoute/BadRoute";
@@ -20,13 +21,13 @@ function App() {
     <Router>
       <Routes>
         <Route path={DefinedRoutes.Landing} element={<Welcome />} />
-        <Route path={DefinedRoutes.Home} element={<AboutMe />} />
+        <Route path={DefinedRoutes.Home} element={<Home />} />
         <Route path={DefinedRoutes.Chess} element={<Chess />} />
         <Route path={DefinedRoutes.Projects} element={<MyProjects />} />
         <Route path={DefinedRoutes.Images} element={<MyImages />} />
         <Route path={DefinedRoutes.Story} element={<MyStory />} />
-        <Route path="/my-blog/:id?" element={<Blog />} />
-        <Route path="/projects-and-experience/:section" element={<MyProjects />} />
+        <Route path="/Blog/:id?" element={<Blog />} />
+        <Route path="/Experience/:section" element={<MyProjects />} />
         <Route path="/bad-route" element={<BadRoute />} />
         <Route path="*" element={<NotFoundRedirect />} />
       </Routes>
