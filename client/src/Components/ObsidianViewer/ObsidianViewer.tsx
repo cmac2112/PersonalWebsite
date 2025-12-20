@@ -230,9 +230,9 @@ const ObsidianViewer = () => {
         <ol>
           <li>
             Each node is a page on the site that you can visit and are grouped
-            together by type.
+            together by topic.
           </li>
-          <li>Hold and drag to travese the environment</li>
+          <li>Hold and drag to traverse the environment</li>
           <li>Or click and drag on nodes to move them around</li>
           <li>
             <Emphasis>

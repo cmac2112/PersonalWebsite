@@ -3,12 +3,12 @@
     justify-content: space-between;
     align-content: center;
     align-items: center;
-      background: linear-gradient(135deg, #0c0c0c, #0e0000) padding-box,
-              linear-gradient(45deg, #000000, #130101) border-box;
-    border: 1px solid transparent;
+      background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.103);
     top: 0;
     width: 100%;
     z-index: 1000;
+    
 
 }
 .title-header{

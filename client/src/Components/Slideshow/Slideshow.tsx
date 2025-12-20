@@ -82,8 +82,8 @@ const Slideshow = () => {
             <h2 className="slide-subtitle">I'm Caden McArthur</h2>
             <div className="slide-button-container">
               <Button
-                label="My Experience"
-                OnClickCallback={() => handleNewWindowNavigation("/my-story")}
+                label="Who Am I?"
+                OnClickCallback={() => handleNewWindowNavigation("/home")}
                 materialIcon="person_celebrate"
                 iconPosition="right"
               />
