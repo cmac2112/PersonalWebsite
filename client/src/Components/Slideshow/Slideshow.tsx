@@ -83,7 +83,7 @@ const Slideshow = () => {
             <div className="slide-button-container">
               <Button
                 label="Who Am I?"
-                OnClickCallback={() => handleNewWindowNavigation("/who-am-i")}
+                OnClickCallback={() => handleNewWindowNavigation("/home")}
                 materialIcon="person_celebrate"
                 iconPosition="right"
               />
