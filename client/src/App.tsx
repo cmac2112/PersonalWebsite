@@ -10,7 +10,7 @@ import MyImages from "./Pages/MyImages/MyImages";
 import MyStory from "./Pages/MyStory/MyStory";
 import Blog from "./Pages/Blog/Blog";
 import MyProjects from "./Pages/MyProjects/MyProjects";
-import Home from "./Pages/AboutMe/Home";
+import Home from "./Pages/Home/Home";
 import { DefinedRoutes } from "./Helpers/RouteConstants";
 import NotFoundRedirect from "./Hooks/NotFoundRedirect";
 import BadRoute from "./Pages/BadRoute/BadRoute";

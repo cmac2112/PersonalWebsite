@@ -59,14 +59,14 @@
     },
     {
         "id": "Legget & Platt",
-        "link": "/Experience/leggetplatt",
+        "link": "/Experience/legget",
         "title": "Legget & Platt",
         "type": "experience",
         "LinksTo": []
     },
     {
         "id": "Bethel College",
-        "link": "/Experience/bethelcollege",
+        "link": "/Experience/bethel",
         "title": "Bethel College",
         "type": "experience",
         "LinksTo": []

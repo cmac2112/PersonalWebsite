@@ -1,0 +1,215 @@
+h2{
+  text-align: center;
+}
+.progress-meter-fixed {
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+}
+
+.meter-track {
+  position: relative;
+  width: 4px;
+  height: 384px;
+  background: rgba(51, 65, 85, 0.3);
+  border-radius: 9999px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+
+.meter-progress {
+  width: 100%;
+  background: linear-gradient(to bottom, #22d3ee, #3b82f6, #a855f7);
+  transition: height 300ms ease-out;
+  position: relative;
+}
+
+.meter-progress::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.meter-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background: #22d3ee;
+  border-radius: 50%;
+  filter: blur(8px);
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.8);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.markers-container {
+  position: absolute;
+  inset: 0;
+}
+
+.marker-button {
+  position: absolute;
+  left: -18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transform: translateY(-50%);
+}
+
+.marker-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: all 300ms;
+}
+
+.marker-button:hover .marker-dot {
+  width: 20px;
+  height: 20px;
+}
+
+.marker-dot.active {
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+.marker-tooltip {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 200ms;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.marker-button:hover .marker-tooltip {
+  opacity: 1;
+}
+
+.tooltip-content {
+  background: #1e293b;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  border: 1px solid #334155;
+  position: relative;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(100%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid #1e293b;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.content-container {
+background: transparent;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 3rem;
+}
+
+.section-content {
+  text-align: center;
+}
+
+.section-icon {
+  margin: 0 auto 24px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.section-description {
+  font-size: 20px;
+  color: #cbd5e1;
+  max-width: 672px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.section-badge {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.scroll-indicator {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+}
+.section-description > div{
+  text-align:start;
+  font-size: smaller;
+  line-height: 2rem;
+}
+.app-image{
+    width: 90%;
+}
+.fade-in{
+  animation: fadeInEffect 0.5s cubic-bezier(0.4, 0.8, 0.2, 1) forwards;
+}
+.button-image-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width: 950px) {
+  .progress-meter-fixed {
+    right: 8px;
+    top: 40%;
+  }
+}

@@ -98,7 +98,7 @@ export const TypeColorTranslator = (type: string): string => {
     resume: "maroon"
   };
 
-  console.log(compiledBlogs)
+  //console.log(compiledBlogs)
   return map[type] ?? "gray"; // default fallback
 };
 
@@ -125,7 +125,7 @@ export const GetBlogContentById = (id?: string): BlogContent | undefined => {
   if(!id){
     //just return latest item
     item = compiledBlogs.pop();
-    console.log(item);  
+    //console.log(item);  
   }else{
     item = compiledBlogs.find(item => item.id === id);
   }
