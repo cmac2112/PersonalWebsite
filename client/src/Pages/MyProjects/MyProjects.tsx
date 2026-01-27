@@ -3,6 +3,7 @@ import Layout from "../../Components/Layout/Layout";
 import { useParams } from "react-router-dom";
 import PogressionMeter from "../../Components/ProgressionMeter/PogressionMeter";
 import "./MyProjects.css"
+
 const MyProjects = () => {
   const { section } = useParams();
   useEffect(() => {

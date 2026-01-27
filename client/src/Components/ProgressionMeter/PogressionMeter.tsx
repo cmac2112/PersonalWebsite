@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useParams } from "react-router-dom";
 import "./PogressionMeter.css"
 import SectionComponent from './SectionComponents/SectionComponent';
 import Intrust from './RenderContent/Intrust'
@@ -13,6 +14,7 @@ import BrainRot from './RenderContent/BrainRot';
 import Chess from './RenderContent/Chess';
 const ScrollProgressMeter = () => {
 
+  const { section } = useParams<{section: string }>();
   const [scrollProgress, setScrollProgress] = useState(0);
 
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
@@ -73,6 +75,15 @@ const ScrollProgressMeter = () => {
     const timeout = setTimeout(() => setFadingIn(false), 500);
     return () => clearTimeout(timeout);
   },[])
+
+  useEffect(() => {
+    if(section){
+      const index = sections.findIndex(s => s.id === section);
+      if(index !== -1){
+        scrollToSection(index);
+      }
+    }
+  }, [section])
 
   return (
     <>

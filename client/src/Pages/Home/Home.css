@@ -81,10 +81,3 @@
 .fade-in{
       animation: slideshowFadeIn 0.5s cubic-bezier(0.4, 0.8, 0.2, 1) forwards;
 }
-.site-explorer{
-    margin-top: 1rem;
-    width: 100%;
-    border: 1px solid grey;
-    border-radius: 1rem;
-    
-}
