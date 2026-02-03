@@ -1,7 +1,23 @@
 import React from 'react'
 import Emphasis from '../../Emphasis/Emphasis'
-
+import Button from '../../Button/Button'
+import chessImage from '../../../assets/chessScreenshot.jpg'
+import "../PogressionMeter.css"
 const Chess = () => {
+   const isMobileDevice = () => {
+    return (
+      window.innerWidth <= 768 ||
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent,
+      )
+    );
+  };
+  const handleWindowNavigation = (url: string) => {
+    const delayTime = isMobileDevice() ? 200 : 100;
+    setTimeout(() => {
+      window.open(url, "_blank");
+    }, delayTime);
+  };
   return (
     <div>
       <h2><Emphasis>A Complete Chess Game From Scratch!</Emphasis></h2>
@@ -38,6 +54,35 @@ const Chess = () => {
       string matrix representation keeps state management straightforward while TypeScript's type system 
       ensures piece and move validation remains consistent across the codebase.
     </p>
+    <h2><Emphasis>Techincal Stack</Emphasis></h2>
+    <p>React</p>
+    <p>Typescript</p>
+        <div className="button-image-container">
+        <img className="app-image" src={chessImage} />
+        <div className="tile-buttons">
+          <Button
+            label="Play Now!"
+            OnClickCallback={() =>
+              handleWindowNavigation(
+                "./chess",
+              )
+            }
+            materialIcon="planet"
+            iconPosition="right"
+          />
+          <Button
+            label="View The Repo"
+            OnClickCallback={() =>
+              handleWindowNavigation(
+                "https://github.com/cmac2112/Chess-With-AI-Opponents",
+              )
+            }
+            materialIcon="code"
+            iconPosition="right"
+          />
+        </div>
+      </div>
+
     </div>
   )
 }
