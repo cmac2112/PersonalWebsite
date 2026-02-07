@@ -1,25 +1,30 @@
-import { useEffect } from 'react'
-import Layout from '../../Components/Layout/Layout'
-import { useParams } from 'react-router-dom'
+import { useEffect } from "react";
+import Layout from "../../Components/Layout/Layout";
+import { useParams } from "react-router-dom";
+import PogressionMeter from "../../Components/ProgressionMeter/PogressionMeter";
+import "./MyProjects.css"
+
 const MyProjects = () => {
   const { section } = useParams();
   useEffect(() => {
-    if(!section){
+    if (!section) {
       return;
     }
 
-    const ele = document.getElementById(section.replace("-","").replace(" ", "").toLowerCase());
-    if(ele){
-      ele.scrollIntoView({ behavior: "smooth", block: "start"});
+    const ele = document.getElementById(
+      section.replace("-", "").replace(" ", "").toLowerCase()
+    );
+    if (ele) {
+      ele.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }, [section])
+  }, [section]);
   return (
-    <Layout>
-    <div className='my-projects-container'>
-     <p>nothing here.... yet</p>
-    </div>
-    </Layout>
-  )
-}
+    <div className="experience">
+      <Layout>
+          <PogressionMeter />
+      </Layout>
+      </div>
+  );
+};
 
-export default MyProjects
+export default MyProjects;

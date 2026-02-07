@@ -69,3 +69,17 @@ a{
   --spacing-lg: 2rem;
   --spacing-xl: 4rem;
 }
+.site-explorer{
+    margin-top: 1rem;
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 1rem;
+}
+@keyframes fadeInEffect{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
