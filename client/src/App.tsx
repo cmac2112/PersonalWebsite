@@ -7,7 +7,7 @@ import { BrowserRouter as Router,
   Route,
 } from "react-router-dom";
 import MyImages from "./Pages/MyImages/MyImages";
-import MyStory from "./Pages/MyStory/MyStory";
+import MyStory from "./Pages/AboutMe/AboutMe";
 import Blog from "./Pages/Blog/Blog";
 import MyProjects from "./Pages/MyProjects/MyProjects";
 import Home from "./Pages/Home/Home";

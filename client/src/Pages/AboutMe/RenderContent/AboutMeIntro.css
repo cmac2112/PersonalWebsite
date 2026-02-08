@@ -1,0 +1,13 @@
+.about-me-pfp{
+    display: inline-block;
+    border-radius: 50%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.about-me-container{
+     display: flex;
+  flex-direction: column;
+  align-items: center;
+}

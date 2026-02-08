@@ -1,7 +1,7 @@
-import Emphasis from "../../Emphasis/Emphasis";
-import Button from "../../Button/Button";
+import Emphasis from "../../../Components/Emphasis/Emphasis"
+import Button from '../../../Components/Button/Button'
 import StellarViewImage from "../../../assets/stellarView.png";
-import "../PogressionMeter.css";
+import "../../../Components/ProgressionMeter/PogressionMeter.css"
 const StellarView = () => {
   const isMobileDevice = () => {
     return (

@@ -20,7 +20,7 @@
         "link": "/Experience",
         "title": "Projects",
         "type": "projects",
-        "LinksTo": ["Obby-Parser", "Stellar View", "Chess", "Solar Eye", "Sky Watch", "Ez Documents", "BC Social", "Course Search"]
+        "LinksTo": ["Obby-Parser", "Stellar View", "Chess", "Solar Eye"]
     },
     {
         "id": "Blog",
@@ -59,7 +59,7 @@
     },
     {
         "id": "Legget & Platt",
-        "link": "/Experience/legget",
+        "link": "/Experience/legget&platt",
         "title": "Legget & Platt",
         "type": "experience",
         "LinksTo": []
@@ -97,35 +97,7 @@
         "link": "/Experience/softwareclub",
         "title": "Software Club",
         "type": "experience",
-        "LinksTo": ["Solar Eye", "Sky Watch", "BC Social"]
-    },
-    {
-        "id": "Course Search",
-        "link": "/Experience/coursesearch",
-        "title": "Course Search",
-        "type": "projects",
-        "LinksTo": []
-    },
-    {
-        "id": "BC Social",
-        "link": "/Experience/bcsocial",
-        "title": "BC Social",
-        "type": "projects",
-        "LinksTo": []
-    },
-    {
-        "id": "Sky Watch",
-        "link": "/Experience/skywatch",
-        "title": "Sky Watch",
-        "type": "projects",
-        "LinksTo": []
-    },
-    {
-        "id": "Ez Documents",
-        "link": "/Experience/ezdocuments",
-        "title": "Ez Documents",
-        "type": "projects",
-        "LinksTo": []
+        "LinksTo": ["Solar Eye"]
     }
 
         

@@ -7,7 +7,6 @@ import Button from '../../Components/Button/Button';
 import "./MediaCss.css"
 import { useNavigate } from 'react-router-dom';
 import { DefinedRoutes } from '../../Helpers/RouteConstants';
-
 // Types for better type safety
 type AnimationStep = 0 | 1 | 2 | 3 | 4 | 5;
 type AnimationClass = '' | 'initial' | 'step-2' | 'step-3' | 'step-5' | 'step-6';

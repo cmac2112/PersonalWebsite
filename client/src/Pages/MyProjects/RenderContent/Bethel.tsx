@@ -1,6 +1,5 @@
-import React from "react";
-import Emphasis from "../../Emphasis/Emphasis";
-import "../PogressionMeter.css";
+import Emphasis from "../../../Components/Emphasis/Emphasis"
+import "../../../Components/ProgressionMeter/PogressionMeter.css"
 const Bethel = () => {
   return (
     <div>
