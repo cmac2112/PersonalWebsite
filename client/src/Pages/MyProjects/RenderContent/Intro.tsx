@@ -1,6 +1,4 @@
-import React from 'react'
-import "../PogressionMeter.css"
-import Emphasis from '../../Emphasis/Emphasis'
+import "../../../Components/ProgressionMeter/PogressionMeter.css"
 const Intro = () => {
   return (
     <div>

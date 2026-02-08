@@ -6,7 +6,7 @@ const MyImages = () => {
   return (
     <Layout>
     <div className='image-gallery-container'>
-      <p>test</p>
+      <p>Nothing here yet....</p>
     </div>
     </Layout>
   )

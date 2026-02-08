@@ -19,6 +19,7 @@ const NotFoundRedirect = () => {
 
   useEffect(() => {
     const attemptedPath = location.pathname.replace("/", "");
+    console.log(attemptedPath)
     console.log('navigating to:' + `${DefinedRoutes.Projects}/${encodeURIComponent(attemptedPath)}`)
     navigate(
         `${DefinedRoutes.Projects}/${encodeURIComponent(attemptedPath)}`,

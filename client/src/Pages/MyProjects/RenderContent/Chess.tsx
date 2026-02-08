@@ -1,8 +1,7 @@
-import React from 'react'
-import Emphasis from '../../Emphasis/Emphasis'
-import Button from '../../Button/Button'
-import chessImage from '../../../assets/chessScreenshot.jpg'
-import "../PogressionMeter.css"
+import Emphasis from "../../../Components/Emphasis/Emphasis"
+import Button from '../../../Components/Button/Button'
+import "../../../Components/ProgressionMeter/PogressionMeter.css"
+import { DefinedRoutes } from '../../../Helpers/RouteConstants'
 const Chess = () => {
    const isMobileDevice = () => {
     return (
@@ -54,20 +53,16 @@ const Chess = () => {
       string matrix representation keeps state management straightforward while TypeScript's type system 
       ensures piece and move validation remains consistent across the codebase.
     </p>
-    <h2><Emphasis>Techincal Stack</Emphasis></h2>
-    <p>React</p>
-    <p>Typescript</p>
         <div className="button-image-container">
-        <img className="app-image" src={chessImage} />
         <div className="tile-buttons">
           <Button
             label="Play Now!"
             OnClickCallback={() =>
               handleWindowNavigation(
-                "./chess",
+                `${DefinedRoutes.Chess}`,
               )
             }
-            materialIcon="planet"
+            materialIcon="chess_knight"
             iconPosition="right"
           />
           <Button

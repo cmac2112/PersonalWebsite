@@ -1,6 +1,4 @@
-import Emphasis from "../../Emphasis/Emphasis";
-import "../PogressionMeter.css";
-
+import "../../../Components/ProgressionMeter/PogressionMeter.css"
 const Legget = () => {
   return (
     <div>

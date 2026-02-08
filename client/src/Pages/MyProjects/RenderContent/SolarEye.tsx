@@ -1,7 +1,7 @@
-import Emphasis from "../../Emphasis/Emphasis";
-import "../PogressionMeter.css";
+import "../../../Components/ProgressionMeter/PogressionMeter.css"
 import SolarEyeImage from "../../../assets/solareye.png";
-import Button from "../../Button/Button";
+import Emphasis from "../../../Components/Emphasis/Emphasis"
+import Button from '../../../Components/Button/Button'
 
 const SolarEye = () => {
   const isMobileDevice = () => {

@@ -2,168 +2,36 @@
   {
     "Id": 1,
     "link": "/Blog/1",
-    "title": "This is another test",
-    "date": "01/01/2000",
+    "title": "Testing Auto Router",
+    "date": "02/07/2026",
     "type": "blog",
-    "html": "<h2>This asadasdis another test</h2>\n<h2>01/01/2000</h2>\n<p>This is another test aaaaaaaa <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
+    "html": "<h2>Testing Auto Router</h2>\n<h2>02/07/2026</h2>\n<p>This is another test <a href=\"/home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/intrustbank\" target=\"_blank\" rel=\"noopener noreferrer\">INTRUST BANK</a> <a href=\"/stellarview\" target=\"_blank\" rel=\"noopener noreferrer\">Stellar View</a> <a href=\"/bethelcollege\" target=\"_blank\" rel=\"noopener noreferrer\">Bethel College</a></p>\n",
     "LinksTo": [
       "Home",
       "Experience",
-      "Sky Watch"
+      "INTRUST BANK",
+      "Stellar View",
+      "Bethel College"
     ]
   },
   {
     "Id": 2,
     "link": "/Blog/2",
-    "title": "This is another test",
+    "title": "This is the title",
     "date": "01/01/2000",
     "type": "blog",
-    "html": "<h2>This ifgfffs another test</h2>\n<h2>01/01/2000</h2>\n<p>This is another testffffddddssss <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
+    "html": "<h2>This is the title</h2>\n<h2>01/01/2000</h2>\n<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n<p>all links must be valid so the workflow must also contain a list of links and alert the developer on publish if their link will not work\neventually in the future maybe add it so it creates a node automatically, but i think i will leave that for tektite, this is a personal portfolio after all\n<a href=\"/blog\" target=\"_blank\" rel=\"noopener noreferrer\">Blog</a></p>\n",
     "LinksTo": [
-      "Home",
-      "Experience",
-      "Sky Watch"
+      "Blog"
     ]
   },
   {
     "Id": 3,
     "link": "/Blog/3",
-    "title": "This is another test",
-    "date": "01/01/2000",
+    "title": "home",
+    "date": "chess",
     "type": "blog",
-    "html": "<h2>This is a44345trnother test</h2>\n<h2>01/01/2000</h2>\n<p>This is another tesffsdfasfdt <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nv\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a>\nThis is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
-    "LinksTo": [
-      "Home",
-      "Experience",
-      "Sky Watch"
-    ]
-  },
-  {
-    "Id": 4,
-    "link": "/Blog/4",
-    "title": "This is another test",
-    "date": "01/01/2000",
-    "type": "blog",
-    "html": "<h2>This is another test</h2>\n<h2>01/01/2000</h2>\n<p>This is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
-    "LinksTo": [
-      "Home",
-      "Experience",
-      "Sky Watch"
-    ]
-  },
-  {
-    "Id": 5,
-    "link": "/Blog/5",
-    "title": "This is another test",
-    "date": "01/01/2000",
-    "type": "blog",
-    "html": "<h2>This is another test</h2>\n<h2>01/01/2000</h2>\n<p>This is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
-    "LinksTo": [
-      "Home",
-      "Experience",
-      "Sky Watch"
-    ]
-  },
-  {
-    "Id": 6,
-    "link": "/Blog/6",
-    "title": "This is another test",
-    "date": "01/01/2000",
-    "type": "blog",
-    "html": "<h2>This is another test</h2>\n<h2>01/01/2000</h2>\n<p>This is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
-    "LinksTo": [
-      "Home",
-      "Experience",
-      "Sky Watch"
-    ]
-  },
-  {
-    "Id": 7,
-    "link": "/Blog/7",
-    "title": "This is another test",
-    "date": "01/01/2000",
-    "type": "blog",
-    "html": "<h2>This is another test</h2>\n<h2>01/01/2000</h2>\n<p>This is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
-    "LinksTo": [
-      "Home",
-      "Experience",
-      "Sky Watch"
-    ]
-  },
-  {
-    "Id": 8,
-    "link": "/Blog/8",
-    "title": "This is another test",
-    "date": "01/01/2000",
-    "type": "blog",
-    "html": "<h2>This is another test</h2>\n<h2>01/01/2000</h2>\n<p>This is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
-    "LinksTo": [
-      "Home",
-      "Experience",
-      "Sky Watch"
-    ]
-  },
-  {
-    "Id": 9,
-    "link": "/Blog/9",
-    "title": "This is another test",
-    "date": "01/01/2000",
-    "type": "blog",
-    "html": "<h2>This is another test</h2>\n<h2>01/01/2000</h2>\n<p>This is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
-    "LinksTo": [
-      "Home",
-      "Experience",
-      "Sky Watch"
-    ]
-  },
-  {
-    "Id": 10,
-    "link": "/Blog/10",
-    "title": "This is another test",
-    "date": "01/01/2000",
-    "type": "blog",
-    "html": "<h2>This is another test</h2>\n<h2>01/01/2000</h2>\n<p>This is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
-    "LinksTo": [
-      "Home",
-      "Experience",
-      "Sky Watch"
-    ]
-  },
-  {
-    "Id": 11,
-    "link": "/Blog/11",
-    "title": "This is another test",
-    "date": "01/01/2000",
-    "type": "blog",
-    "html": "<h2>This is another test</h2>\n<h2>01/01/2000</h2>\n<p>This is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
-    "LinksTo": [
-      "Home",
-      "Experience",
-      "Sky Watch"
-    ]
-  },
-  {
-    "Id": 12,
-    "link": "/Blog/12",
-    "title": "This is another test",
-    "date": "01/01/2000",
-    "type": "blog",
-    "html": "<h2>This is another test</h2>\n<h2>01/01/2000</h2>\n<p>This is another test <a href=\"/Home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/Experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/Sky-Watch\" target=\"_blank\" rel=\"noopener noreferrer\">Sky Watch</a></p>\n",
-    "LinksTo": [
-      "Home",
-      "Experience",
-      "Sky Watch"
-    ]
-  },
-  {
-    "Id": 13,
-    "link": "/Blog/13",
-    "title": "This is the title",
-    "date": "01/01/2000",
-    "type": "blog",
-    "html": "<h2>This is the title</h2>\n<h2>01/01/2000</h2>\n<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n<p>all links must be valid so the workflow must also contain a list of links and alert the developer on publish if their link will not work\neventually in the future maybe add it so it creates a node automatically, but i think i will leave that for tektite, this is a personal portfolio after all\n<a href=\"/Blog\">Blog</a></p>\n",
-    "LinksTo": [
-      "Blog"
-    ]
+    "html": "<p>home\nchess\nExperience\nimages\nstory\nBlog\nSky Watch</p>\n",
+    "LinksTo": []
   }
 ]

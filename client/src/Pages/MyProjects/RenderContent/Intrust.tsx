@@ -1,5 +1,5 @@
-import Emphasis from "../../Emphasis/Emphasis";
-import "../PogressionMeter.css";
+import Emphasis from "../../../Components/Emphasis/Emphasis"
+import "../../../Components/ProgressionMeter/PogressionMeter.css"
 const Intrust = () => {
   return (
     <div>
