@@ -41,7 +41,7 @@ const Blog = () => {
 
   useEffect(() => {
     fetchBlog();
-  }, []);
+  }, [id]);
   return (
     <div className="blog-container ">
       <Layout>

@@ -1,4 +1,5 @@
 import "./BlogSidebar.css";
+import { Link } from "react-router-dom"
 import { CompiledSidebarLinks } from "../../Helpers/DefaultExplorer";
 //sidebar to contain links to all of my blogs
 //page will need to uniquely render the markup
@@ -18,10 +19,10 @@ const BlogSidebar = () => {
           <ul className="sidebar-list">
             {CompiledSidebarLinks.map((link) => (
               <li className="sidebar-list-item" key={link.Id}>
-                <a href={`/Blog/${link.Id}`}>
+                <Link to={`/Blog/${link.Id}`}>
                   {link.Date.slice(0, 10)}
                   <br /> {link.Topic}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
