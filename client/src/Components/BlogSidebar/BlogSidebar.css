@@ -42,3 +42,23 @@
     color: rgb(165, 138, 238);
     text-decoration: none;
 }
+
+@media(max-width: 600px){
+    .sidebar-container{
+        min-width: 10vw;
+    }
+    .sidebar-list-item > a{
+        font-size: xx-small;
+    }
+    .sidebar-list {
+    padding-left: 0;
+    margin-left: 0;
+    list-style-position: inside;
+    max-width: 10vw;
+    }
+
+.sidebar-list > li {
+    padding-left: 0;
+    margin-left: 0;
+}
+    }
