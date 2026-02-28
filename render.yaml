@@ -1,0 +1,9 @@
+services:
+  - type: static
+    name: personal-website
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: client/dist
+    routes:
+      - path: "/*"
+        destination: /index.html
+        match: "miss"
