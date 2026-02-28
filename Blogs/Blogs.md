@@ -1,11 +1,13 @@
-## This is the title
-## 01/01/2000
+## My first Post!
+## 02/28/2026
 
-This is the directory where my custom workflow will commit and pr new blogs into the app. 
-Doing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month
+Hello! I'm a passionate developer and this site is my digital home. Here, you'll find updates on my personal projects, insights into my development journey, and quick tips that I discover along the way.
 
-all obby parsing can be done on entry to a blog item, just no api calls
+This website is built with React and TypeScript, and I’m always experimenting with new features and ideas. Expect regular posts about my progress, technical challenges, and solutions I find useful. Whether you’re a fellow developer or just curious, I hope you find something interesting here!
 
-all links must be valid so the workflow must also contain a list of links and alert the developer on publish if their link will not work
-eventually in the future maybe add it so it creates a node automatically, but i think i will leave that for tektite, this is a personal portfolio after all
-[[Blog]]
+Feel free to explore my [[Experience]] page or take a look at some of my projects like 
+[[Stellar View]]! 
+
+Stay tuned for more updates and feel free to explore the different sections. Thanks for visiting!
+
+Related Links [[Blog]] [[Experience]] [[Stellar View]]

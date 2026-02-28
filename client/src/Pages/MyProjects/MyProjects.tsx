@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import ObsidianViewer from "../../Components/ObsidianViewer/ObsidianViewer"
 import Layout from "../../Components/Layout/Layout";
 import { useParams } from "react-router-dom";
 import PogressionMeter from "../../Components/ProgressionMeter/PogressionMeter";
@@ -45,6 +46,9 @@ const MyProjects = () => {
     <div className="experience">
       <Layout>
           <PogressionMeter sections={sections}/>
+          <div className="viewer-width">
+            <ObsidianViewer />
+          </div>
       </Layout>
       </div>
   );

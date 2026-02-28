@@ -3,9 +3,10 @@ import ProgressionMeter from "../../Components/ProgressionMeter/PogressionMeter"
 import Layout from '../../Components/Layout/Layout'
 import type { Section } from "../../Helpers/Section.ts"
 import HighSchool from "./RenderContent/HighSchool"
-import College from "./RenderContent/College"
+import ObsidianViewer from "../../Components/ObsidianViewer/ObsidianViewer"
+//import College from "./RenderContent/College"
 import Interests from "./RenderContent/Interests"
-import Football from "./RenderContent/Football"
+//import Football from "./RenderContent/Football"
 import AboutMeIntro from "./RenderContent/AboutMeIntro"
 import "./AboutMe.css"
 const AboutMe = () => {
@@ -14,10 +15,11 @@ const AboutMe = () => {
 
     const sections: Section[] =[
       { id: 'aboutmeintro', title: 'Introduction', color: 'rgb(211, 192, 54)', innnerContent: AboutMeIntro() },
-     { id: 'highschool', title: 'High School', color: 'rgb(211, 192, 54)', innnerContent: HighSchool() },
-     {id: 'college', title: "College", color: 'rgb(93, 23, 23)', innnerContent: College()},
-     {id: 'interests', title: "Intrests/Hobbies", color: 'rgb(93, 23, 23)', innnerContent: Interests()} ,
-     {id: 'football', title: "football", color: 'rgb(93, 23, 23)', innnerContent: Football()}
+      {id: 'interests', title: "Intrests/Hobbies", color: 'rgb(93, 23, 23)', innnerContent: Interests()} ,
+     { id: 'highschool', title: 'High School/Early Years', color: 'rgb(211, 192, 54)', innnerContent: HighSchool() },
+   //  {id: 'college', title: "College", color: 'rgb(93, 23, 23)', innnerContent: College()},
+     
+    // {id: 'football', title: "football", color: 'rgb(93, 23, 23)', innnerContent: Football()}
     ];
 
     useEffect(() => {
@@ -30,6 +32,10 @@ const AboutMe = () => {
    <Layout>
     <div className={`${fadingIn ? 'fade-in' : ''}`}>
     <ProgressionMeter sections={sections} />
+    
+    <div className="viewer-width">
+    <ObsidianViewer />
+    </div>
     </div>
     </Layout>
   )

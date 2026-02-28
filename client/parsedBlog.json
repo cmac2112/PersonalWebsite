@@ -2,36 +2,14 @@
   {
     "Id": 1,
     "link": "/Blog/1",
-    "title": "Testing Auto Router",
-    "date": "02/07/2026",
+    "title": "My first Post!",
+    "date": "02/28/2026",
     "type": "blog",
-    "html": "<h2>Testing Auto Router</h2>\n<h2>02/07/2026</h2>\n<p>This is another test <a href=\"/home\" target=\"_blank\" rel=\"noopener noreferrer\">Home</a> <a href=\"/experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/intrustbank\" target=\"_blank\" rel=\"noopener noreferrer\">INTRUST BANK</a> <a href=\"/stellarview\" target=\"_blank\" rel=\"noopener noreferrer\">Stellar View</a> <a href=\"/bethelcollege\" target=\"_blank\" rel=\"noopener noreferrer\">Bethel College</a></p>\n",
+    "html": "<h2>My first Post!</h2>\n<h2>02/28/2026</h2>\n<p>Hello! I'm a passionate developer and this site is my digital home. Here, you'll find updates on my personal projects, insights into my development journey, and quick tips that I discover along the way.</p>\n<p>This website is built with React and TypeScript, and I’m always experimenting with new features and ideas. Expect regular posts about my progress, technical challenges, and solutions I find useful. Whether you’re a fellow developer or just curious, I hope you find something interesting here!</p>\n<p>Feel free to explore my <a href=\"/experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> page or take a look at some of my projects like\n<a href=\"/stellarview\" target=\"_blank\" rel=\"noopener noreferrer\">Stellar View</a>!</p>\n<p>Stay tuned for more updates and feel free to explore the different sections. Thanks for visiting!</p>\n<p>Related Links <a href=\"/blog\" target=\"_blank\" rel=\"noopener noreferrer\">Blog</a> <a href=\"/experience\" target=\"_blank\" rel=\"noopener noreferrer\">Experience</a> <a href=\"/stellarview\" target=\"_blank\" rel=\"noopener noreferrer\">Stellar View</a></p>\n",
     "LinksTo": [
-      "Home",
       "Experience",
-      "INTRUST BANK",
       "Stellar View",
-      "Bethel College"
-    ]
-  },
-  {
-    "Id": 2,
-    "link": "/Blog/2",
-    "title": "This is the title",
-    "date": "01/01/2000",
-    "type": "blog",
-    "html": "<h2>This is the title</h2>\n<h2>01/01/2000</h2>\n<p>This is the directory where my custom workflow will commit and pr new blogs into the app.\nDoing it this way to not incur a lot of charges for cloud sql since this is literally a personal website there is no need for it to cost me more than 5 bucks a month</p>\n<p>all obby parsing can be done on entry to a blog item, just no api calls</p>\n<p>all links must be valid so the workflow must also contain a list of links and alert the developer on publish if their link will not work\neventually in the future maybe add it so it creates a node automatically, but i think i will leave that for tektite, this is a personal portfolio after all\n<a href=\"/blog\" target=\"_blank\" rel=\"noopener noreferrer\">Blog</a></p>\n",
-    "LinksTo": [
       "Blog"
     ]
-  },
-  {
-    "Id": 3,
-    "link": "/Blog/3",
-    "title": "home",
-    "date": "chess",
-    "type": "blog",
-    "html": "<p>home\nchess\nExperience\nimages\nstory\nBlog\nSky Watch</p>\n",
-    "LinksTo": []
   }
 ]
