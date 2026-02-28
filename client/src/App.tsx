@@ -29,7 +29,7 @@ function App() {
         <Route path="/Blog/:id?" element={<Blog />} />
         <Route path="/Experience/:section" element={<MyProjects />} />
         <Route path="/bad-route" element={<BadRoute />} />
-        <Route path="*" element={<NotFoundRedirect />} />
+        <Route path="/*" element={<NotFoundRedirect />} />
       </Routes>
     </Router>
   )
