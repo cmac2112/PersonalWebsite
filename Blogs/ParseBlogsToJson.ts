@@ -49,8 +49,8 @@ function main() {
   const date = dateLine.replace(/^##\s*/, "").trim();
     const link = `/Blog/${Id}`;
     const type = "blog";
-    const { links_set, html } = parseMarkdown(content, link);
-
+    const { links_set, html: rawHtml } = parseMarkdown(content, link);
+    const html = rawHtml.replace(/\s+target="_blank"/g, "");
     result.push({
       Id,
       link,

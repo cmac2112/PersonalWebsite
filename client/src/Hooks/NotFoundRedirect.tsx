@@ -17,16 +17,22 @@ const NotFoundRedirect = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const attemptedPath = location.pathname.replace(/^\//, "");
-    console.log(attemptedPath)
-    console.log('navigating to:' + `${DefinedRoutes.Projects}/${encodeURIComponent(attemptedPath)}`)
-    navigate(
-        `${DefinedRoutes.Projects}/${encodeURIComponent(attemptedPath)}`,
-        { replace: true}
-    )
-
+   useEffect(() => {
+    const pathname = location.pathname.toLowerCase();
+    
+    // List of valid top-level routes
+    const validRoutes = Object.values(DefinedRoutes).map(route => route.toLowerCase()).filter(route => !route.includes('.pdf'));
+    
+    // Check if the current pathname matches any valid route
+    const isValidRoute = validRoutes.some(route => pathname === route || pathname.startsWith(route + '/'));
+    
+    if (!isValidRoute && pathname !== '/') {
+      // Only redirect to Experience if it's not a valid route
+      const attemptedPath = pathname.replace(/^\//, "");
+      navigate(`${DefinedRoutes.Projects}/${encodeURIComponent(attemptedPath)}`, { replace: true });
+    }
   }, [location, navigate])
+  
   return null;
 }
 
