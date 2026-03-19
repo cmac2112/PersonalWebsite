@@ -11,12 +11,16 @@ import { CompiledSidebarLinks } from "../../Helpers/DefaultExplorer";
 
 //ex: 2025-12-05: Some topic
 
-const BlogSidebar = () => {
+interface BlogSidebarProps{
+  IsMobile: boolean
+}
+
+const BlogSidebar:React.FC<BlogSidebarProps> = ({ IsMobile }) => {
   return (
-    <div className="sidebar-container">
-      <div className="sidebar-header-container">
-        <h3 className="sidebar-header">Latest Posts</h3>
-          <ul className="sidebar-list">
+    <div className={`${IsMobile ? "mobile-sidebar-container" : "sidebar-container"}`}>
+      <div className={`${IsMobile ? "mobile-header-container" : "sidebar-header-container"}`}>
+        <h3 className={`${IsMobile ? "mobile-header" : "sidebar-header"}`}>Latest Posts</h3>
+            <ul className={`${IsMobile ? "mobile-sidebar-list" : "sidebar-list"} `}>
             {CompiledSidebarLinks.map((link) => (
               <li className="sidebar-list-item" key={link.Id}>
                 <Link to={`/Blog/${link.Id}`}>

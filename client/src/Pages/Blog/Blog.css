@@ -7,13 +7,16 @@
 .my-blog-flex-container{
     display: flex;
     justify-content: start;
-    margin-right: 1rem;
     
+    margin-right: 1rem;
+    width: 100%;
 }
 .blog-sidebar-container{
     width: auto;
 }
 .blog-content{
+    justify-content: center;
+    align-items: center;
     background: rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
@@ -50,6 +53,8 @@
 .obsidian-blog-col{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
 }
