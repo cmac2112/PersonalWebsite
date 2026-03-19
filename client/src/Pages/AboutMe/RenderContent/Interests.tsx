@@ -1,4 +1,4 @@
-
+import "../../../Components/ProgressionMeter/PogressionMeter.css"
 const Interests = () => {
   return (
     <div>

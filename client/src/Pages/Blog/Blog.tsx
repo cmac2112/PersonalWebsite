@@ -17,10 +17,10 @@ const Blog = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [blogContent, setBlogContent] = useState<BlogContent>();
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const fetchBlog = async () => {
     try {
-      
-
+  
       const item: BlogContent | undefined = GetBlogContentById(id);
       if(!item){
         setError(true);
@@ -35,6 +35,8 @@ const Blog = () => {
   };
 
   useEffect(() => {
+    DetermineLayout();
+
     setFadingIn(true);
     const timeout = setTimeout(() => setFadingIn(false), 500); // match animation duration
     return () => clearTimeout(timeout);
@@ -61,13 +63,28 @@ const Blog = () => {
       if (node) node.removeEventListener("click", handler);
     };
   }, [navigate]);
+
+  const DetermineLayout = () => {
+    const width = screen.width;
+    console.log(width);
+    if(width < 700 ){
+      setIsMobile(true)
+    }
+  }
+
   return (
     <div className="blog-container ">
       <Layout>
         <div className={`my-blog-flex-container ${fadingIn ? "fade-in" : ""}`}>
+          {isMobile ? 
+        /* have sidebar slideout */
+        <></>
+        :  
+        
           <div className="blog-sidebar-container">
-            <BlogSidebar />
+            <BlogSidebar IsMobile={isMobile}/>
           </div>
+}
           <div className="obsidian-blog-col">
             <div className="blog-content">
               {loading ? (
@@ -87,6 +104,7 @@ const Blog = () => {
                 
               ) : null}
             </div>
+            {isMobile ? <BlogSidebar IsMobile={isMobile} /> : <></>}
             <div className="obsidian-container">
               <ObsidianViewer />
             </div>
