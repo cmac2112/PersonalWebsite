@@ -1,3 +1,26 @@
+@import "tailwindcss";
+
+@keyframes slideshowFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+@theme {
+  --animate-fade-in:       slideshowFadeIn 0.6s cubic-bezier(0.4, 0.8, 0.2, 1) both;
+  --animate-slide-up:      slideUpFade    0.7s cubic-bezier(0.4, 0, 0.2, 1)    both;
+  --animate-progress-fill: progressFill   8s   linear                           forwards;
+}
+
 body{
   margin: 0;
   font-synthesis: none;
@@ -5,12 +28,11 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, #0a0a0a 0%, #080707 20%, #080606 40%, #0c0707 60%, #000000 80%, #0a0808 100%);
-  min-height: 100vh;  
+  min-height: 100vh;
   color: white;
 }
 a{
     color: gold;
-   
 }
 :root{
   --primary-background: #111111;
@@ -22,12 +44,12 @@ a{
 :root {
   --transition-main: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
   --transition-bounce: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  --transition-gradient: opacity 3s cubic-bezier(0.4, 0, 0.2, 1), 
+  --transition-gradient: opacity 3s cubic-bezier(0.4, 0, 0.2, 1),
                         transform 2.5s cubic-bezier(0.23, 1, 0.32, 1);
   --transition-fast: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   --container-max-width: 100vw;
   --container-padding: 1rem;
-  
+
   --grid-top: 20vh;
   --grid-center: 60vh;
   --grid-bottom: 20vh;
@@ -37,19 +59,19 @@ a{
   --bg-scale-3: 2;
   --bg-scale-4: 4;
   --bg-scale-5: 6;
-  
+
   --bg-translate-y-1: 0vh;
   --bg-translate-y-2: 15vh;
   --bg-translate-y-3: 25vh;
   --bg-translate-y-4: -10vh;
   --bg-translate-y-5: 30vh;
-  
+
   --bg-rotate-1: 0deg;
   --bg-rotate-2: 15deg;
   --bg-rotate-3: -10deg;
   --bg-rotate-4: 25deg;
   --bg-rotate-5: -20deg;
-  
+
   --pfp-size: 15rem;
   --title-margin-bottom: 15rem;
   --football-height: 4rem;
@@ -57,23 +79,17 @@ a{
   --award-width: 10rem;
   --modal-width: 280px;
   --modal-max-width: 90vw;
-  
+
   --font-size-base: clamp(0.9rem, 2.5vw, 1.2rem);
   --font-size-large: clamp(1.2rem, 4vw, 2rem);
   --font-size-xl: clamp(1.5rem, 5vw, 3rem);
   --font-size-hero: clamp(2rem, 8vw, 5rem);
-  
+
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 2rem;
   --spacing-xl: 4rem;
-}
-.site-explorer{
-    margin-top: 1rem;
-    width: 100%;
-    border: 1px solid grey;
-    border-radius: 1rem;
 }
 @keyframes fadeInEffect{
   0%{

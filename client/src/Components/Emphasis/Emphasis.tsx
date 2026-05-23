@@ -1,12 +1,12 @@
 import React, { type ReactNode } from 'react'
-import "./Emphasis.css"
 
-interface EmphasisProps{
+interface EmphasisProps {
     children: ReactNode
 }
-const Emphasis:React.FC<EmphasisProps> = ({children}) => {
+
+const Emphasis: React.FC<EmphasisProps> = ({ children }) => {
   return (
-    <span className='emphasis'>{children}</span>
+    <span className="text-[#ffd700] font-bold">{children}</span>
   )
 }
 

@@ -1,167 +1,185 @@
 import { useState, useEffect, useRef } from "react";
-import HHNebula from "../../assets/slideshow/hhnebulaj700.jpg";
-import SatView from "../../assets/slideshow/StellarSatView.jpg";
-import PfpDesktop from "../../assets/slideshow/pfpdesktop.jpg";
-import "./Slideshow.css";
+import HHNebula    from "../../assets/slideshow/hhnebulaj700.jpg";
+import SatView     from "../../assets/slideshow/StellarSatView.jpg";
+import PfpDesktop  from "../../assets/slideshow/pfpdesktop.jpg";
+import MyImage     from "../../assets/slideshow/football.png"
+import Blog        from "../../assets/slideshow/code.jpg";
 import MaterialIcon from "../MaterialIcon/MaterialIcon";
-import Button from "../Button/Button";
-import Blog from "../../assets/slideshow/code.jpg";
+import Button       from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 import { DefinedRoutes } from "../../Helpers/RouteConstants";
-// slideshow component that should have arrow buttons on left and right to move between slides
-// slides should have text on it that is not part of the picture (so overlayed)
 
-//need to keep track of the image on the page and conditionally render text
-//text should fade in and slide up on each slide
+const SLIDES = [
+  {
+    image:    MyImage,
+    title:    "Hello",
+    subtitle: "I'm Caden McArthur",
+    cta:      "Who Am I?",
+    icon:     "person_celebrate",
+    route:    DefinedRoutes.Story,
+  },
+  {
+    image:    SatView,
+    title:    "My Projects",
+    subtitle: "& Experience",
+    cta:      "Explore",
+    icon:     "ar_stickers",
+    route:    DefinedRoutes.Projects,
+  },
+  {
+    image:    Blog,
+    title:    "My Blog",
+    subtitle: "What am I working on?",
+    cta:      "Blog",
+    icon:     "edit",
+    route:    DefinedRoutes.Blog,
+  },
+  {
+    image:    HHNebula,
+    title:    "My Gallery",
+    subtitle: "Explore The Cosmos",
+    cta:      "My Astrophotography",
+    icon:     "moon_stars",
+    route:    DefinedRoutes.Images,
+  },
+];
+
+const AUTO_MS        = 8_000;
+const POST_MANUAL_MS = 20_000;
+
 const Slideshow = () => {
-  const slideArray: string[] = [PfpDesktop, SatView, Blog,HHNebula];
-  const isMobileDevice = () => {
-    return (
-      window.innerWidth <= 768 ||
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    );
-  };
-  const navigate = useNavigate();
+  const navigate  = useNavigate();
+  const manualRef = useRef(false);
+  const [current, setCurrent] = useState(0);
 
-  const [slideNumber, setSlideNumber] = useState<number>(0);
-  const [fadeIn, setFadeIn] = useState<boolean>(true);
+  const isMobile = () =>
+    window.innerWidth <= 768 ||
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-  
-  const manualAdvanceRef = useRef<boolean>(false);
-
-  const handleNewWindowNavigation = (url: string) => {
-    const delayTime = isMobileDevice() ? 350 : 0;
-    setTimeout(() => {
-      navigate(url);
-    }, delayTime);
+  const advance = (dir: 1 | -1) => {
+    manualRef.current = true;
+    setCurrent(prev => (prev + dir + SLIDES.length) % SLIDES.length);
   };
 
-  const HandleSlideChange = (forwards: boolean) => {
-    manualAdvanceRef.current = true;
-    if (forwards) {
-      setSlideNumber((prev) => (prev === slideArray.length - 1 ? 0 : prev + 1));
-    } else {
-      setSlideNumber((prev) => (prev === 0 ? slideArray.length - 1 : prev - 1));
-    }
+  const goTo = (i: number) => {
+    manualRef.current = true;
+    setCurrent(i);
   };
 
   useEffect(() => {
-  let timeout;
-  if (manualAdvanceRef.current) {
-    timeout = setTimeout(() => {
-      HandleSlideChange(true);
-      manualAdvanceRef.current = false;
-    }, 20000); // 20 seconds after manual
-  } else {
-    timeout = setTimeout(() => {
-      HandleSlideChange(true);
-    }, 8000); // 8 seconds auto
-  }
-  return () => clearTimeout(timeout);
-}, [slideNumber]);
+    const delay = manualRef.current ? POST_MANUAL_MS : AUTO_MS;
+    const t = setTimeout(() => {
+      setCurrent(prev => (prev + 1) % SLIDES.length);
+      manualRef.current = false;
+    }, delay);
+    return () => clearTimeout(t);
+  }, [current]);
 
-  useEffect(() => {
-    setFadeIn(true);
-    const timeout = setTimeout(() => setFadeIn(false), 500); // match animation duration
-    return () => clearTimeout(timeout);
-  }, [slideNumber]);
+  const handleNav = (route: string) => {
+    setTimeout(() => navigate(route), isMobile() ? 350 : 0);
+  };
 
-  
+  const slide = SLIDES[current];
+
   return (
-    <>
-      <div className="slideshow-container">
-        <img
-          className={`slide${fadeIn ? " fade-in" : ""}`}
-          src={slideArray[slideNumber]}
-          alt={`slide-${slideNumber}`}
-        />
-        {slideNumber === 0 ? (
-          <div className={`slide-1-hello ${fadeIn ? " fade-in" : ""}`}>
-            <h1 className="slide-title">Hello</h1>
-            <h2 className="slide-subtitle">I'm Caden McArthur</h2>
-            <div className="slide-button-container">
-              <Button
-                label="Who Am I?"
-                OnClickCallback={() => handleNewWindowNavigation(`${DefinedRoutes.Story}`)}
-                materialIcon="person_celebrate"
-                iconPosition="right"
-              />
-            </div>
-          </div>
-        ) : slideNumber === 1 ? (
-          <div className={`slide-1-hello ${fadeIn ? " fade-in" : ""}`}>
-            <h1 className="slide-title white">My Projects</h1>
-            <h2 className="slide-subtitle white">And Experience</h2>
-            <div className="slide-button-container">
-              <Button
-                label="Explore"
-                OnClickCallback={() =>
-                  handleNewWindowNavigation(`${DefinedRoutes.Projects}`)
-                }
-                materialIcon="ar_stickers"
-                iconPosition="right"
-              />
-            </div>
-          </div>
-        ): slideNumber === 2 ? (
-          <div className={`slide-1-hello ${fadeIn ? " fade-in" : ""}`}>
-            <h1 className="slide-title white">My Blog</h1>
-            <h2 className="slide-subtitle white">What am I working on?</h2>
-            <div className="slide-button-container">
-              <Button
-                label="Blog"
-                OnClickCallback={() => handleNewWindowNavigation(`${DefinedRoutes.Blog}`)}
-                materialIcon="edit"
-                iconPosition="right"
-              />
-            </div>
-          </div>
-        ) 
-        
-        : slideNumber === 3 ? (
-          <div className={`slide-1-hello ${fadeIn ? " fade-in" : ""}`}>
-            <h1 className="slide-title white">My Gallery</h1>
-            <h2 className="slide-subtitle white">Explore The Cosmos</h2>
-            <div className="slide-button-container">
-              <Button
-                label="My Astrophotography"
-                OnClickCallback={() => handleNewWindowNavigation(`${DefinedRoutes.Images}`)}
-                materialIcon="moon_stars"
-                iconPosition="right"
-              />
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
-        <span
-          className="back-arrow"
-          style={
-            slideNumber === 1 || slideNumber === 2 || slideNumber === 3
-              ? { color: "white" }
-              : undefined
-          }
-          onClick={() => HandleSlideChange(false)}
-        >
-          <MaterialIcon name="arrow_back" />
-          <p className="arrow-label">Back</p>
-        </span>
-        <span
-          className="forward-arrow"
-          style={
-            slideNumber === 1 || slideNumber === 2 || slideNumber === 3
-              ? { color: "white" }
-              : undefined
-          }
-          onClick={() => HandleSlideChange(true)}
-        >
-          <p className="arrow-label">Next</p>
-          <MaterialIcon name="arrow_forward" />
-        </span>
+    <div className="relative w-full h-screen min-h-[520px] overflow-hidden bg-gray-950 select-none">
+
+      {/* Background image – remounts on change to trigger cross-fade */}
+      <img
+        key={`img-${current}`}
+        src={slide.image}
+        alt={slide.title}
+        className="absolute inset-0 w-full h-full object-cover animate-fade-in"
+      />
+
+      {/* Bottom-up dark ramp – keeps text legible regardless of image content */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 pointer-events-none" />
+      {/* Radial vignette – darkens edges, draws eye to centre */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.55)_100%)] pointer-events-none" />
+
+      {/* Slide content – remounts on change to replay stagger animations */}
+      <div
+        key={`content-${current}`}
+        className="absolute inset-x-0 bottom-0 pb-24 sm:pb-28 flex flex-col items-center text-center px-6 pointer-events-none"
+      >
+        {/* Gold accent rule */}
+        <span className="block w-12 h-[3px] rounded-full bg-[#ffcf0d] mb-5 animate-slide-up" />
+
+        <h1 className="
+            text-white font-black leading-none tracking-tight
+            drop-shadow-[0_4px_32px_rgba(0,0,0,0.9)]
+            text-[clamp(2.75rem,9vw,7rem)]
+            animate-slide-up [animation-delay:80ms]">
+          {slide.title}
+        </h1>
+
+        <p className="
+            text-white/75 font-light tracking-widest uppercase
+            text-[clamp(0.75rem,1.8vw,1.1rem)]
+            mt-3 mb-8
+            animate-slide-up [animation-delay:220ms]">
+          {slide.subtitle}
+        </p>
+
+        <div className="animate-slide-up [animation-delay:380ms] pointer-events-auto">
+          <Button
+            label={slide.cta}
+            OnClickCallback={() => handleNav(slide.route)}
+            materialIcon={slide.icon}
+            iconPosition="right"
+          />
+        </div>
       </div>
-    </>
+
+      {/* Prev arrow */}
+      <button
+        onClick={() => advance(-1)}
+        aria-label="Previous slide"
+        className="
+          absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-10
+          w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center
+          bg-white/10 border border-white/20 text-white backdrop-blur-sm
+          hover:bg-[#ffcf0d]/20 hover:border-[#ffcf0d]/50 hover:text-[#ffcf0d] hover:scale-110
+          transition-all duration-300 cursor-pointer"
+      >
+        <MaterialIcon name="navigate_before" />
+      </button>
+
+      {/* Next arrow */}
+      <button
+        onClick={() => advance(1)}
+        aria-label="Next slide"
+        className="
+          absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-10
+          w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center
+          bg-white/10 border border-white/20 text-white backdrop-blur-sm
+          hover:bg-[#ffcf0d]/20 hover:border-[#ffcf0d]/50 hover:text-[#ffcf0d] hover:scale-110
+          transition-all duration-300 cursor-pointer"
+      >
+        <MaterialIcon name="navigate_next" />
+      </button>
+
+      {/* Pill / dot indicators */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+        {SLIDES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className={`h-[6px] rounded-full transition-all duration-300 cursor-pointer
+              ${i === current
+                ? "w-7 bg-[#ffcf0d]"
+                : "w-[6px] bg-white/35 hover:bg-white/65"}`}
+          />
+        ))}
+      </div>
+
+      {/* Auto-advance progress bar */}
+      <div
+        key={`prog-${current}`}
+        className="absolute bottom-0 left-0 h-[3px] bg-[#ffcf0d]/70 animate-progress-fill"
+      />
+    </div>
   );
 };
 
