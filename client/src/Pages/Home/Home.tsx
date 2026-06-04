@@ -1,4 +1,3 @@
-import "./Home.css"
 import MyExperienceTile from '../../Components/MyExperienceTile/MyExperienceTile';
 import Layout from '../../Components/Layout/Layout';
 import Button from '../../Components/Button/Button';
@@ -13,168 +12,166 @@ import Emphasis from "../../Components/Emphasis/Emphasis";
 
 const Home = () => {
   const isMobileDevice = () => {
-    return window.innerWidth <= 768 || 
+    return window.innerWidth <= 768 ||
            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   };
 
   const navigate = useNavigate();
 
-  const handleWindowNavigation = (url: string) =>{
+  const handleWindowNavigation = (url: string) => {
     const delayTime = isMobileDevice() ? 200 : 100;
     setTimeout(() => {
       window.open(url, "_blank");
     }, delayTime);
   }
+
   const [fadingIn, setFadingIn] = useState<boolean>(false)
   useEffect(() => {
     setFadingIn(true);
-    const timeout = setTimeout(() => setFadingIn(false), 500); // match animation duration
+    const timeout = setTimeout(() => setFadingIn(false), 500);
     return () => clearTimeout(timeout);
-  },[])
+  }, [])
+
   return (
-    
-    <div className='home'>
+    <div className="w-full flex flex-col justify-center items-center overflow-x-hidden">
       <Layout>
-      <Slideshow />
-      <div className={`more-about-me white ${fadingIn ? "fade-in" : ""}`}>
-        <p className='about-me-subtitle white'>Just skimming? Below are some quick hits of my projects and experience.</p>
-        <p className='about-me-subtitle white'>More in depth descriptions can be found on the <a href='/projects-and-experience'>Personal Projects</a> page.</p>
-        <MaterialIcon name="arrow_downward" />
-        <div className='reactive-flexbox'>
-        <section id="experience-section">
-          <h2 className="about-me-header">Work Experience</h2>
-        <div className='my-experience-list'>
-        <MyExperienceTile title='Software Developer'
-         subtitle='INTRUST Bank'
-         technologies={["Blazor", "C#", "SQL", ".NET", "EFCore", "Javascript", "CI/CD", "Azure"]}>
-          <h2 className='experience-tile-child-header'>Developed and Maintained 40+ internal banking solutions for INTRUST</h2>
-          <ul className="experience-list">
-  <li>Designed and implemented a multi-stage wealth/investment account-documentation system used across teams to prepare investment portfolios, <Emphasis>supporting and enhancing the workflow of wealth accounts totaling to over $9 Billion</Emphasis> </li>
-  <li>Architected an EF Core–driven microservice to synchronize and share data across multiple legacy applications and databases in a scalable, maintainable architecture.</li>
-  <li>Built and enhanced statistical dashboards for developers to monitor errors and active users in real time</li>
-  <li>Implemented unit tests and integrated CI/CD pipelines to streamline testing and deployments</li>
-  <li>Collaborated with business units by attending meetings and gathering requirements</li>
-  <li>Continuously developed reusable components and enhancements for an internal NuGet library used across all INTRUST applications</li>
-</ul>
-        </MyExperienceTile>
-        <MyExperienceTile
-         title='Front-End Software Engineer Intern'
-         subtitle='Legget & Platt'
-         technologies={["Typescript", "React", "Tailwind CSS"]}>
-          <h2 className='experience-tile-child-header'>
-            Developed React components for internal applications.
-          </h2>
-          <ul className='experience-list'>
-            <li>Developed in app communication features and integrated multi-language support for branches across the world</li>
-            <li>Participated in SCRUM meetings, contributed to sprint planning, daily standups and sprint retrospectives</li>
-          </ul>
-        </MyExperienceTile>
-        <MyExperienceTile title='Software Developer / IMS Technician'
-         subtitle='Bethel College'
-         technologies={["Python", "MySQL", "React","TailwindCSS", "Docker", "CI/CD"]}>
-          <h2 className='experience-tile-child-header'>
-            Developed and worked for Bethel College through the Employment Experience program
-          </h2>
-          <ul className='experience-list'>
-            <li>Developed Python scripts to automatically gather SAT/ACT and ACCUPLACER test scores for Admissions</li>
-            <li>Re-created Bethel's job application process through react to begin the transition away from the legacy site</li>
-            <li>Responded to trouble tickets and installed hardware as a Student Technician for the IMS department</li>
-          </ul>
-        </MyExperienceTile>
-        <MyExperienceTile title='Bethel College Software Club' subtitle={`Founder of Bethel's First Software Club`}
-        technologies={["Job Prep", "Hackathons", "Group Projects", "Leadership", "Team Building"]}>
-          <h2 className='experience-tile-child-header'>Established Bethel's first ever Software Club</h2>
-            <ul className='experience-list'>
-              <li>Represented Bethel in hackathons around the country</li>
-              <li><Emphasis>Award winning projects </Emphasis>at hackathons like NASA's yearly Space-App Challenge</li>
-              <li>Developed projects such as BC-Social, a social media for clubs on campus to better communicate with Students</li>
-              <li>Provided job interview prep for members, worked on projects using SCRUM project management for experience, reviewed pull requests and provided feedback, 
-                worked on commonly asked job interview DSA questions as a team
-              </li>
-              <li><Emphasis>Voted 'Best Up and Coming Club' and still prospering long after my graduation</Emphasis></li>
-            </ul>
-          
-        </MyExperienceTile>
-      </div>
-      </section>
-      <div className='personal-projects-container'>
-      <section id='my-projects'>
-        <h2 className="about-me-header">Personal Projects</h2>
-        <div className='my-experience-list'>
-          <MyExperienceTile title='Stellar View' subtitle='NASA Sattelite Data Visualizer'
-        technologies={["React", "Typescript", "Tailwindcss", "Python", "Flask", "CesiumJS"]}>
-          <h2 className='experience-tile-child-header'>Visualize NASA Sattelite Data In Near Real Time</h2>
-          <ul className='experience-list'>
-            <li>Built for the challenge statement "Embiggen Your Eyes" with the goal of making hard to reach NASA data more accessable</li>
-            <li>View near live sattelite views of the earth from GOES-EAST/WEST, MODIS-TERRA/AQUA and much more in near real time!</li>
-            <li>One of the only apps that allows for in browser .TIF image viewing for NASA's large 40k pixel wide images at lossless quality. Doing the job of paid enterprise software right on the browser</li>
-            <img className='app-images' src={StellarViewImage} />
-            <div className='tile-buttons'>
-            <Button label='Go To Live Site' OnClickCallback={() => handleWindowNavigation("https://stellarview.us/")} materialIcon='orbit' iconPosition='right'/>
-            <Button label='View The Repo' OnClickCallback={() => handleWindowNavigation("https://github.com/cmac2112/Stellar-View")} materialIcon='code' iconPosition='right' />
+        <Slideshow />
+        <div className={`mb-20 max-w-[80%] flex flex-col justify-center items-center text-left text-white [text-shadow:2px_2px_#111111] ${fadingIn ? "animate-fade-in" : ""}`}>
+          <p className="text-center text-white">Just skimming? Below are some quick hits of my projects and experience.</p>
+          <p className="text-center text-white">More in depth descriptions can be found on the <a href='/projects-and-experience'>Personal Projects</a> page.</p>
+          <MaterialIcon name="arrow_downward" />
+          <div className="flex flex-col min-[850px]:flex-row min-[850px]:gap-4">
+            <section id="experience-section">
+              <h2 className="text-center">Work Experience</h2>
+              <div className="flex flex-col justify-center items-center gap-4 min-[850px]:grid min-[850px]:[grid-template-rows:repeat(auto-fit,minmax(250px,1fr))] min-[850px]:auto-rows-auto min-[850px]:gap-8">
+                <MyExperienceTile
+                  title='Software Developer'
+                  subtitle='INTRUST Bank'
+                  technologies={["Blazor", "C#", "SQL", ".NET", "EFCore", "Javascript", "CI/CD", "Azure"]}>
+                  <h2 className="m-4 text-base">Developed and Maintained 40+ internal banking solutions for INTRUST</h2>
+                  <ul className="flex flex-col gap-2 text-sm w-fit px-8">
+                    <li>Designed and implemented a multi-stage wealth/investment account-documentation system used across teams to prepare investment portfolios, <Emphasis>supporting and enhancing the workflow of wealth accounts totaling to over $9 Billion</Emphasis></li>
+                    <li>Architected an EF Core–driven microservice to synchronize and share data across multiple legacy applications and databases in a scalable, maintainable architecture.</li>
+                    <li>Built and enhanced statistical dashboards for developers to monitor errors and active users in real time</li>
+                    <li>Implemented unit tests and integrated CI/CD pipelines to streamline testing and deployments</li>
+                    <li>Collaborated with business units by attending meetings and gathering requirements</li>
+                    <li>Continuously developed reusable components and enhancements for an internal NuGet library used across all INTRUST applications</li>
+                  </ul>
+                </MyExperienceTile>
+                <MyExperienceTile
+                  title='Front-End Software Engineer Intern'
+                  subtitle='Legget & Platt'
+                  technologies={["Typescript", "React", "Tailwind CSS"]}>
+                  <h2 className="m-4 text-base">Developed React components for internal applications.</h2>
+                  <ul className="flex flex-col gap-2 text-sm w-fit px-8">
+                    <li>Developed in app communication features and integrated multi-language support for branches across the world</li>
+                    <li>Participated in SCRUM meetings, contributed to sprint planning, daily standups and sprint retrospectives</li>
+                  </ul>
+                </MyExperienceTile>
+                <MyExperienceTile
+                  title='Software Developer / IMS Technician'
+                  subtitle='Bethel College'
+                  technologies={["Python", "MySQL", "React", "TailwindCSS", "Docker", "CI/CD"]}>
+                  <h2 className="m-4 text-base">Developed and worked for Bethel College through the Employment Experience program</h2>
+                  <ul className="flex flex-col gap-2 text-sm w-fit px-8">
+                    <li>Developed Python scripts to automatically gather SAT/ACT and ACCUPLACER test scores for Admissions</li>
+                    <li>Re-created Bethel's job application process through react to begin the transition away from the legacy site</li>
+                    <li>Responded to trouble tickets and installed hardware as a Student Technician for the IMS department</li>
+                  </ul>
+                </MyExperienceTile>
+                <MyExperienceTile
+                  title='Bethel College Software Club'
+                  subtitle={`Founder of Bethel's First Software Club`}
+                  technologies={["Job Prep", "Hackathons", "Group Projects", "Leadership", "Team Building"]}>
+                  <h2 className="m-4 text-base">Established Bethel's first ever Software Club</h2>
+                  <ul className="flex flex-col gap-2 text-sm w-fit px-8">
+                    <li>Represented Bethel in hackathons around the country</li>
+                    <li><Emphasis>Award winning projects </Emphasis>at hackathons like NASA's yearly Space-App Challenge</li>
+                    <li>Developed projects such as BC-Social, a social media for clubs on campus to better communicate with Students</li>
+                    <li>Provided job interview prep for members, worked on projects using SCRUM project management for experience, reviewed pull requests and provided feedback,
+                      worked on commonly asked job interview DSA questions as a team
+                    </li>
+                    <li><Emphasis>Voted 'Best Up and Coming Club' and still prospering long after my graduation</Emphasis></li>
+                  </ul>
+                </MyExperienceTile>
+              </div>
+            </section>
+            <div>
+              <section id='my-projects'>
+                <h2 className="text-center">Personal Projects</h2>
+                <div className="flex flex-col justify-center items-center gap-4 min-[850px]:grid min-[850px]:[grid-template-rows:repeat(auto-fit,minmax(250px,1fr))] min-[850px]:auto-rows-auto min-[850px]:gap-8">
+                  <MyExperienceTile
+                    title='Stellar View'
+                    subtitle='NASA Sattelite Data Visualizer'
+                    technologies={["React", "Typescript", "Tailwindcss", "Python", "Flask", "CesiumJS"]}>
+                    <h2 className="m-4 text-base">Visualize NASA Sattelite Data In Near Real Time</h2>
+                    <ul className="flex flex-col gap-2 text-sm w-fit px-8">
+                      <li>Built for the challenge statement "Embiggen Your Eyes" with the goal of making hard to reach NASA data more accessable</li>
+                      <li>View near live sattelite views of the earth from GOES-EAST/WEST, MODIS-TERRA/AQUA and much more in near real time!</li>
+                      <li>One of the only apps that allows for in browser .TIF image viewing for NASA's large 40k pixel wide images at lossless quality. Doing the job of paid enterprise software right on the browser</li>
+                      <img className="w-full" src={StellarViewImage} alt="Stellar View" />
+                      <div className="mt-2 self-center w-3/4 flex flex-col justify-center gap-4">
+                        <Button label='Go To Live Site' OnClickCallback={() => handleWindowNavigation("https://stellarview.us/")} materialIcon='orbit' iconPosition='right' />
+                        <Button label='View The Repo' OnClickCallback={() => handleWindowNavigation("https://github.com/cmac2112/Stellar-View")} materialIcon='code' iconPosition='right' />
+                      </div>
+                    </ul>
+                  </MyExperienceTile>
+                  <MyExperienceTile
+                    title='Chess with AI Opponents'
+                    subtitle='Personal Project (In Progress)'
+                    technologies={["React", "Typescript", "CSS"]}>
+                    <h2 className="m-4 text-base">Developed chess in react from scratch and adding homemade AI as a self challenge</h2>
+                    <ul className="flex flex-col gap-2 text-sm w-fit px-8">
+                      <li>Rules of the challenge were to come up with my own version of chess and a verson 1.0 of a bot without using any google or AI help</li>
+                      <li>Game logic was simple enough to implement, but took it a step further to make it more user friendly in many ways</li>
+                      <li>Currently only version 1.0 of my bot is playable at the moment (and its sort of impossible to lose against beacuse its not very smart)</li>
+                      <div className="mt-2 self-center w-3/4 flex flex-col justify-center gap-4">
+                        <Button label='Play My Chess Bots!' OnClickCallback={() => navigate("/chess")} materialIcon='chess' iconPosition='right' />
+                        <Button label='View The Repo' OnClickCallback={() => handleWindowNavigation("https://github.com/cmac2112/Chess-With-AI-Opponents")} materialIcon='code' iconPosition='right' />
+                      </div>
+                    </ul>
+                  </MyExperienceTile>
+                  <MyExperienceTile
+                    title='Solar Eye'
+                    subtitle='NASA Space-Apps Award Winner'
+                    technologies={["React", "ThreeJs", "3D-Graphics", "Simulation", "GLSL"]}>
+                    <h2 className="m-4 text-base">Dangerous Asteroid Visualizer <Emphasis>NASA Award Winner</Emphasis></h2>
+                    <ul className="flex flex-col gap-2 text-sm w-fit px-8">
+                      <li>Developed a 3D interactable solar system simulation to display near earth asteroids that have the potential to impact earth in the future</li>
+                      <li>Gathered planet body data from NASA and used orbital calculations to calculate the position of a orbital body based on the provided Keplarian orbital parameters in real time</li>
+                      <li>Won 2 awards "Peoples Choice" and "Local Impact"</li>
+                      <img className="w-full" src={SolarEyeImage} alt="Solar Eye" />
+                      <div className="mt-2 self-center w-3/4 flex flex-col justify-center gap-4">
+                        <Button label='View The Simulation' OnClickCallback={() => handleWindowNavigation("https://cmac2112.github.io/nasaspaceapps/#/solareyes")} materialIcon='planet' iconPosition='right' />
+                        <Button label='View The Repo' OnClickCallback={() => handleWindowNavigation("https://github.com/cmac2112/nasaspaceapps")} materialIcon='code' iconPosition='right' />
+                      </div>
+                    </ul>
+                  </MyExperienceTile>
+                  <MyExperienceTile
+                    title='BC-Social'
+                    subtitle='Club Social Media'
+                    technologies={["React", "Typescript", "Javascript", "TailwindCSS", "SQL", "MySQL", "Node", "Docker", "Google Cloud"]}>
+                    <h2 className="m-4 text-base">Working Social Media app with likes, comments, following, image and post creation</h2>
+                    <ul className="flex flex-col gap-2 text-sm w-fit px-8">
+                      <li>Developed a social media clone to begin transition away school wide club announcements from emails (because no one looks at their emails)</li>
+                      <li>Built with React, Node, and MySQL and handled sign up/sign in authentication with Google OAuth which integrated school accounts seamlessly</li>
+                      <li>Built customizable bios and profiles for users to access and integrated an infinite scroll home page that would load posts from newest to oldest</li>
+                      <div className="mt-2 self-center w-3/4 flex flex-col justify-center gap-4">
+                        <Button label='View The Repo' OnClickCallback={() => handleWindowNavigation("https://github.com/cmac2112/BethelSocialMedia")} materialIcon='code' iconPosition='right' />
+                      </div>
+                    </ul>
+                  </MyExperienceTile>
+                </div>
+              </section>
             </div>
-            
-          </ul>
-        </MyExperienceTile>
-        <MyExperienceTile title='Chess with AI Opponents' subtitle='Personal Project (In Progress)'
-        technologies={["React", "Typescript", "CSS"]}>
-          <h2 className='experience-tile-child-header'>Developed chess in react from scratch and adding homemade AI as a self challenge</h2>
-          <ul className='experience-list'>
-            <li>Rules of the challenge were to come up with my own version of chess and a verson 1.0 of a bot without using any google or AI help</li>
-            <li>Game logic was simple enough to implement, but took it a step further to make it more user friendly in many ways</li>
-            <li>Currently only version 1.0 of my bot is playable at the moment (and its sort of impossible to lose against beacuse its not very smart)</li>
-            <div className='tile-buttons'>
-            <Button label='Play My Chess Bots!' OnClickCallback={() => navigate("/chess")} materialIcon='chess' iconPosition='right'/>
-            <Button label='View The Repo' OnClickCallback={() => handleWindowNavigation("https://github.com/cmac2112/Chess-With-AI-Opponents")} materialIcon='code' iconPosition='right' />
-            </div>
-            
-          </ul>
-        </MyExperienceTile>
-        <MyExperienceTile 
-        title='Solar Eye'
-         subtitle='NASA Space-Apps Award Winner'
-         technologies={["React", "ThreeJs", "3D-Graphics", "Simulation", "GLSL"]}>
-          <h2 className='experience-tile-child-header'>Dangerous Asteroid Visualizer <Emphasis>NASA Award Winner</Emphasis></h2>
-          <ul className='experience-list'>
-          
-            <li>Developed a 3D interactable solar system simulation to display near earth asteroids that have the potential to impact earth in the future</li>
-            <li>Gathered planet body data from NASA and used orbital calculations to calculate the position of a orbital body based on the provided Keplarian orbital parameters in real time</li>
-            <li>Won 2 awards "Peoples Choice" and "Local Impact"</li>
-            <img className='app-images' src={SolarEyeImage} />
-            <div className='tile-buttons'>
-              <Button label='View The Simulation' OnClickCallback={() => handleWindowNavigation("https://cmac2112.github.io/nasaspaceapps/#/solareyes")} materialIcon='planet' iconPosition='right' />
-                <Button label='View The Repo' OnClickCallback={() => handleWindowNavigation("https://github.com/cmac2112/nasaspaceapps")} materialIcon='code' iconPosition='right' />
-            </div>
-          </ul>
-        </MyExperienceTile>
-        <MyExperienceTile title='BC-Social' subtitle='Club Social Media'
-        technologies={["React", "Typescript", "Javascript", "TailwindCSS", "SQL", "MySQL", "Node", "Docker", "Google Cloud"]}>
-          <h2 className='experience-tile-child-header'>Working Social Media app with likes, comments, following, image and post creation</h2>
-          <ul className='experience-list'>
-            <li>Developed a social media clone to begin transition away school wide club announcements from emails (because no one looks at their emails)</li>
-            <li>Built with React, Node, and MySQL and handled sign up/sign in authentication with Google OAuth which integrated school accounts seamlessly</li>
-            <li>Built customizable bios and profiles for users to access and integrated an infinite scroll home page that would load posts from newest to oldest</li>
-            <div className='tile-buttons'>
-              <Button label='View The Repo' OnClickCallback={() => handleWindowNavigation("https://github.com/cmac2112/BethelSocialMedia")} materialIcon='code' iconPosition='right' />
-            </div>
-          </ul>
-        </MyExperienceTile>
+          </div>
+          <div className="mt-4 w-full border border-gray-500 rounded-2xl">
+            <ObsidianViewer />
+          </div>
         </div>
-      </section>
-      </div>
+      </Layout>
     </div>
-    <div className="site-explorer">
-    <ObsidianViewer />
-    </div>
-    </div>
-    
-    </Layout>
-        
-      </div>
-    
   )
 }
-
-
 
 export default Home

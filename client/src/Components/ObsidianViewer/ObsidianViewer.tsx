@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
-import "./ObsidianViewer.css";
 import type { ObsidianNode, ObsidianLink} from "../../Helpers/DefaultExplorer";
 import {
   TypeColorTranslator,
@@ -13,8 +12,6 @@ import { DefinedRoutes } from "../../Helpers/RouteConstants";
 
 
 const ObsidianViewer = () => {
-
-
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -22,16 +19,10 @@ const ObsidianViewer = () => {
   const [svgHeight, setSvgHeight] = useState<number>(500);
   const [resetVar, setResetVar] = useState<boolean>(false);
   const [closed, setClosed] = useState<boolean>(false);
-
   const [modal, setModal] = useState<boolean>(false);
 
-  // used to turn on the tools and framework links for each project
-  //on hold for now. Maybe if they click on these ones that dont have dedicated page we can just display the mentions
-  // of an item. I dont know how difficult that would be or if it would even be worth it
-  //const [advancedView, setAdvancedview] = useState<boolean>(false);
-
   const navigate = useNavigate();
-  //size the svg on mount
+
   useEffect(() => {
     function updateWidth() {
       if (containerRef.current) {
@@ -46,15 +37,11 @@ const ObsidianViewer = () => {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-
-
-  //build simulation
   useEffect(() => {
-    const buildGraph = async () => {      
+    const buildGraph = async () => {
       const svgElement = svgRef.current;
       if (!svgElement) return;
 
-      //remove all previous elements for re-render/initial render
       d3.select(svgElement).selectAll("*").remove();
 
       const svg = d3
@@ -70,12 +57,10 @@ const ObsidianViewer = () => {
       );
 
       const nodes: ObsidianNode[] = CompiledNodes;
-      
       const links: ObsidianLink[] = CompiledMapLinks;
       console.log(links);
-
-
       console.log(nodes.length)
+
       const simulation = d3
         .forceSimulation<ObsidianNode>(nodes)
         .force(
@@ -124,31 +109,23 @@ const ObsidianViewer = () => {
         .text((d) => d.title)
         .attr("font-size", 12)
         .attr("font-family", "Archivo Black, sans-serif")
-        .attr("fill", "#dfdfdfff") // goldish
+        .attr("fill", "#dfdfdfff")
         .attr("text-anchor", "middle")
-        .attr("dy", -15); // float above the node
+        .attr("dy", -15);
 
       simulation.on("tick", () => {
         link
           .attr("x1", (d) =>
-            typeof d.source === "object" && d.source.x !== undefined
-              ? d.source.x
-              : 0
+            typeof d.source === "object" && d.source.x !== undefined ? d.source.x : 0
           )
           .attr("y1", (d) =>
-            typeof d.source === "object" && d.source.y !== undefined
-              ? d.source.y
-              : 0
+            typeof d.source === "object" && d.source.y !== undefined ? d.source.y : 0
           )
           .attr("x2", (d) =>
-            typeof d.target === "object" && d.target.x !== undefined
-              ? d.target.x
-              : 0
+            typeof d.target === "object" && d.target.x !== undefined ? d.target.x : 0
           )
           .attr("y2", (d) =>
-            typeof d.target === "object" && d.target.y !== undefined
-              ? d.target.y
-              : 0
+            typeof d.target === "object" && d.target.y !== undefined ? d.target.y : 0
           );
 
         node
@@ -159,6 +136,7 @@ const ObsidianViewer = () => {
           .attr("x", (d) => (d.x !== undefined ? d.x : 0))
           .attr("y", (d) => (d.y !== undefined ? d.y : 0));
       });
+
       node.call(
         d3
           .drag<SVGCircleElement, ObsidianNode>()
@@ -166,43 +144,34 @@ const ObsidianViewer = () => {
           .on("drag", dragged)
           .on("end", dragended)
       );
+
       function HandleClickEvent(event: any, d: ObsidianNode) {
         if (!event) return;
         if (d.link) {
           console.log("clicked on", d)
-          if(d.title !== "Resume"){
-          
-            if(d.type === "projects"){
+          if (d.title !== "Resume") {
+            if (d.type === "projects") {
               console.log("is a project")
               navigate(`${d.link}?project=${d.title.replace(" ", "")}`)
             }
-          navigate(d.link);
+            navigate(d.link);
           }
-          if(d.title === "Resume"){
+          if (d.title === "Resume") {
             window.open(DefinedRoutes.Resume, "_blank")
           }
         }
       }
-      function dragstarted(
-        event: d3.D3DragEvent<SVGCircleElement, ObsidianNode, unknown>,
-        d: ObsidianNode
-      ) {
+
+      function dragstarted(event: d3.D3DragEvent<SVGCircleElement, ObsidianNode, unknown>, d: ObsidianNode) {
         if (!event.active) simulation.alphaTarget(0.3).restart();
         d.fx = d.x;
         d.fy = d.y;
       }
-
-      function dragged(
-        event: d3.D3DragEvent<SVGCircleElement, ObsidianNode, unknown>,
-        d: ObsidianNode
-      ) {
+      function dragged(event: d3.D3DragEvent<SVGCircleElement, ObsidianNode, unknown>, d: ObsidianNode) {
         d.fx = event.x;
         d.fy = event.y;
       }
-      function dragended(
-        event: d3.D3DragEvent<SVGCircleElement, ObsidianNode, unknown>,
-        d: ObsidianNode
-      ) {
+      function dragended(event: d3.D3DragEvent<SVGCircleElement, ObsidianNode, unknown>, d: ObsidianNode) {
         if (!event.active) simulation.alphaTarget(0);
         d.fx = null;
         d.fy = null;
@@ -211,65 +180,56 @@ const ObsidianViewer = () => {
     buildGraph();
   }, [resetVar, closed]);
 
-  const Reset = () => {
-    setResetVar((prev) => !prev);
-  };
-  const HandleMinimize = () => {
-    setClosed((prev) => !prev);
-  };
+  const Reset = () => setResetVar((prev) => !prev);
+  const HandleMinimize = () => setClosed((prev) => !prev);
+  const HandleModal = () => setModal((prev) => !prev);
 
-  const HandleModal = () => {
-    setModal((prev) => !prev);
-  };
-
-  const RenderModal = () => {
-    return (
-      <div className="explorer-container">
-        <h3>Node Explorer</h3>
-        <p>The site explorer is a unique way to traverse my website!</p>
-        <ol>
-          <li>
-            Each node is a page on the site that you can visit and are grouped
-            together by topic.
-          </li>
-          <li>Hold and drag to traverse the environment</li>
-          <li>Or click and drag on nodes to move them around</li>
-          <li>
-            <Emphasis>
-              Click on any node to visit that part of the site!
-            </Emphasis>
-          </li>
-        </ol>
-        <p>
-          Still Confused? Dont worry! You can still travel the site through the
-          hamburger menu on the top right of each page!
-        </p>
-      </div>
-    );
-  };
+  const RenderModal = () => (
+    <div className="p-4 border-b border-gray-500 bg-white/5 rounded-2xl">
+      <h3>Node Explorer</h3>
+      <p>The site explorer is a unique way to traverse my website!</p>
+      <ol>
+        <li>Each node is a page on the site that you can visit and are grouped together by topic.</li>
+        <li>Hold and drag to traverse the environment</li>
+        <li>Or click and drag on nodes to move them around</li>
+        <li><Emphasis>Click on any node to visit that part of the site!</Emphasis></li>
+      </ol>
+      <p>Still Confused? Dont worry! You can still travel the site through the hamburger menu on the top right of each page!</p>
+    </div>
+  );
 
   return (
-    <div ref={containerRef} className="obsidian-container-ref">
-      <div className="obsidian-menu">
-        <div className="obsidian-left">
-          <h2>Site Explorer</h2>
-          <p onClick={() => Reset()}>Reset</p>
-          <p onClick={() => HandleModal()}>About The Explorer</p>
+    <div ref={containerRef} className="h-fit">
+      <div className="flex justify-between bg-white/5 border-b border-gray-500 px-4 gap-4 rounded-2xl">
+        <div className="flex justify-start gap-4">
+          <h2 className="text-white max-[500px]:text-sm">Site Explorer</h2>
+          <p
+            onClick={() => Reset()}
+            className="text-[rgb(136,123,123)] self-center underline hover:text-yellow-400 hover:cursor-pointer max-[500px]:text-xs">
+            Reset
+          </p>
+          <p
+            onClick={() => HandleModal()}
+            className="text-[rgb(136,123,123)] self-center underline hover:text-yellow-400 hover:cursor-pointer max-[500px]:text-xs">
+            About The Explorer
+          </p>
         </div>
-        <div className="obsidian-right">
-          <h2 onClick={() => HandleMinimize()}>{!closed ? "Close" : "Open"}</h2>
+        <div>
+          <h2
+            onClick={() => HandleMinimize()}
+            className="text-white hover:text-yellow-400 hover:cursor-pointer max-[500px]:text-sm">
+            {!closed ? "Close" : "Open"}
+          </h2>
         </div>
       </div>
-      {modal ? RenderModal() : <></>}
-      {!closed ? (
+      {modal && RenderModal()}
+      {!closed && (
         <svg
           ref={svgRef}
-          className="obsidian-ref"
+          className="bg-black w-full rounded-2xl hover:cursor-crosshair"
           width={svgWidth}
           height={svgHeight}
-        ></svg>
-      ) : (
-        <></>
+        />
       )}
     </div>
   );

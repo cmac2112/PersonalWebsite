@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import "./Welcome.css";
-import football from '../../assets/football.png';
+import football from '../../assets/slideshow/football.png';
 import pfp from '../../assets/pfp.jpg';
 import Tool from '../../Components/Tool/Tool';
 import Button from '../../Components/Button/Button';

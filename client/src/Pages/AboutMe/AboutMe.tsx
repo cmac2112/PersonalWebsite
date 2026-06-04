@@ -6,7 +6,7 @@ import HighSchool from "./RenderContent/HighSchool";
 import ObsidianViewer from "../../Components/ObsidianViewer/ObsidianViewer";
 import Interests from "./RenderContent/Interests";
 import AboutMeIntro from "./RenderContent/AboutMeIntro";
-import "./AboutMe.css";
+
 const AboutMe = () => {
   const [fadingIn, setFadingIn] = useState<boolean>(false);
 
@@ -19,13 +19,13 @@ const AboutMe = () => {
     },
     {
       id: "interests",
-      title: "Intrests/Hobbies",
+      title: "Interests & Hobbies",
       color: "rgb(93, 23, 23)",
       innnerContent: Interests(),
     },
     {
       id: "highschool",
-      title: "High School/Early Years",
+      title: "High School / Early Years",
       color: "rgb(211, 192, 54)",
       innnerContent: HighSchool(),
     },
@@ -41,8 +41,7 @@ const AboutMe = () => {
     <Layout>
       <div className={`${fadingIn ? "fade-in" : ""}`}>
         <ProgressionMeter sections={sections} />
-
-        <div className="viewer-width">
+        <div className="flex justify-center">
           <ObsidianViewer />
         </div>
       </div>
