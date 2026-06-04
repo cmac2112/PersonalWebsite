@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../../Components/Layout/Layout'
 import patrick from "../../assets/patrick.gif"

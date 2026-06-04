@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import HHNebula    from "../../assets/slideshow/hhnebulaj700.jpg";
 import SatView     from "../../assets/slideshow/StellarSatView.jpg";
-import PfpDesktop  from "../../assets/slideshow/pfpdesktop.jpg";
 import MyImage     from "../../assets/slideshow/football.png"
 import Blog        from "../../assets/slideshow/code.jpg";
 import MaterialIcon from "../MaterialIcon/MaterialIcon";
