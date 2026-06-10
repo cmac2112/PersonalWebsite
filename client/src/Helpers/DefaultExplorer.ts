@@ -89,17 +89,16 @@ export const defaultLinks: ObsidianLink[] = items.filter(item => item.LinksTo &&
 
 export const TypeColorTranslator = (type: string): string => {
   const map: Record<string, string> = {
-    master: "red",
-    projects: "blue",
-    blog: "green",
-    chess: "yellow",
-    experience: "gold",
-    images: "purple",
-    resume: "maroon"
+    master: "#ffcf0d",
+    experience: "#38bdf8",
+    projects: "#a78bfa",
+    blog: "#34d399",
+    chess: "#fb923c",
+    images: "#f472b6",
+    resume: "#f87171",
   };
 
-  //console.log(compiledBlogs)
-  return map[type] ?? "gray"; // default fallback
+  return map[type] ?? "#9ca3af"; // default fallback
 };
 
 export const CompiledNodes: ObsidianNode[] = compiledBlogs.map(item => ({

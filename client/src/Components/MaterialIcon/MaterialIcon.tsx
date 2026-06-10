@@ -1,10 +1,15 @@
- const MaterialIcon = ({name}: {name: string})=>(
+interface MaterialIconProps {
+  name: string;
+  className?: string;
+}
 
-        <span
-        className="material-symbols-outlined button__material-icon align-icon"
-        aria-hidden="true">
-            {name}
-        </span>
-    )
+const MaterialIcon = ({ name, className = "" }: MaterialIconProps) => (
+  <span
+    className={`material-symbols-outlined select-none ${className}`.trim()}
+    aria-hidden="true"
+  >
+    {name}
+  </span>
+);
 
-    export default MaterialIcon;
+export default MaterialIcon;
