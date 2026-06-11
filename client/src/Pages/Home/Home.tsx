@@ -165,7 +165,7 @@ const Home = () => {
               </section>
             </div>
           </div>
-          <div className="mt-4 w-full border border-gray-500 rounded-2xl">
+          <div className="mt-4 w-full">
             <ObsidianViewer />
           </div>
         </div>

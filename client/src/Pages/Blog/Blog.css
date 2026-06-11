@@ -41,13 +41,9 @@
     
 }
 .obsidian-container{
-    padding: 0.1rem;
-    border: 1px solid rgb(110, 105, 105);
-    border-radius: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
-
 }
 
 .obsidian-blog-col{
